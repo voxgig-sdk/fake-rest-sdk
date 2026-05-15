@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "post": {
+      "POST00": {
+        "body": "s8c",
+        "category": "s8d",
+        "cover_image": "s8e",
+        "created_at": "s8f",
+        "featured": true,
+        "id": "POST00",
+        "like": "s92",
+        "meta_description": "s93",
+        "published": true,
+        "read_time": "s95",
+        "tag": [],
+        "title": "s97",
+        "user_id": "USER01",
+        "view": "s99"
+      },
+      "POST01": {
+        "body": "s118",
+        "category": "s119",
+        "cover_image": "s11a",
+        "created_at": "s11b",
+        "featured": true,
+        "id": "POST01",
+        "like": "s11e",
+        "meta_description": "s11f",
+        "published": true,
+        "read_time": "s121",
+        "tag": [],
+        "title": "s123",
+        "user_id": "USER01",
+        "view": "s125"
+      },
+      "POST02": {
+        "body": "s1a4",
+        "category": "s1a5",
+        "cover_image": "s1a6",
+        "created_at": "s1a7",
+        "featured": true,
+        "id": "POST02",
+        "like": "s1aa",
+        "meta_description": "s1ab",
+        "published": true,
+        "read_time": "s1ad",
+        "tag": [],
+        "title": "s1af",
+        "user_id": "USER01",
+        "view": "s1b1"
+      }
+    }
+  },
+  "new": {
+    "post": {
+      "post_ref01": {
+        "body": "s230",
+        "category": "s231",
+        "cover_image": "s232",
+        "created_at": "s233",
+        "featured": true,
+        "like": "s236",
+        "meta_description": "s237",
+        "published": true,
+        "read_time": "s239",
+        "tag": [],
+        "title": "s23b",
+        "user_id": "USER01",
+        "view": "s23d"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "category": {
+      "CATEGORY00": {
+        "count": "s1e",
+        "id": "CATEGORY00",
+        "name": "s20"
+      },
+      "CATEGORY01": {
+        "count": "s3c",
+        "id": "CATEGORY01",
+        "name": "s3e"
+      },
+      "CATEGORY02": {
+        "count": "s5a",
+        "id": "CATEGORY02",
+        "name": "s5c"
+      }
+    }
+  },
+  "new": {
+    "category": {
+      "category_ref01": {
+        "count": "s78",
+        "name": "s7a"
+      }
+    }
+  }
+}

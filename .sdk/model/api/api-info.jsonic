@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://fake-rest-api-mobile-apps.vercel.app"
+      }
+      description: "This API provides a simple and free platform to generate realistic JSON data for testing mobile apps and web applications. No authentication or signup is required, making it ideal for developers needing quick access to mock data."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://fake-rest-api-mobile-apps.vercel.app"
+        }
+      ]
+      title: "Fake REST API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "product": {
+      "PRODUCT00": {
+        "brand": "s64",
+        "category": "s65",
+        "description": "s66",
+        "id": "PRODUCT00",
+        "name": "s68",
+        "price": 105,
+        "rating": 106,
+        "review": "s6b",
+        "sku": "s6c",
+        "stock": "s6d"
+      },
+      "PRODUCT01": {
+        "brand": "sc8",
+        "category": "sc9",
+        "description": "sca",
+        "id": "PRODUCT01",
+        "name": "scc",
+        "price": 205,
+        "rating": 206,
+        "review": "scf",
+        "sku": "sd0",
+        "stock": "sd1"
+      },
+      "PRODUCT02": {
+        "brand": "s12c",
+        "category": "s12d",
+        "description": "s12e",
+        "id": "PRODUCT02",
+        "name": "s130",
+        "price": 305,
+        "rating": 306,
+        "review": "s133",
+        "sku": "s134",
+        "stock": "s135"
+      }
+    }
+  },
+  "new": {
+    "product": {
+      "product_ref01": {
+        "brand": "s190",
+        "category": "s191",
+        "description": "s192",
+        "name": "s194",
+        "price": 405,
+        "rating": 406,
+        "review": "s197",
+        "sku": "s198",
+        "stock": "s199"
+      }
+    }
+  }
+}

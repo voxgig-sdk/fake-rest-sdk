@@ -1,0 +1,62 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 10
+  metrics: count: method: 15
+
+  entity: category: {
+    path: "/api/products/categories": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: comment: {
+    path: "/api/comments": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/api/posts/{postId}/comments": {
+      rename: param: "postId": *"post_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: post: {
+    path: "/api/posts": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/api/posts/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: product: {
+    path: "/api/products": {
+      op: list: method: *GET
+    }
+    path: "/api/products/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: todo: {
+    path: "/api/todos": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: user: {
+    path: "/api/users": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/api/users/{id}": {
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+}

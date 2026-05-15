@@ -1,0 +1,159 @@
+# Entity: post
+
+main: kit: entity: post: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "body"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "cover_image"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "created_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "featured"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "like"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "meta_description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "published"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "read_time"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tag"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "user_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "view"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "post"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/posts"
+          parts: [
+            "api"
+            "posts"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/api/posts"
+          parts: [
+            "api"
+            "posts"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/posts/{id}"
+          parts: [
+            "api"
+            "posts"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

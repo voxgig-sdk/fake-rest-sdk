@@ -1,0 +1,163 @@
+# Entity: comment
+
+main: kit: entity: comment: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avatar"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "body"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "created_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "device_info"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "email"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "is_verified"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "like"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "location"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "parent_comment_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "post_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "website"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "comment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/api/comments"
+          parts: [
+            "api"
+            "comments"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "post_id"
+                orig: "post_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/posts/{postId}/comments"
+          parts: [
+            "api"
+            "posts"
+            "{post_id}"
+            "comments"
+          ]
+          rename: {
+            param: {
+              postId: "post_id"
+            }
+          }
+          select: {
+            exist: [
+              "post_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/api/comments"
+          parts: [
+            "api"
+            "comments"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "post"
+      ]
+    ]
+  }
+
+
+
+}
