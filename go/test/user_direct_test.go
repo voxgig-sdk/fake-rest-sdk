@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/fake-rest-sdk"
-	"github.com/voxgig-sdk/fake-rest-sdk/core"
+	sdk "github.com/voxgig-sdk/fake-rest-sdk/go"
+	"github.com/voxgig-sdk/fake-rest-sdk/go/core"
 )
 
 func TestUserDirect(t *testing.T) {

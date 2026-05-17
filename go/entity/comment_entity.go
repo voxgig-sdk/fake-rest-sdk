@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/fake-rest-sdk/core"
+	"github.com/voxgig-sdk/fake-rest-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/fake-rest-sdk/go/utility/struct"
 )
 
 type CommentEntity struct {

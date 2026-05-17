@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/fake-rest-sdk"
-	"github.com/voxgig-sdk/fake-rest-sdk/core"
+	sdk "github.com/voxgig-sdk/fake-rest-sdk/go"
+	"github.com/voxgig-sdk/fake-rest-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/fake-rest-sdk/go/utility/struct"
 )
 
 func TestTodoEntity(t *testing.T) {

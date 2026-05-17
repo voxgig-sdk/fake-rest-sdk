@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/fake-rest-sdk/core"
+	"github.com/voxgig-sdk/fake-rest-sdk/go/core"
 )
 
 type BaseFeature struct {

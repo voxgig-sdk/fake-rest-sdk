@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/fake-rest-sdk/go/utility/struct"
 )
 
 type FakeRestSDK struct {

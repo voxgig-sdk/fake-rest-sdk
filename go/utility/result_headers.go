@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/fake-rest-sdk/core"
+import "github.com/voxgig-sdk/fake-rest-sdk/go/core"
 
 func resultHeadersUtil(ctx *core.Context) *core.Result {
 	response := ctx.Response
