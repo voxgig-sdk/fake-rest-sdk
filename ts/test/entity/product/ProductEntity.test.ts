@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'FAKE_REST_TEST_PRODUCT_ENTID': idmap,
     'FAKE_REST_TEST_LIVE': 'FALSE',
     'FAKE_REST_TEST_EXPLAIN': 'FALSE',
-    'FAKE_REST_APIKEY': 'NONE',
   })
 
   idmap = env['FAKE_REST_TEST_PRODUCT_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new FakeRestSDK(merge([
       {
-        apikey: env.FAKE_REST_APIKEY,
       },
       extra
     ]))

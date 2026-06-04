@@ -92,7 +92,6 @@ def _todo_basic_setup(extra):
         "FAKEREST_TEST_TODO_ENTID": idmap,
         "FAKEREST_TEST_LIVE": "FALSE",
         "FAKEREST_TEST_EXPLAIN": "FALSE",
-        "FAKEREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _todo_basic_setup(extra):
     if env.get("FAKEREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FAKEREST_APIKEY"),
             },
             extra or {},
         ])

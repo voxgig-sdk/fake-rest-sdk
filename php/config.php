@@ -20,9 +20,6 @@ class FakeRestConfig
             ],
             "options" => [
                 "base" => "https://fake-rest-api-mobile-apps.vercel.app",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

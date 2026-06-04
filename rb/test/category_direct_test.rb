@@ -62,14 +62,12 @@ def category_direct_setup(mockres)
   env = Runner.env_override({
     "FAKEREST_TEST_CATEGORY_ENTID" => {},
     "FAKEREST_TEST_LIVE" => "FALSE",
-    "FAKEREST_APIKEY" => "NONE",
   })
 
   live = env["FAKEREST_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["FAKEREST_APIKEY"],
     }
     client = FakeRestSDK.new(merged_opts)
     return {

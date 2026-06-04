@@ -16,7 +16,22 @@
           }
         ],
         "title": "Fake REST API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "tagline": "Realistic JSON mock data for testing mobile apps and web projects, with no signup or auth",
+        "homepage": "https://fake-rest-api-mobile-apps.vercel.app",
+        "docs_url": "https://fake-rest-api-mobile-apps.vercel.app",
+        "license_short": "No license specified by the operator.",
+        "license_md": "- No explicit license is published on the homepage or community catalogue.\n- Service is provided free of charge for testing and development; treat the data as sample/mock content.\n- Contact the operator (Sethu Premkumar) for any reuse questions.",
+        "about_md": "Fake REST API is a free testing service that serves realistic JSON data for prototyping mobile apps and web projects. It is operated by Sethu Premkumar and hosted on [Vercel](https://fake-rest-api-mobile-apps.vercel.app).\n\nWhat you get from the API:\n\n- Users with contact information, addresses, and company details\n- Posts (blog content with metadata)\n- Products (e-commerce items with pricing and categories)\n- Todos filterable by user and completion status\n- Comments linked to posts\n\nNo authentication or signup is required, and CORS is enabled, so the endpoints can be called directly from a browser. No rate limit is documented, but treat the service as best-effort for development use only.",
+        "entity_desc": {
+          "category": "Product categories, exposed via the products endpoints (e.g. `GET /api/products/categories`).",
+          "comment": "User feedback attached to posts, supporting list, fetch-by-post, and create operations.",
+          "post": "Blog-style posts with metadata, supporting list, fetch-by-id, and create operations.",
+          "product": "E-commerce items with pricing and inventory fields, plus a categories listing.",
+          "todo": "Task items with completion status, filterable by user id and completion state.",
+          "user": "User profiles with contact information, addresses, and company details, supporting full CRUD (`GET`, `POST`, `PUT`, `DELETE` on `/api/users`)."
+        },
+        "auth": false
       },
       "config": {
         "auth": {
@@ -24,7 +39,15 @@
         },
         "headers": {
           "content-type": "application/json"
-        }
+        },
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ]
       },
       "entity": {
         "category": {
