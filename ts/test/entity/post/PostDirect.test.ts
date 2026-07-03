@@ -136,12 +136,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'FAKEREST_TEST_POST_ENTID': {},
     'FAKEREST_TEST_LIVE': 'FALSE',
+    'FAKEREST_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.FAKEREST_TEST_LIVE
 
   if (live) {
     const client = new FakeRestSDK({
+      apikey: env.FAKEREST_APIKEY,
     })
 
     let idmap: any = env['FAKEREST_TEST_POST_ENTID']

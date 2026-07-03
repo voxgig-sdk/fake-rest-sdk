@@ -1,22 +1,8 @@
 # FakeRest SDK
 
-Realistic JSON mock data for testing mobile apps and web projects, with no signup or auth
+Fake REST API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Fake REST API
-
-Fake REST API is a free testing service that serves realistic JSON data for prototyping mobile apps and web projects. It is operated by Sethu Premkumar and hosted on [Vercel](https://fake-rest-api-mobile-apps.vercel.app).
-
-What you get from the API:
-
-- Users with contact information, addresses, and company details
-- Posts (blog content with metadata)
-- Products (e-commerce items with pricing and categories)
-- Todos filterable by user and completion status
-- Comments linked to posts
-
-No authentication or signup is required, and CORS is enabled, so the endpoints can be called directly from a browser. No rate limit is documented, but treat the service as best-effort for development use only.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install fake-rest-sdk
 luarocks install fake-rest-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { FakeRestSDK } from 'fake-rest'
 
-const client = new FakeRestSDK({})
+const client = new FakeRestSDK({
+  apikey: process.env.FAKE-REST_APIKEY,
+})
 
 // List all categorys
 const categorys = await client.Category().list()
+console.log(categorys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,12 +90,12 @@ The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Category** | Product categories, exposed via the products endpoints (e.g. `GET /api/products/categories`). | `/api/products/categories` |
-| **Comment** | User feedback attached to posts, supporting list, fetch-by-post, and create operations. | `/api/comments` |
-| **Post** | Blog-style posts with metadata, supporting list, fetch-by-id, and create operations. | `/api/posts` |
-| **Product** | E-commerce items with pricing and inventory fields, plus a categories listing. | `/api/products` |
-| **Todo** | Task items with completion status, filterable by user id and completion state. | `/api/todos` |
-| **User** | User profiles with contact information, addresses, and company details, supporting full CRUD (`GET`, `POST`, `PUT`, `DELETE` on `/api/users`). | `/api/users` |
+| **Category** |  | `/api/products/categories` |
+| **Comment** |  | `/api/comments` |
+| **Post** |  | `/api/posts` |
+| **Product** |  | `/api/products` |
+| **Todo** |  | `/api/todos` |
+| **User** |  | `/api/users` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -117,12 +105,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from fakerest_sdk import FakeRestSDK
 
-client = FakeRestSDK({})
+client = FakeRestSDK({
+    "apikey": os.environ.get("FAKE-REST_APIKEY"),
+})
 
 # List all categorys
-categorys, err = client.Category(None).list(None, None)
+categorys, err = client.Category().list()
+print(categorys)
 ```
 
 ### PHP
@@ -131,10 +123,13 @@ categorys, err = client.Category(None).list(None, None)
 <?php
 require_once 'fakerest_sdk.php';
 
-$client = new FakeRestSDK([]);
+$client = new FakeRestSDK([
+    "apikey" => getenv("FAKE-REST_APIKEY"),
+]);
 
 // List all categorys
-[$categorys, $err] = $client->Category(null)->list(null, null);
+[$categorys, $err] = $client->Category()->list();
+print_r($categorys);
 ```
 
 ### Golang
@@ -142,10 +137,13 @@ $client = new FakeRestSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/fake-rest-sdk/go"
 
-client := sdk.NewFakeRestSDK(map[string]any{})
+client := sdk.NewFakeRestSDK(map[string]any{
+    "apikey": os.Getenv("FAKE-REST_APIKEY"),
+})
 
 // List all categorys
 categorys, err := client.Category(nil).List(nil, nil)
+fmt.Println(categorys)
 ```
 
 ### Ruby
@@ -153,10 +151,13 @@ categorys, err := client.Category(nil).List(nil, nil)
 ```ruby
 require_relative "FakeRest_sdk"
 
-client = FakeRestSDK.new({})
+client = FakeRestSDK.new({
+  "apikey" => ENV["FAKE-REST_APIKEY"],
+})
 
 # List all categorys
-categorys, err = client.Category(nil).list(nil, nil)
+categorys, err = client.Category().list
+puts categorys
 ```
 
 ### Lua
@@ -164,10 +165,13 @@ categorys, err = client.Category(nil).list(nil, nil)
 ```lua
 local sdk = require("fake-rest_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("FAKE-REST_APIKEY"),
+})
 
 -- List all categorys
-local categorys, err = client:Category(nil):list(nil, nil)
+local categorys, err = client:Category():list()
+print(categorys)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +190,21 @@ const result = await client.Category().load({ id: 'test01' })
 ### Python
 
 ```python
-client = FakeRestSDK.test(None, None)
-result, err = client.Category(None).load(
-    {"id": "test01"}, None
-)
+client = FakeRestSDK.test()
+result, err = client.Category().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = FakeRestSDK::test(null, null);
-[$result, $err] = $client->Category(null)->load(
-    ["id" => "test01"], null
-);
+$client = FakeRestSDK::test();
+[$result, $err] = $client->Category()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Category(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +213,15 @@ result, err := client.Category(nil).Load(
 ### Ruby
 
 ```ruby
-client = FakeRestSDK.test(nil, nil)
-result, err = client.Category(nil).load(
-  { "id" => "test01" }, nil
-)
+client = FakeRestSDK.test
+result, err = client.Category().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Category(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Category():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,14 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Fake REST API
-
-- Upstream: [https://fake-rest-api-mobile-apps.vercel.app](https://fake-rest-api-mobile-apps.vercel.app)
-
-- No explicit license is published on the homepage or community catalogue.
-- Service is provided free of charge for testing and development; treat the data as sample/mock content.
-- Contact the operator (Sethu Premkumar) for any reuse questions.
 
 ---
 

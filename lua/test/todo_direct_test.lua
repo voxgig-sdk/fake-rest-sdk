@@ -63,12 +63,14 @@ function todo_direct_setup(mockres)
   local env = runner.env_override({
     ["FAKEREST_TEST_TODO_ENTID"] = {},
     ["FAKEREST_TEST_LIVE"] = "FALSE",
+    ["FAKEREST_APIKEY"] = "NONE",
   })
 
   local live = env["FAKEREST_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["FAKEREST_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

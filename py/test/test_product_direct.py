@@ -109,12 +109,14 @@ def _product_direct_setup(mockres):
     env = runner.env_override({
         "FAKEREST_TEST_PRODUCT_ENTID": {},
         "FAKEREST_TEST_LIVE": "FALSE",
+        "FAKEREST_APIKEY": "NONE",
     })
 
     live = env.get("FAKEREST_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("FAKEREST_APIKEY"),
         }
         client = FakeRestSDK(merged_opts)
         return {

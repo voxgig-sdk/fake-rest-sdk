@@ -93,12 +93,14 @@ func todoDirectSetup(mockres any) *todoDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FAKEREST_TEST_TODO_ENTID": map[string]any{},
 		"FAKEREST_TEST_LIVE":    "FALSE",
+		"FAKEREST_APIKEY":       "NONE",
 	})
 
 	live := env["FAKEREST_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["FAKEREST_APIKEY"],
 		}
 		client := sdk.NewFakeRestSDK(mergedOpts)
 

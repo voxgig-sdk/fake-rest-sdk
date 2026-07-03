@@ -123,12 +123,14 @@ function product_direct_setup($mockres)
     $env = Runner::env_override([
         "FAKEREST_TEST_PRODUCT_ENTID" => [],
         "FAKEREST_TEST_LIVE" => "FALSE",
+        "FAKEREST_APIKEY" => "NONE",
     ]);
 
     $live = $env["FAKEREST_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["FAKEREST_APIKEY"],
         ];
         $client = new FakeRestSDK($merged_opts);
         return [

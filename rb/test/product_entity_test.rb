@@ -93,6 +93,7 @@ def product_basic_setup(extra)
     "FAKEREST_TEST_PRODUCT_ENTID" => idmap,
     "FAKEREST_TEST_LIVE" => "FALSE",
     "FAKEREST_TEST_EXPLAIN" => "FALSE",
+    "FAKEREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -104,6 +105,7 @@ def product_basic_setup(extra)
   if env["FAKEREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["FAKEREST_APIKEY"],
       },
       extra || {},
     ])
