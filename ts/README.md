@@ -10,7 +10,7 @@ The TypeScript SDK for the FakeRest API — a type-safe, entity-oriented client 
 
 ## Install
 ```bash
-npm install fake-rest
+npm install @voxgig-sdk/fake-rest
 ```
 ## Tutorial: your first API call
 

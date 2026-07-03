@@ -10,7 +10,7 @@ The Lua SDK for the FakeRest API — an entity-oriented client using Lua convent
 
 ## Install
 ```bash
-luarocks install fake-rest-sdk
+luarocks install voxgig-sdk-fake-rest
 ```
 
 If the module is not yet published, add the source directory to

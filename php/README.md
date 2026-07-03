@@ -10,7 +10,7 @@ The PHP SDK for the FakeRest API — an entity-oriented client using PHP convent
 
 ## Install
 ```bash
-composer require voxgig/fake-rest-sdk
+composer require voxgig-sdk/fake-rest
 ```
 
 

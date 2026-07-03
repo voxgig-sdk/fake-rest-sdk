@@ -2,9 +2,17 @@ Gem::Specification.new do |spec|
   spec.name          = "voxgig-sdk-fake-rest"
   spec.version       = "0.0.1"
   spec.authors       = ["Voxgig"]
-  spec.summary       = "FakeRest SDK for Ruby"
+  spec.summary       = "Unofficial generated Ruby SDK for the Fake REST public API. Not affiliated with or endorsed by the upstream API provider."
+  spec.description   = "Unofficial generated Ruby SDK for the Fake REST public API. Not affiliated with or endorsed by the upstream API provider."
   spec.license       = "MIT"
   spec.homepage      = "https://github.com/voxgig-sdk/fake-rest-sdk"
+  spec.metadata      = {
+    "homepage_uri"          => "https://github.com/voxgig-sdk/fake-rest-sdk",
+    "source_code_uri"       => "https://github.com/voxgig-sdk/fake-rest-sdk",
+    "bug_tracker_uri"       => "https://github.com/voxgig-sdk/fake-rest-sdk/issues",
+    "changelog_uri"         => "https://github.com/voxgig-sdk/fake-rest-sdk/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files         = Dir["lib/**/*.rb", "*.rb"]
   spec.require_paths = ["."]

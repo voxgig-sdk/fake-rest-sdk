@@ -10,7 +10,7 @@ The Python SDK for the FakeRest API — an entity-oriented client following Pyth
 
 ## Install
 ```bash
-pip install fake-rest-sdk
+pip install voxgig-sdk-fake-rest
 ```
 
 Or install from source:

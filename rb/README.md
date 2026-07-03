@@ -10,13 +10,13 @@ The Ruby SDK for the FakeRest API — an entity-oriented client using idiomatic 
 
 ## Install
 ```bash
-gem install fake-rest-sdk
+gem install voxgig-sdk-fake-rest
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "fake-rest-sdk"
+gem "voxgig-sdk-fake-rest"
 ```
 
 Then run:
