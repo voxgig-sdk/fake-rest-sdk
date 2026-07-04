@@ -208,78 +208,42 @@ class FakeRestSDK
   end
 
 
-  # Idiomatic facade: client.category.list / client.category.load({ "id" => ... })
-  def category
-    require_relative 'entity/category_entity'
-    @category ||= CategoryEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.category instead.
+  # Canonical facade: client.Category.list / client.Category.load({ "id" => ... })
   def Category(data = nil)
     require_relative 'entity/category_entity'
     CategoryEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.comment.list / client.comment.load({ "id" => ... })
-  def comment
-    require_relative 'entity/comment_entity'
-    @comment ||= CommentEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.comment instead.
+  # Canonical facade: client.Comment.list / client.Comment.load({ "id" => ... })
   def Comment(data = nil)
     require_relative 'entity/comment_entity'
     CommentEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.post.list / client.post.load({ "id" => ... })
-  def post
-    require_relative 'entity/post_entity'
-    @post ||= PostEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.post instead.
+  # Canonical facade: client.Post.list / client.Post.load({ "id" => ... })
   def Post(data = nil)
     require_relative 'entity/post_entity'
     PostEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.product.list / client.product.load({ "id" => ... })
-  def product
-    require_relative 'entity/product_entity'
-    @product ||= ProductEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.product instead.
+  # Canonical facade: client.Product.list / client.Product.load({ "id" => ... })
   def Product(data = nil)
     require_relative 'entity/product_entity'
     ProductEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.todo.list / client.todo.load({ "id" => ... })
-  def todo
-    require_relative 'entity/todo_entity'
-    @todo ||= TodoEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.todo instead.
+  # Canonical facade: client.Todo.list / client.Todo.load({ "id" => ... })
   def Todo(data = nil)
     require_relative 'entity/todo_entity'
     TodoEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.user.list / client.user.load({ "id" => ... })
-  def user
-    require_relative 'entity/user_entity'
-    @user ||= UserEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.user instead.
+  # Canonical facade: client.User.list / client.User.load({ "id" => ... })
   def User(data = nil)
     require_relative 'entity/user_entity'
     UserEntity.new(self, data)

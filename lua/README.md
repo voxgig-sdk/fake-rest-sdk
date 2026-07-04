@@ -31,17 +31,17 @@ local sdk = require("fake-rest_sdk")
 local client = sdk.new()
 ```
 
-### 2. List categorys
+### 2. List category records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:category():list()
+local categorys, err = client:Category():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(categorys) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:category():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Category():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -172,7 +172,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Post` | `(data) -> PostEntity` | Create a Post entity instance. |
 | `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `Todo` | `(data) -> TodoEntity` | Create a Todo entity instance. |
-| `User` | `(data) -> UserEntity` | Create a User entity instance. |
+| `User` | `(data) -> UserEntity` | Create an User entity instance. |
 
 ### Entity interface
 
@@ -194,17 +194,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local category, err = client:Category():load({ id = "example_id" })
+    if err then error(err) end
+    -- category is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -324,7 +329,7 @@ API path: `/api/users`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `local category = client:Category(nil)`
 
 #### Operations
 
@@ -342,14 +347,14 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```lua
+local categorys, err = client:Category():list()
 ```
 
 
 ### Comment
 
-Create an instance: `const comment = client.comment`
+Create an instance: `local comment = client:Comment(nil)`
 
 #### Operations
 
@@ -378,21 +383,21 @@ Create an instance: `const comment = client.comment`
 
 #### Example: List
 
-```ts
-const comments = await client.comment.list()
+```lua
+local comments, err = client:Comment():list()
 ```
 
 #### Example: Create
 
-```ts
-const comment = await client.comment.create({
+```lua
+local comment, err = client:Comment():create({
 })
 ```
 
 
 ### Post
 
-Create an instance: `const post = client.post`
+Create an instance: `local post = client:Post(nil)`
 
 #### Operations
 
@@ -423,27 +428,27 @@ Create an instance: `const post = client.post`
 
 #### Example: Load
 
-```ts
-const post = await client.post.load({ id: 'post_id' })
+```lua
+local post, err = client:Post():load({ id = "post_id" })
 ```
 
 #### Example: List
 
-```ts
-const posts = await client.post.list()
+```lua
+local posts, err = client:Post():list()
 ```
 
 #### Example: Create
 
-```ts
-const post = await client.post.create({
+```lua
+local post, err = client:Post():create({
 })
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `local product = client:Product(nil)`
 
 #### Operations
 
@@ -469,20 +474,20 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```lua
+local product, err = client:Product():load({ id = "product_id" })
 ```
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```lua
+local products, err = client:Product():list()
 ```
 
 
 ### Todo
 
-Create an instance: `const todo = client.todo`
+Create an instance: `local todo = client:Todo(nil)`
 
 #### Operations
 
@@ -504,14 +509,14 @@ Create an instance: `const todo = client.todo`
 
 #### Example: List
 
-```ts
-const todos = await client.todo.list()
+```lua
+local todos, err = client:Todo():list()
 ```
 
 
 ### User
 
-Create an instance: `const user = client.user`
+Create an instance: `local user = client:User(nil)`
 
 #### Operations
 
@@ -538,20 +543,20 @@ Create an instance: `const user = client.user`
 
 #### Example: Load
 
-```ts
-const user = await client.user.load({ id: 'user_id' })
+```lua
+local user, err = client:User():load({ id = "user_id" })
 ```
 
 #### Example: List
 
-```ts
-const users = await client.user.list()
+```lua
+local users, err = client:User():list()
 ```
 
 #### Example: Create
 
-```ts
-const user = await client.user.create({
+```lua
+local user, err = client:User():create({
 })
 ```
 
@@ -627,7 +632,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:category()
+local category = client:Category()
 category:load({ id = "example_id" })
 
 -- category:data_get() now returns the loaded category data

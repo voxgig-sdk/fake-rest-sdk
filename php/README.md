@@ -29,18 +29,16 @@ require_once 'fakerest_sdk.php';
 $client = new FakeRestSDK();
 ```
 
-### 2. List categorys
+### 2. List category records
 
 ```php
 try {
-    $result = $client->category()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Category records — iterate directly.
+    $categorys = $client->Category()->list();
+    foreach ($categorys as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = FakeRestSDK::test();
+$client = FakeRestSDK::test([
+    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->category()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$category = $client->Category()->load(["id" => "test01"]);
+print_r($category);
 ```
 
 ### Use a custom fetch function
@@ -176,7 +178,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `Post` | `($data): PostEntity` | Create a Post entity instance. |
 | `Product` | `($data): ProductEntity` | Create a Product entity instance. |
 | `Todo` | `($data): TodoEntity` | Create a Todo entity instance. |
-| `User` | `($data): UserEntity` | Create a User entity instance. |
+| `User` | `($data): UserEntity` | Create an User entity instance. |
 
 ### Entity interface
 
@@ -332,7 +334,7 @@ API path: `/api/users`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `$category = $client->Category();`
 
 #### Operations
 
@@ -350,14 +352,15 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```php
+// list() returns an array of Category records (throws on error).
+$categorys = $client->Category()->list();
 ```
 
 
 ### Comment
 
-Create an instance: `const comment = client.comment`
+Create an instance: `$comment = $client->Comment();`
 
 #### Operations
 
@@ -386,21 +389,22 @@ Create an instance: `const comment = client.comment`
 
 #### Example: List
 
-```ts
-const comments = await client.comment.list()
+```php
+// list() returns an array of Comment records (throws on error).
+$comments = $client->Comment()->list();
 ```
 
 #### Example: Create
 
-```ts
-const comment = await client.comment.create({
-})
+```php
+$comment = $client->Comment()->create([
+]);
 ```
 
 
 ### Post
 
-Create an instance: `const post = client.post`
+Create an instance: `$post = $client->Post();`
 
 #### Operations
 
@@ -431,27 +435,29 @@ Create an instance: `const post = client.post`
 
 #### Example: Load
 
-```ts
-const post = await client.post.load({ id: 'post_id' })
+```php
+// load() returns the bare Post record (throws on error).
+$post = $client->Post()->load(["id" => "post_id"]);
 ```
 
 #### Example: List
 
-```ts
-const posts = await client.post.list()
+```php
+// list() returns an array of Post records (throws on error).
+$posts = $client->Post()->list();
 ```
 
 #### Example: Create
 
-```ts
-const post = await client.post.create({
-})
+```php
+$post = $client->Post()->create([
+]);
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `$product = $client->Product();`
 
 #### Operations
 
@@ -477,20 +483,22 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```php
+// load() returns the bare Product record (throws on error).
+$product = $client->Product()->load(["id" => "product_id"]);
 ```
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```php
+// list() returns an array of Product records (throws on error).
+$products = $client->Product()->list();
 ```
 
 
 ### Todo
 
-Create an instance: `const todo = client.todo`
+Create an instance: `$todo = $client->Todo();`
 
 #### Operations
 
@@ -512,14 +520,15 @@ Create an instance: `const todo = client.todo`
 
 #### Example: List
 
-```ts
-const todos = await client.todo.list()
+```php
+// list() returns an array of Todo records (throws on error).
+$todos = $client->Todo()->list();
 ```
 
 
 ### User
 
-Create an instance: `const user = client.user`
+Create an instance: `$user = $client->User();`
 
 #### Operations
 
@@ -546,21 +555,23 @@ Create an instance: `const user = client.user`
 
 #### Example: Load
 
-```ts
-const user = await client.user.load({ id: 'user_id' })
+```php
+// load() returns the bare User record (throws on error).
+$user = $client->User()->load(["id" => "user_id"]);
 ```
 
 #### Example: List
 
-```ts
-const users = await client.user.list()
+```php
+// list() returns an array of User records (throws on error).
+$users = $client->User()->list();
 ```
 
 #### Example: Create
 
-```ts
-const user = await client.user.create({
-})
+```php
+$user = $client->User()->create([
+]);
 ```
 
 
@@ -635,7 +646,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$category = $client->category();
+$category = $client->Category();
 $category->load(["id" => "example_id"]);
 
 // $category->dataGet() now returns the loaded category data

@@ -28,16 +28,14 @@ require_relative "FakeRest_sdk"
 client = FakeRestSDK.new
 ```
 
-### 2. List categorys
+### 2. List category records
 
 ```ruby
 begin
-  result = client.category.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Category records — iterate directly.
+  categorys = client.Category.list
+  categorys.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FakeRestSDK.test
+client = FakeRestSDK.test({
+  "entity" => { "category" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.category.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+category = client.Category.load({ "id" => "test01" })
+puts category
 ```
 
 ### Use a custom fetch function
@@ -172,7 +174,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Post` | `(data) -> PostEntity` | Create a Post entity instance. |
 | `Product` | `(data) -> ProductEntity` | Create a Product entity instance. |
 | `Todo` | `(data) -> TodoEntity` | Create a Todo entity instance. |
-| `User` | `(data) -> UserEntity` | Create a User entity instance. |
+| `User` | `(data) -> UserEntity` | Create an User entity instance. |
 
 ### Entity interface
 
@@ -327,7 +329,7 @@ API path: `/api/users`
 
 ### Category
 
-Create an instance: `const category = client.category`
+Create an instance: `category = client.Category`
 
 #### Operations
 
@@ -345,14 +347,15 @@ Create an instance: `const category = client.category`
 
 #### Example: List
 
-```ts
-const categorys = await client.category.list()
+```ruby
+# list returns an Array of Category records (raises on error).
+categorys = client.Category.list
 ```
 
 
 ### Comment
 
-Create an instance: `const comment = client.comment`
+Create an instance: `comment = client.Comment`
 
 #### Operations
 
@@ -381,21 +384,22 @@ Create an instance: `const comment = client.comment`
 
 #### Example: List
 
-```ts
-const comments = await client.comment.list()
+```ruby
+# list returns an Array of Comment records (raises on error).
+comments = client.Comment.list
 ```
 
 #### Example: Create
 
-```ts
-const comment = await client.comment.create({
+```ruby
+comment = client.Comment.create({
 })
 ```
 
 
 ### Post
 
-Create an instance: `const post = client.post`
+Create an instance: `post = client.Post`
 
 #### Operations
 
@@ -426,27 +430,29 @@ Create an instance: `const post = client.post`
 
 #### Example: Load
 
-```ts
-const post = await client.post.load({ id: 'post_id' })
+```ruby
+# load returns the bare Post record (raises on error).
+post = client.Post.load({ "id" => "post_id" })
 ```
 
 #### Example: List
 
-```ts
-const posts = await client.post.list()
+```ruby
+# list returns an Array of Post records (raises on error).
+posts = client.Post.list
 ```
 
 #### Example: Create
 
-```ts
-const post = await client.post.create({
+```ruby
+post = client.Post.create({
 })
 ```
 
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `product = client.Product`
 
 #### Operations
 
@@ -472,20 +478,22 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```ruby
+# load returns the bare Product record (raises on error).
+product = client.Product.load({ "id" => "product_id" })
 ```
 
 #### Example: List
 
-```ts
-const products = await client.product.list()
+```ruby
+# list returns an Array of Product records (raises on error).
+products = client.Product.list
 ```
 
 
 ### Todo
 
-Create an instance: `const todo = client.todo`
+Create an instance: `todo = client.Todo`
 
 #### Operations
 
@@ -507,14 +515,15 @@ Create an instance: `const todo = client.todo`
 
 #### Example: List
 
-```ts
-const todos = await client.todo.list()
+```ruby
+# list returns an Array of Todo records (raises on error).
+todos = client.Todo.list
 ```
 
 
 ### User
 
-Create an instance: `const user = client.user`
+Create an instance: `user = client.User`
 
 #### Operations
 
@@ -541,20 +550,22 @@ Create an instance: `const user = client.user`
 
 #### Example: Load
 
-```ts
-const user = await client.user.load({ id: 'user_id' })
+```ruby
+# load returns the bare User record (raises on error).
+user = client.User.load({ "id" => "user_id" })
 ```
 
 #### Example: List
 
-```ts
-const users = await client.user.list()
+```ruby
+# list returns an Array of User records (raises on error).
+users = client.User.list
 ```
 
 #### Example: Create
 
-```ts
-const user = await client.user.create({
+```ruby
+user = client.User.create({
 })
 ```
 
@@ -630,7 +641,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.category
+category = client.Category
 category.load({ "id" => "example_id" })
 
 # category.data_get now returns the loaded category data

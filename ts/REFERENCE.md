@@ -169,7 +169,7 @@ Alias for `FakeRestSDK.test()`.
 ## CategoryEntity
 
 ```ts
-const category = client.category
+const category = client.Category()
 ```
 
 ### Fields
@@ -187,7 +187,7 @@ const category = client.category
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.category.list()
+const results = await client.Category().list()
 ```
 
 ### Common Methods
@@ -221,7 +221,7 @@ Return a copy of the entity options.
 ## CommentEntity
 
 ```ts
-const comment = client.comment
+const comment = client.Comment()
 ```
 
 ### Fields
@@ -249,7 +249,7 @@ const comment = client.comment
 Create a new entity with the given data.
 
 ```ts
-const result = await client.comment.create({
+const result = await client.Comment().create({
 })
 ```
 
@@ -258,7 +258,7 @@ const result = await client.comment.create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.comment.list()
+const results = await client.Comment().list()
 ```
 
 ### Common Methods
@@ -292,7 +292,7 @@ Return a copy of the entity options.
 ## PostEntity
 
 ```ts
-const post = client.post
+const post = client.Post()
 ```
 
 ### Fields
@@ -321,7 +321,7 @@ const post = client.post
 Create a new entity with the given data.
 
 ```ts
-const result = await client.post.create({
+const result = await client.Post().create({
 })
 ```
 
@@ -330,7 +330,7 @@ const result = await client.post.create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.post.list()
+const results = await client.Post().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -338,7 +338,7 @@ const results = await client.post.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.post.load({ id: 'post_id' })
+const result = await client.Post().load({ id: 'post_id' })
 ```
 
 ### Common Methods
@@ -372,7 +372,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.product
+const product = client.Product()
 ```
 
 ### Fields
@@ -397,7 +397,7 @@ const product = client.product
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.product.list()
+const results = await client.Product().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -405,7 +405,7 @@ const results = await client.product.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.product.load({ id: 'product_id' })
+const result = await client.Product().load({ id: 'product_id' })
 ```
 
 ### Common Methods
@@ -439,7 +439,7 @@ Return a copy of the entity options.
 ## TodoEntity
 
 ```ts
-const todo = client.todo
+const todo = client.Todo()
 ```
 
 ### Fields
@@ -461,7 +461,7 @@ const todo = client.todo
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.todo.list()
+const results = await client.Todo().list()
 ```
 
 ### Common Methods
@@ -495,7 +495,7 @@ Return a copy of the entity options.
 ## UserEntity
 
 ```ts
-const user = client.user
+const user = client.User()
 ```
 
 ### Fields
@@ -518,7 +518,7 @@ const user = client.user
 Create a new entity with the given data.
 
 ```ts
-const result = await client.user.create({
+const result = await client.User().create({
 })
 ```
 
@@ -527,7 +527,7 @@ const result = await client.user.create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.user.list()
+const results = await client.User().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -535,7 +535,7 @@ const results = await client.user.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.user.load({ id: 'user_id' })
+const result = await client.User().load({ id: 'user_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -543,7 +543,7 @@ const result = await client.user.load({ id: 'user_id' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.user.remove({ id: 'user_id' })
+const result = await client.User().remove({ id: 'user_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -551,7 +551,7 @@ const result = await client.user.remove({ id: 'user_id' })
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.user.update({
+const result = await client.User().update({
   id: 'user_id',
   // Fields to update
 })

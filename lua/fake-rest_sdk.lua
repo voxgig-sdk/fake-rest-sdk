@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
-function FakeRestSDK:category(data)
+-- Idiomatic facade: client:Category():list() / client:Category():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FakeRestSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   if data == nil then
     if self._category == nil then
@@ -256,15 +257,10 @@ function FakeRestSDK:category(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:category() instead.
-function FakeRestSDK:Category(data)
-  local EntityMod = require("entity.category_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:comment():list() / client:comment():load({ id = ... })
-function FakeRestSDK:comment(data)
+-- Idiomatic facade: client:Comment():list() / client:Comment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FakeRestSDK:Comment(data)
   local EntityMod = require("entity.comment_entity")
   if data == nil then
     if self._comment == nil then
@@ -275,15 +271,10 @@ function FakeRestSDK:comment(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:comment() instead.
-function FakeRestSDK:Comment(data)
-  local EntityMod = require("entity.comment_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:post():list() / client:post():load({ id = ... })
-function FakeRestSDK:post(data)
+-- Idiomatic facade: client:Post():list() / client:Post():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FakeRestSDK:Post(data)
   local EntityMod = require("entity.post_entity")
   if data == nil then
     if self._post == nil then
@@ -294,15 +285,10 @@ function FakeRestSDK:post(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:post() instead.
-function FakeRestSDK:Post(data)
-  local EntityMod = require("entity.post_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
-function FakeRestSDK:product(data)
+-- Idiomatic facade: client:Product():list() / client:Product():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FakeRestSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   if data == nil then
     if self._product == nil then
@@ -313,15 +299,10 @@ function FakeRestSDK:product(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:product() instead.
-function FakeRestSDK:Product(data)
-  local EntityMod = require("entity.product_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:todo():list() / client:todo():load({ id = ... })
-function FakeRestSDK:todo(data)
+-- Idiomatic facade: client:Todo():list() / client:Todo():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FakeRestSDK:Todo(data)
   local EntityMod = require("entity.todo_entity")
   if data == nil then
     if self._todo == nil then
@@ -332,15 +313,10 @@ function FakeRestSDK:todo(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:todo() instead.
-function FakeRestSDK:Todo(data)
-  local EntityMod = require("entity.todo_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:user():list() / client:user():load({ id = ... })
-function FakeRestSDK:user(data)
+-- Idiomatic facade: client:User():list() / client:User():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function FakeRestSDK:User(data)
   local EntityMod = require("entity.user_entity")
   if data == nil then
     if self._user == nil then
@@ -348,12 +324,6 @@ function FakeRestSDK:user(data)
     end
     return self._user
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:user() instead.
-function FakeRestSDK:User(data)
-  local EntityMod = require("entity.user_entity")
   return EntityMod.new(self, data)
 end
 
