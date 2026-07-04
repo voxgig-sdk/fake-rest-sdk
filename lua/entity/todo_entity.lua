@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch TodoListMatch
+---@param ctrl? table
+---@return Todo[]
+---@return string? err
 function TodoEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

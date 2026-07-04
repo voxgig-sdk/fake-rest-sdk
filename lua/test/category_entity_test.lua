@@ -92,7 +92,6 @@ function category_basic_setup(extra)
     ["FAKEREST_TEST_CATEGORY_ENTID"] = idmap,
     ["FAKEREST_TEST_LIVE"] = "FALSE",
     ["FAKEREST_TEST_EXPLAIN"] = "FALSE",
-    ["FAKEREST_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function category_basic_setup(extra)
   if env["FAKEREST_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["FAKEREST_APIKEY"],
       },
       extra or {},
     })

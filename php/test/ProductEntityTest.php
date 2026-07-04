@@ -50,16 +50,14 @@ class ProductEntityTest extends TestCase
         $product_ref01_ent = $client->Product(null);
         $product_ref01_match = [];
 
-        [$product_ref01_list_result, $err] = $product_ref01_ent->list($product_ref01_match, null);
-        $this->assertNull($err);
+        $product_ref01_list_result = $product_ref01_ent->list($product_ref01_match, null);
         $this->assertIsArray($product_ref01_list_result);
 
         // LOAD
         $product_ref01_match_dt0 = [
             "id" => $product_ref01_data["id"],
         ];
-        [$product_ref01_data_dt0_loaded, $err] = $product_ref01_ent->load($product_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $product_ref01_data_dt0_loaded = $product_ref01_ent->load($product_ref01_match_dt0, null);
         $product_ref01_data_dt0_load_result = Helpers::to_map($product_ref01_data_dt0_loaded);
         $this->assertNotNull($product_ref01_data_dt0_load_result);
         $this->assertEquals($product_ref01_data_dt0_load_result["id"], $product_ref01_data["id"]);
@@ -96,7 +94,6 @@ function product_basic_setup($extra)
         "FAKEREST_TEST_PRODUCT_ENTID" => $idmap,
         "FAKEREST_TEST_LIVE" => "FALSE",
         "FAKEREST_TEST_EXPLAIN" => "FALSE",
-        "FAKEREST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function product_basic_setup($extra)
     if ($env["FAKEREST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FAKEREST_APIKEY"],
             ],
             $extra ?? [],
         ]);

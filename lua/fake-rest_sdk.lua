@@ -244,36 +244,114 @@ end
 
 
 
+-- Idiomatic facade: client:category():list() / client:category():load({ id = ... })
+function FakeRestSDK:category(data)
+  local EntityMod = require("entity.category_entity")
+  if data == nil then
+    if self._category == nil then
+      self._category = EntityMod.new(self, nil)
+    end
+    return self._category
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:category() instead.
 function FakeRestSDK:Category(data)
   local EntityMod = require("entity.category_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:comment():list() / client:comment():load({ id = ... })
+function FakeRestSDK:comment(data)
+  local EntityMod = require("entity.comment_entity")
+  if data == nil then
+    if self._comment == nil then
+      self._comment = EntityMod.new(self, nil)
+    end
+    return self._comment
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:comment() instead.
 function FakeRestSDK:Comment(data)
   local EntityMod = require("entity.comment_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:post():list() / client:post():load({ id = ... })
+function FakeRestSDK:post(data)
+  local EntityMod = require("entity.post_entity")
+  if data == nil then
+    if self._post == nil then
+      self._post = EntityMod.new(self, nil)
+    end
+    return self._post
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:post() instead.
 function FakeRestSDK:Post(data)
   local EntityMod = require("entity.post_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
+function FakeRestSDK:product(data)
+  local EntityMod = require("entity.product_entity")
+  if data == nil then
+    if self._product == nil then
+      self._product = EntityMod.new(self, nil)
+    end
+    return self._product
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:product() instead.
 function FakeRestSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:todo():list() / client:todo():load({ id = ... })
+function FakeRestSDK:todo(data)
+  local EntityMod = require("entity.todo_entity")
+  if data == nil then
+    if self._todo == nil then
+      self._todo = EntityMod.new(self, nil)
+    end
+    return self._todo
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:todo() instead.
 function FakeRestSDK:Todo(data)
   local EntityMod = require("entity.todo_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:user():list() / client:user():load({ id = ... })
+function FakeRestSDK:user(data)
+  local EntityMod = require("entity.user_entity")
+  if data == nil then
+    if self._user == nil then
+      self._user = EntityMod.new(self, nil)
+    end
+    return self._user
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:user() instead.
 function FakeRestSDK:User(data)
   local EntityMod = require("entity.user_entity")
   return EntityMod.new(self, data)

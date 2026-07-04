@@ -55,6 +55,9 @@ class PostEntity
         return new PostEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Post|array $args Post data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class PostEntity
         }
     }
 
+    /**
+     * @return Post|array The current Post data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Post fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class PostEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Post fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class PostEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single Post.
+     *
+     * @param PostLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed PostLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Post|array The loaded Post as an assoc-array at the
+     *   SDK boundary; throws FakeRestError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class PostEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Post items matching the given filter.
+     *
+     * @param PostListMatch|array|null $reqmatch Match filter (any subset
+     *   of Post fields) as an assoc-array; PostListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Post[]|array A list of Post items as assoc-arrays at
+     *   the SDK boundary; throws FakeRestError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -133,7 +163,16 @@ class PostEntity
 
 
     
-    public function create($reqdata, $ctrl = null): array
+    /**
+     * Create a new Post.
+     *
+     * @param PostCreateData|array|null $reqdata Body data as an assoc-array;
+     *   a typed PostCreateData names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Post|array The created Post as an assoc-array at the
+     *   SDK boundary; throws FakeRestError on failure (item-5 convention).
+     */
+    public function create(?array $reqdata = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -159,7 +198,7 @@ class PostEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

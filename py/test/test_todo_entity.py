@@ -50,8 +50,7 @@ class TestTodoEntity:
         todo_ref01_ent = client.Todo(None)
         todo_ref01_match = {}
 
-        todo_ref01_list_result, err = todo_ref01_ent.list(todo_ref01_match, None)
-        assert err is None
+        todo_ref01_list_result = todo_ref01_ent.list(todo_ref01_match, None)
         assert isinstance(todo_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _todo_basic_setup(extra):
         "FAKEREST_TEST_TODO_ENTID": idmap,
         "FAKEREST_TEST_LIVE": "FALSE",
         "FAKEREST_TEST_EXPLAIN": "FALSE",
-        "FAKEREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _todo_basic_setup(extra):
     if env.get("FAKEREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FAKEREST_APIKEY"),
             },
             extra or {},
         ])

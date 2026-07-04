@@ -44,17 +44,14 @@ class TestPostEntity:
         post_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.post"), "post_ref01"))
 
-        post_ref01_data_result, err = post_ref01_ent.create(post_ref01_data, None)
-        assert err is None
-        post_ref01_data = helpers.to_map(post_ref01_data_result)
+        post_ref01_data = helpers.to_map(post_ref01_ent.create(post_ref01_data, None))
         assert post_ref01_data is not None
         assert post_ref01_data["id"] is not None
 
         # LIST
         post_ref01_match = {}
 
-        post_ref01_list_result, err = post_ref01_ent.list(post_ref01_match, None)
-        assert err is None
+        post_ref01_list_result = post_ref01_ent.list(post_ref01_match, None)
         assert isinstance(post_ref01_list_result, list)
 
         found_item = vs.select(
@@ -66,8 +63,7 @@ class TestPostEntity:
         post_ref01_match_dt0 = {
             "id": post_ref01_data["id"],
         }
-        post_ref01_data_dt0_loaded, err = post_ref01_ent.load(post_ref01_match_dt0, None)
-        assert err is None
+        post_ref01_data_dt0_loaded = post_ref01_ent.load(post_ref01_match_dt0, None)
         post_ref01_data_dt0_load_result = helpers.to_map(post_ref01_data_dt0_loaded)
         assert post_ref01_data_dt0_load_result is not None
         assert post_ref01_data_dt0_load_result["id"] == post_ref01_data["id"]
@@ -110,7 +106,6 @@ def _post_basic_setup(extra):
         "FAKEREST_TEST_POST_ENTID": idmap,
         "FAKEREST_TEST_LIVE": "FALSE",
         "FAKEREST_TEST_EXPLAIN": "FALSE",
-        "FAKEREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -121,7 +116,6 @@ def _post_basic_setup(extra):
     if env.get("FAKEREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FAKEREST_APIKEY"),
             },
             extra or {},
         ])

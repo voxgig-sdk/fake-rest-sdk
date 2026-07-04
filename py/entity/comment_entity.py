@@ -1,7 +1,14 @@
 # FakeRest SDK Comment entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from fakerest_types import (
+    Comment,
+    CommentListMatch,
+    CommentCreateData,
+)
 
 
 class CommentEntity:
@@ -44,7 +51,7 @@ class CommentEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Comment:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,14 +60,14 @@ class CommentEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Comment:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
 
     
-    def list(self, reqmatch, ctrl=None):
+    def list(self, reqmatch: CommentListMatch, ctrl=None) -> list[Comment]:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "list",
@@ -80,7 +87,7 @@ class CommentEntity:
 
 
     
-    def create(self, reqdata, ctrl=None):
+    def create(self, reqdata: CommentCreateData, ctrl=None) -> Comment:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "create",

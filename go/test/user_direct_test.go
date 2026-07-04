@@ -194,14 +194,12 @@ func userDirectSetup(mockres any) *userDirectSetupResult {
 	env := envOverride(map[string]any{
 		"FAKEREST_TEST_USER_ENTID": map[string]any{},
 		"FAKEREST_TEST_LIVE":    "FALSE",
-		"FAKEREST_APIKEY":       "NONE",
 	})
 
 	live := env["FAKEREST_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["FAKEREST_APIKEY"],
 		}
 		client := sdk.NewFakeRestSDK(mergedOpts)
 

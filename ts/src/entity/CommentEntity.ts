@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Comment,
+  CommentListMatch,
+  CommentCreateData,
+} from '../FakeRestTypes'
 
 // TODO: needs Entity superclass
-class CommentEntity extends FakeRestEntityBase {
+class CommentEntity extends FakeRestEntityBase<Comment> {
 
   constructor(client: FakeRestSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +38,7 @@ class CommentEntity extends FakeRestEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: CommentListMatch, ctrl?: Control): Promise<Comment[]> {
 
     const utility = this._utility
 
@@ -133,14 +138,16 @@ class CommentEntity extends FakeRestEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Comment[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: CommentCreateData, ctrl?: Control): Promise<Comment> {
 
     const utility = this._utility
     const {
@@ -239,7 +246,9 @@ class CommentEntity extends FakeRestEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Comment> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

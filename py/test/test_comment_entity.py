@@ -45,17 +45,14 @@ class TestCommentEntity:
             vs.getpath(setup["data"], "new.comment"), "comment_ref01"))
         comment_ref01_data["post_id"] = setup["idmap"]["post01"]
 
-        comment_ref01_data_result, err = comment_ref01_ent.create(comment_ref01_data, None)
-        assert err is None
-        comment_ref01_data = helpers.to_map(comment_ref01_data_result)
+        comment_ref01_data = helpers.to_map(comment_ref01_ent.create(comment_ref01_data, None))
         assert comment_ref01_data is not None
         assert comment_ref01_data["id"] is not None
 
         # LIST
         comment_ref01_match = {}
 
-        comment_ref01_list_result, err = comment_ref01_ent.list(comment_ref01_match, None)
-        assert err is None
+        comment_ref01_list_result = comment_ref01_ent.list(comment_ref01_match, None)
         assert isinstance(comment_ref01_list_result, list)
 
         found_item = vs.select(
@@ -101,7 +98,6 @@ def _comment_basic_setup(extra):
         "FAKEREST_TEST_COMMENT_ENTID": idmap,
         "FAKEREST_TEST_LIVE": "FALSE",
         "FAKEREST_TEST_EXPLAIN": "FALSE",
-        "FAKEREST_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,7 +108,6 @@ def _comment_basic_setup(extra):
     if env.get("FAKEREST_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("FAKEREST_APIKEY"),
             },
             extra or {},
         ])

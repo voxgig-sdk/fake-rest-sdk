@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -170,7 +169,7 @@ Alias for `FakeRestSDK.test()`.
 ## CategoryEntity
 
 ```ts
-const category = client.Category()
+const category = client.category
 ```
 
 ### Fields
@@ -188,7 +187,7 @@ const category = client.Category()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Category().list()
+const results = await client.category.list()
 ```
 
 ### Common Methods
@@ -222,7 +221,7 @@ Return a copy of the entity options.
 ## CommentEntity
 
 ```ts
-const comment = client.Comment()
+const comment = client.comment
 ```
 
 ### Fields
@@ -250,7 +249,7 @@ const comment = client.Comment()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Comment().create({
+const result = await client.comment.create({
 })
 ```
 
@@ -259,7 +258,7 @@ const result = await client.Comment().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Comment().list()
+const results = await client.comment.list()
 ```
 
 ### Common Methods
@@ -293,7 +292,7 @@ Return a copy of the entity options.
 ## PostEntity
 
 ```ts
-const post = client.Post()
+const post = client.post
 ```
 
 ### Fields
@@ -322,7 +321,7 @@ const post = client.Post()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Post().create({
+const result = await client.post.create({
 })
 ```
 
@@ -331,7 +330,7 @@ const result = await client.Post().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Post().list()
+const results = await client.post.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -339,7 +338,7 @@ const results = await client.Post().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Post().load({ id: 'post_id' })
+const result = await client.post.load({ id: 'post_id' })
 ```
 
 ### Common Methods
@@ -373,7 +372,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.Product()
+const product = client.product
 ```
 
 ### Fields
@@ -398,7 +397,7 @@ const product = client.Product()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Product().list()
+const results = await client.product.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -406,7 +405,7 @@ const results = await client.Product().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Product().load({ id: 'product_id' })
+const result = await client.product.load({ id: 'product_id' })
 ```
 
 ### Common Methods
@@ -440,7 +439,7 @@ Return a copy of the entity options.
 ## TodoEntity
 
 ```ts
-const todo = client.Todo()
+const todo = client.todo
 ```
 
 ### Fields
@@ -462,7 +461,7 @@ const todo = client.Todo()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Todo().list()
+const results = await client.todo.list()
 ```
 
 ### Common Methods
@@ -496,7 +495,7 @@ Return a copy of the entity options.
 ## UserEntity
 
 ```ts
-const user = client.User()
+const user = client.user
 ```
 
 ### Fields
@@ -519,7 +518,7 @@ const user = client.User()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.User().create({
+const result = await client.user.create({
 })
 ```
 
@@ -528,7 +527,7 @@ const result = await client.User().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.User().list()
+const results = await client.user.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -536,7 +535,7 @@ const results = await client.User().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.User().load({ id: 'user_id' })
+const result = await client.user.load({ id: 'user_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -544,7 +543,7 @@ const result = await client.User().load({ id: 'user_id' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.User().remove({ id: 'user_id' })
+const result = await client.user.remove({ id: 'user_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -552,7 +551,7 @@ const result = await client.User().remove({ id: 'user_id' })
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.User().update({
+const result = await client.user.update({
   id: 'user_id',
   // Fields to update
 })

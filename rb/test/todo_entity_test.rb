@@ -43,8 +43,7 @@ class TodoEntityTest < Minitest::Test
     todo_ref01_ent = client.Todo(nil)
     todo_ref01_match = {}
 
-    todo_ref01_list_result, err = todo_ref01_ent.list(todo_ref01_match, nil)
-    assert_nil err
+    todo_ref01_list_result = todo_ref01_ent.list(todo_ref01_match, nil)
     assert todo_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def todo_basic_setup(extra)
     "FAKEREST_TEST_TODO_ENTID" => idmap,
     "FAKEREST_TEST_LIVE" => "FALSE",
     "FAKEREST_TEST_EXPLAIN" => "FALSE",
-    "FAKEREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def todo_basic_setup(extra)
   if env["FAKEREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FAKEREST_APIKEY"],
       },
       extra || {},
     ])

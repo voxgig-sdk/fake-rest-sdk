@@ -245,31 +245,49 @@ func (sdk *FakeRestSDK) Direct(fetchargs map[string]any) (map[string]any, error)
 }
 
 
+// Category returns a Category entity bound to this client.
+// Idiomatic usage: client.Category(nil).List(nil, nil) or
+// client.Category(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FakeRestSDK) Category(data map[string]any) FakeRestEntity {
 	return NewCategoryEntityFunc(sdk, data)
 }
 
 
+// Comment returns a Comment entity bound to this client.
+// Idiomatic usage: client.Comment(nil).List(nil, nil) or
+// client.Comment(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FakeRestSDK) Comment(data map[string]any) FakeRestEntity {
 	return NewCommentEntityFunc(sdk, data)
 }
 
 
+// Post returns a Post entity bound to this client.
+// Idiomatic usage: client.Post(nil).List(nil, nil) or
+// client.Post(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FakeRestSDK) Post(data map[string]any) FakeRestEntity {
 	return NewPostEntityFunc(sdk, data)
 }
 
 
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FakeRestSDK) Product(data map[string]any) FakeRestEntity {
 	return NewProductEntityFunc(sdk, data)
 }
 
 
+// Todo returns a Todo entity bound to this client.
+// Idiomatic usage: client.Todo(nil).List(nil, nil) or
+// client.Todo(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FakeRestSDK) Todo(data map[string]any) FakeRestEntity {
 	return NewTodoEntityFunc(sdk, data)
 }
 
 
+// User returns a User entity bound to this client.
+// Idiomatic usage: client.User(nil).List(nil, nil) or
+// client.User(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *FakeRestSDK) User(data map[string]any) FakeRestEntity {
 	return NewUserEntityFunc(sdk, data)
 }

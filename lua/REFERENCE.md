@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -104,7 +103,7 @@ same parameters as `direct()`.
 ## CategoryEntity
 
 ```lua
-local category = client:Category(nil)
+local category = client:category(nil)
 ```
 
 ### Fields
@@ -122,7 +121,7 @@ local category = client:Category(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Category():list()
+local results, err = client:category():list()
 ```
 
 ### Common Methods
@@ -158,7 +157,7 @@ Return the entity name.
 ## CommentEntity
 
 ```lua
-local comment = client:Comment(nil)
+local comment = client:comment(nil)
 ```
 
 ### Fields
@@ -186,7 +185,7 @@ local comment = client:Comment(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Comment():create({
+local result, err = client:comment():create({
 })
 ```
 
@@ -195,7 +194,7 @@ local result, err = client:Comment():create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Comment():list()
+local results, err = client:comment():list()
 ```
 
 ### Common Methods
@@ -231,7 +230,7 @@ Return the entity name.
 ## PostEntity
 
 ```lua
-local post = client:Post(nil)
+local post = client:post(nil)
 ```
 
 ### Fields
@@ -260,7 +259,7 @@ local post = client:Post(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Post():create({
+local result, err = client:post():create({
 })
 ```
 
@@ -269,7 +268,7 @@ local result, err = client:Post():create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Post():list()
+local results, err = client:post():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -277,7 +276,7 @@ local results, err = client:Post():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Post():load({ id = "post_id" })
+local result, err = client:post():load({ id = "post_id" })
 ```
 
 ### Common Methods
@@ -313,7 +312,7 @@ Return the entity name.
 ## ProductEntity
 
 ```lua
-local product = client:Product(nil)
+local product = client:product(nil)
 ```
 
 ### Fields
@@ -338,7 +337,7 @@ local product = client:Product(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Product():list()
+local results, err = client:product():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -346,7 +345,7 @@ local results, err = client:Product():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product():load({ id = "product_id" })
+local result, err = client:product():load({ id = "product_id" })
 ```
 
 ### Common Methods
@@ -382,7 +381,7 @@ Return the entity name.
 ## TodoEntity
 
 ```lua
-local todo = client:Todo(nil)
+local todo = client:todo(nil)
 ```
 
 ### Fields
@@ -404,7 +403,7 @@ local todo = client:Todo(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Todo():list()
+local results, err = client:todo():list()
 ```
 
 ### Common Methods
@@ -440,7 +439,7 @@ Return the entity name.
 ## UserEntity
 
 ```lua
-local user = client:User(nil)
+local user = client:user(nil)
 ```
 
 ### Fields
@@ -463,7 +462,7 @@ local user = client:User(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:User():create({
+local result, err = client:user():create({
 })
 ```
 
@@ -472,7 +471,7 @@ local result, err = client:User():create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:User():list()
+local results, err = client:user():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -480,7 +479,7 @@ local results, err = client:User():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:User():load({ id = "user_id" })
+local result, err = client:user():load({ id = "user_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -488,7 +487,7 @@ local result, err = client:User():load({ id = "user_id" })
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:User():remove({ id = "user_id" })
+local result, err = client:user():remove({ id = "user_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -496,7 +495,7 @@ local result, err = client:User():remove({ id = "user_id" })
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:User():update({
+local result, err = client:user():update({
   id = "user_id",
   -- Fields to update
 })

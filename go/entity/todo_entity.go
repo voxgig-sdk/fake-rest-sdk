@@ -85,6 +85,27 @@ func (e *TodoEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Todo; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *TodoEntity) DataTyped(data ...Todo) Todo {
+	if len(data) > 0 {
+		return typedFrom[Todo](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Todo](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Todo (all fields
+// optional at the wire level).
+func (e *TodoEntity) MatchTyped(match ...Todo) Todo {
+	if len(match) > 0 {
+		return typedFrom[Todo](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Todo](e.Match())
+}
+
 func (e *TodoEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *TodoEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// TodoListMatch and returns []Todo. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *TodoEntity) ListTyped(reqmatch TodoListMatch, ctrl map[string]any) ([]Todo, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Todo](res), nil
 }
 
 

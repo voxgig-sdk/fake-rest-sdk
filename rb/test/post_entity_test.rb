@@ -36,8 +36,7 @@ class PostEntityTest < Minitest::Test
     post_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.post"), "post_ref01"))
 
-    post_ref01_data_result, err = post_ref01_ent.create(post_ref01_data, nil)
-    assert_nil err
+    post_ref01_data_result = post_ref01_ent.create(post_ref01_data, nil)
     post_ref01_data = Helpers.to_map(post_ref01_data_result)
     assert !post_ref01_data.nil?
     assert !post_ref01_data["id"].nil?
@@ -45,8 +44,7 @@ class PostEntityTest < Minitest::Test
     # LIST
     post_ref01_match = {}
 
-    post_ref01_list_result, err = post_ref01_ent.list(post_ref01_match, nil)
-    assert_nil err
+    post_ref01_list_result = post_ref01_ent.list(post_ref01_match, nil)
     assert post_ref01_list_result.is_a?(Array)
 
     found_item = Vs.select(
@@ -58,8 +56,7 @@ class PostEntityTest < Minitest::Test
     post_ref01_match_dt0 = {
       "id" => post_ref01_data["id"],
     }
-    post_ref01_data_dt0_loaded, err = post_ref01_ent.load(post_ref01_match_dt0, nil)
-    assert_nil err
+    post_ref01_data_dt0_loaded = post_ref01_ent.load(post_ref01_match_dt0, nil)
     post_ref01_data_dt0_load_result = Helpers.to_map(post_ref01_data_dt0_loaded)
     assert !post_ref01_data_dt0_load_result.nil?
     assert_equal post_ref01_data_dt0_load_result["id"], post_ref01_data["id"]
@@ -100,7 +97,6 @@ def post_basic_setup(extra)
     "FAKEREST_TEST_POST_ENTID" => idmap,
     "FAKEREST_TEST_LIVE" => "FALSE",
     "FAKEREST_TEST_EXPLAIN" => "FALSE",
-    "FAKEREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -112,7 +108,6 @@ def post_basic_setup(extra)
   if env["FAKEREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FAKEREST_APIKEY"],
       },
       extra || {},
     ])

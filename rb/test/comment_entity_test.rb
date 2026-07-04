@@ -37,8 +37,7 @@ class CommentEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.comment"), "comment_ref01"))
     comment_ref01_data["post_id"] = setup[:idmap]["post01"]
 
-    comment_ref01_data_result, err = comment_ref01_ent.create(comment_ref01_data, nil)
-    assert_nil err
+    comment_ref01_data_result = comment_ref01_ent.create(comment_ref01_data, nil)
     comment_ref01_data = Helpers.to_map(comment_ref01_data_result)
     assert !comment_ref01_data.nil?
     assert !comment_ref01_data["id"].nil?
@@ -46,8 +45,7 @@ class CommentEntityTest < Minitest::Test
     # LIST
     comment_ref01_match = {}
 
-    comment_ref01_list_result, err = comment_ref01_ent.list(comment_ref01_match, nil)
-    assert_nil err
+    comment_ref01_list_result = comment_ref01_ent.list(comment_ref01_match, nil)
     assert comment_ref01_list_result.is_a?(Array)
 
     found_item = Vs.select(
@@ -91,7 +89,6 @@ def comment_basic_setup(extra)
     "FAKEREST_TEST_COMMENT_ENTID" => idmap,
     "FAKEREST_TEST_LIVE" => "FALSE",
     "FAKEREST_TEST_EXPLAIN" => "FALSE",
-    "FAKEREST_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -103,7 +100,6 @@ def comment_basic_setup(extra)
   if env["FAKEREST_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["FAKEREST_APIKEY"],
       },
       extra || {},
     ])

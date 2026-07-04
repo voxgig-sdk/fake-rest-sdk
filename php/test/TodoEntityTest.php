@@ -50,8 +50,7 @@ class TodoEntityTest extends TestCase
         $todo_ref01_ent = $client->Todo(null);
         $todo_ref01_match = [];
 
-        [$todo_ref01_list_result, $err] = $todo_ref01_ent->list($todo_ref01_match, null);
-        $this->assertNull($err);
+        $todo_ref01_list_result = $todo_ref01_ent->list($todo_ref01_match, null);
         $this->assertIsArray($todo_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function todo_basic_setup($extra)
         "FAKEREST_TEST_TODO_ENTID" => $idmap,
         "FAKEREST_TEST_LIVE" => "FALSE",
         "FAKEREST_TEST_EXPLAIN" => "FALSE",
-        "FAKEREST_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function todo_basic_setup($extra)
     if ($env["FAKEREST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["FAKEREST_APIKEY"],
             ],
             $extra ?? [],
         ]);
