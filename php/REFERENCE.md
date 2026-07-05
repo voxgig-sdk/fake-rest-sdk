@@ -8,7 +8,7 @@ Complete API reference for the FakeRest PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/fake-rest_sdk.php';
+require_once __DIR__ . '/fakerest_sdk.php';
 
 $client = new FakeRestSDK($options);
 ```
@@ -65,11 +65,11 @@ Create a new `TodoEntity` instance. Pass `null` for no initial data.
 
 Create a new `UserEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): FakeRestUtility`
 
 Return a copy of the SDK utility object.
 
@@ -112,35 +112,35 @@ $category = $client->Category();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Category()->list([]);
+$results = $client->Category()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -149,7 +149,7 @@ Set the entity match criteria.
 Create a new `CategoryEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -166,19 +166,19 @@ $comment = $client->Comment();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avatar` | ``$STRING`` | No |  |
-| `body` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `device_info` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `is_verified` | ``$BOOLEAN`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_comment_id` | ``$INTEGER`` | No |  |
-| `post_id` | ``$INTEGER`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `avatar` | `string` | No |  |
+| `body` | `string` | No |  |
+| `created_at` | `string` | No |  |
+| `device_info` | `array` | No |  |
+| `email` | `string` | No |  |
+| `id` | `int` | No |  |
+| `is_verified` | `bool` | No |  |
+| `like` | `int` | No |  |
+| `location` | `string` | No |  |
+| `name` | `string` | No |  |
+| `parent_comment_id` | `int` | No |  |
+| `post_id` | `int` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
@@ -191,29 +191,29 @@ $result = $client->Comment()->create([
 ]);
 ```
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Comment()->list([]);
+$results = $client->Comment()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -222,7 +222,7 @@ Set the entity match criteria.
 Create a new `CommentEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -239,20 +239,20 @@ $post = $client->Post();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `body` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `cover_image` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `featured` | ``$BOOLEAN`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `meta_description` | ``$STRING`` | No |  |
-| `published` | ``$BOOLEAN`` | No |  |
-| `read_time` | ``$INTEGER`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
-| `view` | ``$INTEGER`` | No |  |
+| `body` | `string` | No |  |
+| `category` | `string` | No |  |
+| `cover_image` | `string` | No |  |
+| `created_at` | `string` | No |  |
+| `featured` | `bool` | No |  |
+| `id` | `int` | No |  |
+| `like` | `int` | No |  |
+| `meta_description` | `string` | No |  |
+| `published` | `bool` | No |  |
+| `read_time` | `int` | No |  |
+| `tag` | `array` | No |  |
+| `title` | `string` | No |  |
+| `user_id` | `int` | No |  |
+| `view` | `int` | No |  |
 
 ### Operations
 
@@ -265,12 +265,12 @@ $result = $client->Post()->create([
 ]);
 ```
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Post()->list([]);
+$results = $client->Post()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -283,19 +283,19 @@ $result = $client->Post()->load(["id" => "post_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -304,7 +304,7 @@ Set the entity match criteria.
 Create a new `PostEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -321,25 +321,25 @@ $product = $client->Product();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `brand` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$NUMBER`` | No |  |
-| `review` | ``$INTEGER`` | No |  |
-| `sku` | ``$STRING`` | No |  |
-| `stock` | ``$INTEGER`` | No |  |
+| `brand` | `string` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `price` | `float` | No |  |
+| `rating` | `float` | No |  |
+| `review` | `int` | No |  |
+| `sku` | `string` | No |  |
+| `stock` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Product()->list([]);
+$results = $client->Product()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -352,19 +352,19 @@ $result = $client->Product()->load(["id" => "product_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -373,7 +373,7 @@ Set the entity match criteria.
 Create a new `ProductEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -390,39 +390,39 @@ $todo = $client->Todo();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `due_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `priority` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `completed` | `bool` | No |  |
+| `created_at` | `string` | No |  |
+| `due_date` | `string` | No |  |
+| `id` | `int` | No |  |
+| `priority` | `string` | No |  |
+| `title` | `string` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Todo()->list([]);
+$results = $client->Todo()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -431,7 +431,7 @@ Set the entity match criteria.
 Create a new `TodoEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -448,14 +448,14 @@ $user = $client->User();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `company` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `phone` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `array` | No |  |
+| `company` | `array` | No |  |
+| `email` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `phone` | `string` | No |  |
+| `username` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
@@ -468,12 +468,12 @@ $result = $client->User()->create([
 ]);
 ```
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->User()->list([]);
+$results = $client->User()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -505,19 +505,19 @@ $result = $client->User()->update([
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -526,7 +526,7 @@ Set the entity match criteria.
 Create a new `UserEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

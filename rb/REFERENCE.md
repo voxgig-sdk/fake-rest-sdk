@@ -8,7 +8,7 @@ Complete API reference for the FakeRest Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'fake-rest_sdk'
+require_relative 'FakeRest_sdk'
 
 client = FakeRestSDK.new(options)
 ```
@@ -113,18 +113,18 @@ category = client.Category
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `count` | `Integer` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Category.list(nil)
+results = client.Category.list
 ```
 
 ### Common Methods
@@ -167,19 +167,19 @@ comment = client.Comment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avatar` | ``$STRING`` | No |  |
-| `body` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `device_info` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `is_verified` | ``$BOOLEAN`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_comment_id` | ``$INTEGER`` | No |  |
-| `post_id` | ``$INTEGER`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `avatar` | `String` | No |  |
+| `body` | `String` | No |  |
+| `created_at` | `String` | No |  |
+| `device_info` | `Hash` | No |  |
+| `email` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `is_verified` | `Boolean` | No |  |
+| `like` | `Integer` | No |  |
+| `location` | `String` | No |  |
+| `name` | `String` | No |  |
+| `parent_comment_id` | `Integer` | No |  |
+| `post_id` | `Integer` | No |  |
+| `website` | `String` | No |  |
 
 ### Operations
 
@@ -192,12 +192,12 @@ result = client.Comment.create({
 })
 ```
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Comment.list(nil)
+results = client.Comment.list
 ```
 
 ### Common Methods
@@ -240,20 +240,20 @@ post = client.Post
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `body` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `cover_image` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `featured` | ``$BOOLEAN`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `meta_description` | ``$STRING`` | No |  |
-| `published` | ``$BOOLEAN`` | No |  |
-| `read_time` | ``$INTEGER`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
-| `view` | ``$INTEGER`` | No |  |
+| `body` | `String` | No |  |
+| `category` | `String` | No |  |
+| `cover_image` | `String` | No |  |
+| `created_at` | `String` | No |  |
+| `featured` | `Boolean` | No |  |
+| `id` | `Integer` | No |  |
+| `like` | `Integer` | No |  |
+| `meta_description` | `String` | No |  |
+| `published` | `Boolean` | No |  |
+| `read_time` | `Integer` | No |  |
+| `tag` | `Array` | No |  |
+| `title` | `String` | No |  |
+| `user_id` | `Integer` | No |  |
+| `view` | `Integer` | No |  |
 
 ### Operations
 
@@ -266,12 +266,12 @@ result = client.Post.create({
 })
 ```
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Post.list(nil)
+results = client.Post.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -322,25 +322,25 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `brand` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$NUMBER`` | No |  |
-| `review` | ``$INTEGER`` | No |  |
-| `sku` | ``$STRING`` | No |  |
-| `stock` | ``$INTEGER`` | No |  |
+| `brand` | `String` | No |  |
+| `category` | `String` | No |  |
+| `description` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `price` | `Float` | No |  |
+| `rating` | `Float` | No |  |
+| `review` | `Integer` | No |  |
+| `sku` | `String` | No |  |
+| `stock` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Product.list(nil)
+results = client.Product.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -391,22 +391,22 @@ todo = client.Todo
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `due_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `priority` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `completed` | `Boolean` | No |  |
+| `created_at` | `String` | No |  |
+| `due_date` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `priority` | `String` | No |  |
+| `title` | `String` | No |  |
+| `user_id` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Todo.list(nil)
+results = client.Todo.list
 ```
 
 ### Common Methods
@@ -449,14 +449,14 @@ user = client.User
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `company` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `phone` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `Hash` | No |  |
+| `company` | `Hash` | No |  |
+| `email` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `phone` | `String` | No |  |
+| `username` | `String` | No |  |
+| `website` | `String` | No |  |
 
 ### Operations
 
@@ -469,12 +469,12 @@ result = client.User.create({
 })
 ```
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.User.list(nil)
+results = client.User.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

@@ -221,37 +221,37 @@ class FakeRestSDK:
 
 
     def Category(self, data=None) -> "CategoryEntity":
-        """Entity factory: client.Category().list({}) / client.Category().load({"id": ...})."""
+        """Entity factory: client.Category().list() / client.Category().load({"id": ...})."""
         from entity.category_entity import CategoryEntity
         return CategoryEntity(self, data)
 
 
     def Comment(self, data=None) -> "CommentEntity":
-        """Entity factory: client.Comment().list({}) / client.Comment().load({"id": ...})."""
+        """Entity factory: client.Comment().list() / client.Comment().load({"id": ...})."""
         from entity.comment_entity import CommentEntity
         return CommentEntity(self, data)
 
 
     def Post(self, data=None) -> "PostEntity":
-        """Entity factory: client.Post().list({}) / client.Post().load({"id": ...})."""
+        """Entity factory: client.Post().list() / client.Post().load({"id": ...})."""
         from entity.post_entity import PostEntity
         return PostEntity(self, data)
 
 
     def Product(self, data=None) -> "ProductEntity":
-        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
+        """Entity factory: client.Product().list() / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 
 
     def Todo(self, data=None) -> "TodoEntity":
-        """Entity factory: client.Todo().list({}) / client.Todo().load({"id": ...})."""
+        """Entity factory: client.Todo().list() / client.Todo().load({"id": ...})."""
         from entity.todo_entity import TodoEntity
         return TodoEntity(self, data)
 
 
     def User(self, data=None) -> "UserEntity":
-        """Entity factory: client.User().list({}) / client.User().load({"id": ...})."""
+        """Entity factory: client.User().list() / client.User().load({"id": ...})."""
         from entity.user_entity import UserEntity
         return UserEntity(self, data)
 

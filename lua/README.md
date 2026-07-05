@@ -4,6 +4,8 @@
 
 The Lua SDK for the FakeRest API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Category()` — each with the same small set of operations (`list`, `load`, `create`, `update`, `remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -43,6 +45,28 @@ if err then error(err) end
 for _, item in ipairs(categorys) do
   print(item["id"], item["name"])
 end
+```
+
+
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local categorys, err = client:Category():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
 ```
 
 
@@ -88,8 +112,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Category():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Category():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -204,7 +228,7 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local category, err = client:Category():load({ id = "example_id" })
+    local category, err = client:Category():load()
     if err then error(err) end
     -- category is the loaded record
 
@@ -341,9 +365,9 @@ Create an instance: `local category = client:Category(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `count` | `number` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -367,19 +391,19 @@ Create an instance: `local comment = client:Comment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avatar` | ``$STRING`` |  |
-| `body` | ``$STRING`` |  |
-| `created_at` | ``$STRING`` |  |
-| `device_info` | ``$OBJECT`` |  |
-| `email` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `is_verified` | ``$BOOLEAN`` |  |
-| `like` | ``$INTEGER`` |  |
-| `location` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_comment_id` | ``$INTEGER`` |  |
-| `post_id` | ``$INTEGER`` |  |
-| `website` | ``$STRING`` |  |
+| `avatar` | `string` |  |
+| `body` | `string` |  |
+| `created_at` | `string` |  |
+| `device_info` | `table` |  |
+| `email` | `string` |  |
+| `id` | `number` |  |
+| `is_verified` | `boolean` |  |
+| `like` | `number` |  |
+| `location` | `string` |  |
+| `name` | `string` |  |
+| `parent_comment_id` | `number` |  |
+| `post_id` | `number` |  |
+| `website` | `string` |  |
 
 #### Example: List
 
@@ -411,20 +435,20 @@ Create an instance: `local post = client:Post(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `body` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `cover_image` | ``$STRING`` |  |
-| `created_at` | ``$STRING`` |  |
-| `featured` | ``$BOOLEAN`` |  |
-| `id` | ``$INTEGER`` |  |
-| `like` | ``$INTEGER`` |  |
-| `meta_description` | ``$STRING`` |  |
-| `published` | ``$BOOLEAN`` |  |
-| `read_time` | ``$INTEGER`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `user_id` | ``$INTEGER`` |  |
-| `view` | ``$INTEGER`` |  |
+| `body` | `string` |  |
+| `category` | `string` |  |
+| `cover_image` | `string` |  |
+| `created_at` | `string` |  |
+| `featured` | `boolean` |  |
+| `id` | `number` |  |
+| `like` | `number` |  |
+| `meta_description` | `string` |  |
+| `published` | `boolean` |  |
+| `read_time` | `number` |  |
+| `tag` | `table` |  |
+| `title` | `string` |  |
+| `user_id` | `number` |  |
+| `view` | `number` |  |
 
 #### Example: Load
 
@@ -461,16 +485,16 @@ Create an instance: `local product = client:Product(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `brand` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `price` | ``$NUMBER`` |  |
-| `rating` | ``$NUMBER`` |  |
-| `review` | ``$INTEGER`` |  |
-| `sku` | ``$STRING`` |  |
-| `stock` | ``$INTEGER`` |  |
+| `brand` | `string` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `price` | `number` |  |
+| `rating` | `number` |  |
+| `review` | `number` |  |
+| `sku` | `string` |  |
+| `stock` | `number` |  |
 
 #### Example: Load
 
@@ -499,13 +523,13 @@ Create an instance: `local todo = client:Todo(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` |  |
-| `created_at` | ``$STRING`` |  |
-| `due_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `priority` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `user_id` | ``$INTEGER`` |  |
+| `completed` | `boolean` |  |
+| `created_at` | `string` |  |
+| `due_date` | `string` |  |
+| `id` | `number` |  |
+| `priority` | `string` |  |
+| `title` | `string` |  |
+| `user_id` | `number` |  |
 
 #### Example: List
 
@@ -532,14 +556,14 @@ Create an instance: `local user = client:User(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$OBJECT`` |  |
-| `company` | ``$OBJECT`` |  |
-| `email` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `phone` | ``$STRING`` |  |
-| `username` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `table` |  |
+| `company` | `table` |  |
+| `email` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `username` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -561,12 +585,16 @@ local user, err = client:User():create({
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -583,8 +611,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -628,14 +657,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local category = client:Category()
-category:load({ id = "example_id" })
+category:list()
 
--- category:data_get() now returns the loaded category data
+-- category:data_get() now returns the category data from the last list
 -- category:match_get() returns the last match criteria
 ```
 

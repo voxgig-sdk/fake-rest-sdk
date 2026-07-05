@@ -8,7 +8,7 @@ Complete API reference for the FakeRest Python SDK.
 ### Constructor
 
 ```python
-from fake-rest_sdk import FakeRestSDK
+from fakerest_sdk import FakeRestSDK
 
 client = FakeRestSDK(options)
 ```
@@ -107,18 +107,18 @@ category = client.Category()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Category().list({})
+results = client.Category().list()
 for category in results:
     print(category)
 ```
@@ -162,19 +162,19 @@ comment = client.Comment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avatar` | ``$STRING`` | No |  |
-| `body` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `device_info` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `is_verified` | ``$BOOLEAN`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_comment_id` | ``$INTEGER`` | No |  |
-| `post_id` | ``$INTEGER`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `avatar` | `str` | No |  |
+| `body` | `str` | No |  |
+| `created_at` | `str` | No |  |
+| `device_info` | `dict` | No |  |
+| `email` | `str` | No |  |
+| `id` | `int` | No |  |
+| `is_verified` | `bool` | No |  |
+| `like` | `int` | No |  |
+| `location` | `str` | No |  |
+| `name` | `str` | No |  |
+| `parent_comment_id` | `int` | No |  |
+| `post_id` | `int` | No |  |
+| `website` | `str` | No |  |
 
 ### Operations
 
@@ -187,12 +187,12 @@ result = client.Comment().create({
 })
 ```
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Comment().list({})
+results = client.Comment().list()
 for comment in results:
     print(comment)
 ```
@@ -236,20 +236,20 @@ post = client.Post()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `body` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `cover_image` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `featured` | ``$BOOLEAN`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `meta_description` | ``$STRING`` | No |  |
-| `published` | ``$BOOLEAN`` | No |  |
-| `read_time` | ``$INTEGER`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
-| `view` | ``$INTEGER`` | No |  |
+| `body` | `str` | No |  |
+| `category` | `str` | No |  |
+| `cover_image` | `str` | No |  |
+| `created_at` | `str` | No |  |
+| `featured` | `bool` | No |  |
+| `id` | `int` | No |  |
+| `like` | `int` | No |  |
+| `meta_description` | `str` | No |  |
+| `published` | `bool` | No |  |
+| `read_time` | `int` | No |  |
+| `tag` | `list` | No |  |
+| `title` | `str` | No |  |
+| `user_id` | `int` | No |  |
+| `view` | `int` | No |  |
 
 ### Operations
 
@@ -262,12 +262,12 @@ result = client.Post().create({
 })
 ```
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Post().list({})
+results = client.Post().list()
 for post in results:
     print(post)
 ```
@@ -319,25 +319,25 @@ product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `brand` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$NUMBER`` | No |  |
-| `review` | ``$INTEGER`` | No |  |
-| `sku` | ``$STRING`` | No |  |
-| `stock` | ``$INTEGER`` | No |  |
+| `brand` | `str` | No |  |
+| `category` | `str` | No |  |
+| `description` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `price` | `float` | No |  |
+| `rating` | `float` | No |  |
+| `review` | `int` | No |  |
+| `sku` | `str` | No |  |
+| `stock` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Product().list({})
+results = client.Product().list()
 for product in results:
     print(product)
 ```
@@ -389,22 +389,22 @@ todo = client.Todo()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `due_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `priority` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `completed` | `bool` | No |  |
+| `created_at` | `str` | No |  |
+| `due_date` | `str` | No |  |
+| `id` | `int` | No |  |
+| `priority` | `str` | No |  |
+| `title` | `str` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Todo().list({})
+results = client.Todo().list()
 for todo in results:
     print(todo)
 ```
@@ -448,14 +448,14 @@ user = client.User()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `company` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `phone` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `dict` | No |  |
+| `company` | `dict` | No |  |
+| `email` | `str` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `phone` | `str` | No |  |
+| `username` | `str` | No |  |
+| `website` | `str` | No |  |
 
 ### Operations
 
@@ -468,12 +468,12 @@ result = client.User().create({
 })
 ```
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.User().list({})
+results = client.User().list()
 for user in results:
     print(user)
 ```

@@ -15,8 +15,7 @@ type Category struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// CategoryListMatch mirrors the category fields as an all-optional match
-// filter (Go analog of Partial<Category>).
+// CategoryListMatch is the typed request payload for Category.ListTyped.
 type CategoryListMatch struct {
 	Count *int `json:"count,omitempty"`
 	Id *int `json:"id,omitempty"`
@@ -45,8 +44,7 @@ type CommentListMatch struct {
 	PostId int `json:"post_id"`
 }
 
-// CommentCreateData mirrors the comment fields as an all-optional match
-// filter (Go analog of Partial<Comment>).
+// CommentCreateData is the typed request payload for Comment.CreateTyped.
 type CommentCreateData struct {
 	Avatar *string `json:"avatar,omitempty"`
 	Body *string `json:"body,omitempty"`
@@ -86,8 +84,7 @@ type PostLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// PostListMatch mirrors the post fields as an all-optional match
-// filter (Go analog of Partial<Post>).
+// PostListMatch is the typed request payload for Post.ListTyped.
 type PostListMatch struct {
 	Body *string `json:"body,omitempty"`
 	Category *string `json:"category,omitempty"`
@@ -105,8 +102,7 @@ type PostListMatch struct {
 	View *int `json:"view,omitempty"`
 }
 
-// PostCreateData mirrors the post fields as an all-optional match
-// filter (Go analog of Partial<Post>).
+// PostCreateData is the typed request payload for Post.CreateTyped.
 type PostCreateData struct {
 	Body *string `json:"body,omitempty"`
 	Category *string `json:"category,omitempty"`
@@ -143,8 +139,7 @@ type ProductLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ProductListMatch mirrors the product fields as an all-optional match
-// filter (Go analog of Partial<Product>).
+// ProductListMatch is the typed request payload for Product.ListTyped.
 type ProductListMatch struct {
 	Brand *string `json:"brand,omitempty"`
 	Category *string `json:"category,omitempty"`
@@ -169,8 +164,7 @@ type Todo struct {
 	UserId *int `json:"user_id,omitempty"`
 }
 
-// TodoListMatch mirrors the todo fields as an all-optional match
-// filter (Go analog of Partial<Todo>).
+// TodoListMatch is the typed request payload for Todo.ListTyped.
 type TodoListMatch struct {
 	Completed *bool `json:"completed,omitempty"`
 	CreatedAt *string `json:"created_at,omitempty"`
@@ -198,8 +192,7 @@ type UserLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// UserListMatch mirrors the user fields as an all-optional match
-// filter (Go analog of Partial<User>).
+// UserListMatch is the typed request payload for User.ListTyped.
 type UserListMatch struct {
 	Address *map[string]any `json:"address,omitempty"`
 	Company *map[string]any `json:"company,omitempty"`
@@ -211,8 +204,7 @@ type UserListMatch struct {
 	Website *string `json:"website,omitempty"`
 }
 
-// UserCreateData mirrors the user fields as an all-optional match
-// filter (Go analog of Partial<User>).
+// UserCreateData is the typed request payload for User.CreateTyped.
 type UserCreateData struct {
 	Address *map[string]any `json:"address,omitempty"`
 	Company *map[string]any `json:"company,omitempty"`

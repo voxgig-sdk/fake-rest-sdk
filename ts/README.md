@@ -4,6 +4,11 @@
 
 The TypeScript SDK for the FakeRest API — a type-safe, entity-oriented client with full async/await support.
 
+The API is exposed as capitalised, semantic **Entities** — e.g.
+`client.Category()` — each with a small set of operations (`list`, `load`, `create`, `update`, `remove`)
+instead of raw URL paths and query parameters. This keeps the surface
+predictable and low-friction for both humans and AI agents.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,6 +42,35 @@ const categorys = await client.Category().list()
 
 for (const category of categorys) {
   console.log(category)
+}
+```
+
+
+## Error handling
+
+Entity operations reject on failure, so wrap them in `try` / `catch`:
+
+```ts
+try {
+  const categorys = await client.Category().list()
+  console.log(categorys)
+} catch (err) {
+  console.error('list failed:', err)
+}
+```
+
+The low-level `direct()` method does **not** throw — it returns the
+value or an `Error`, so check the result before using it:
+
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example_id' },
+})
+
+if (result instanceof Error) {
+  throw result
 }
 ```
 
@@ -85,7 +119,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FakeRestSDK.test()
 
-const category = await client.Category().load({ id: 'test01' })
+const category = await client.Category().list()
 // category is a bare entity populated with mock response data
 console.log(category)
 ```
@@ -104,12 +138,12 @@ Entity instances remember their last match and data:
 ```ts
 const entity = client.Category()
 
-// First call sets internal match
-await entity.load({ id: 'example' })
+// First call runs the operation and stores its result
+await entity.list()
 
-// Subsequent calls reuse the stored match
+// Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id) // 'example'
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -207,8 +241,8 @@ All entities share the same interface.
 | `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
 | `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
 | `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
-| `data` | `data(data?): any` | Get or set entity data. |
-| `match` | `match(match?): any` | Get or set entity match criteria. |
+| `data` | `data(data?: Partial<Entity>): Entity` | Get or set entity data. |
+| `match` | `match(match?: Partial<Entity>): Partial<Entity>` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): FakeRestSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
@@ -385,9 +419,9 @@ Create an instance: `const category = client.Category()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `count` | `number` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -411,19 +445,19 @@ Create an instance: `const comment = client.Comment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avatar` | ``$STRING`` |  |
-| `body` | ``$STRING`` |  |
-| `created_at` | ``$STRING`` |  |
-| `device_info` | ``$OBJECT`` |  |
-| `email` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `is_verified` | ``$BOOLEAN`` |  |
-| `like` | ``$INTEGER`` |  |
-| `location` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_comment_id` | ``$INTEGER`` |  |
-| `post_id` | ``$INTEGER`` |  |
-| `website` | ``$STRING`` |  |
+| `avatar` | `string` |  |
+| `body` | `string` |  |
+| `created_at` | `string` |  |
+| `device_info` | `Record<string, any>` |  |
+| `email` | `string` |  |
+| `id` | `number` |  |
+| `is_verified` | `boolean` |  |
+| `like` | `number` |  |
+| `location` | `string` |  |
+| `name` | `string` |  |
+| `parent_comment_id` | `number` |  |
+| `post_id` | `number` |  |
+| `website` | `string` |  |
 
 #### Example: List
 
@@ -455,25 +489,25 @@ Create an instance: `const post = client.Post()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `body` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `cover_image` | ``$STRING`` |  |
-| `created_at` | ``$STRING`` |  |
-| `featured` | ``$BOOLEAN`` |  |
-| `id` | ``$INTEGER`` |  |
-| `like` | ``$INTEGER`` |  |
-| `meta_description` | ``$STRING`` |  |
-| `published` | ``$BOOLEAN`` |  |
-| `read_time` | ``$INTEGER`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `user_id` | ``$INTEGER`` |  |
-| `view` | ``$INTEGER`` |  |
+| `body` | `string` |  |
+| `category` | `string` |  |
+| `cover_image` | `string` |  |
+| `created_at` | `string` |  |
+| `featured` | `boolean` |  |
+| `id` | `number` |  |
+| `like` | `number` |  |
+| `meta_description` | `string` |  |
+| `published` | `boolean` |  |
+| `read_time` | `number` |  |
+| `tag` | `any[]` |  |
+| `title` | `string` |  |
+| `user_id` | `number` |  |
+| `view` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const post = await client.Post().load({ id: 'post_id' })
+const post = await client.Post().load({ id: 1 })
 ```
 
 #### Example: List
@@ -505,21 +539,21 @@ Create an instance: `const product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `brand` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `price` | ``$NUMBER`` |  |
-| `rating` | ``$NUMBER`` |  |
-| `review` | ``$INTEGER`` |  |
-| `sku` | ``$STRING`` |  |
-| `stock` | ``$INTEGER`` |  |
+| `brand` | `string` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `price` | `number` |  |
+| `rating` | `number` |  |
+| `review` | `number` |  |
+| `sku` | `string` |  |
+| `stock` | `number` |  |
 
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.Product().load({ id: 1 })
 ```
 
 #### Example: List
@@ -543,13 +577,13 @@ Create an instance: `const todo = client.Todo()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` |  |
-| `created_at` | ``$STRING`` |  |
-| `due_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `priority` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `user_id` | ``$INTEGER`` |  |
+| `completed` | `boolean` |  |
+| `created_at` | `string` |  |
+| `due_date` | `string` |  |
+| `id` | `number` |  |
+| `priority` | `string` |  |
+| `title` | `string` |  |
+| `user_id` | `number` |  |
 
 #### Example: List
 
@@ -576,19 +610,19 @@ Create an instance: `const user = client.User()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$OBJECT`` |  |
-| `company` | ``$OBJECT`` |  |
-| `email` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `phone` | ``$STRING`` |  |
-| `username` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `Record<string, any>` |  |
+| `company` | `Record<string, any>` |  |
+| `email` | `string` |  |
+| `id` | `number` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `username` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
 ```ts
-const user = await client.User().load({ id: 'user_id' })
+const user = await client.User().load({ id: 1 })
 ```
 
 #### Example: List
@@ -605,12 +639,16 @@ const user = await client.User().create({
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -627,11 +665,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller.
-
-An unexpected exception triggers the `PreUnexpected` hook before
-propagating.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -667,16 +703,16 @@ import { FakeRestSDK } from '@voxgig-sdk/fake-rest'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
 const category = client.Category()
-await category.load({ id: "example_id" })
+await category.list()
 
-// category.data() now returns the loaded category data
-// category.match() returns { id: "example_id" }
+// category.data() now returns the category data from the last `list`
+// category.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

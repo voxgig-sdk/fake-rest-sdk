@@ -20,7 +20,7 @@ class Category
     public ?string $name = null;
 }
 
-/** Match filter for Category#list (any subset of Category fields). */
+/** Request payload for Category#list. */
 class CategoryListMatch
 {
     public ?int $count = null;
@@ -52,7 +52,7 @@ class CommentListMatch
     public int $post_id;
 }
 
-/** Match filter for Comment#create (any subset of Comment fields). */
+/** Request payload for Comment#create. */
 class CommentCreateData
 {
     public ?string $avatar = null;
@@ -95,7 +95,7 @@ class PostLoadMatch
     public int $id;
 }
 
-/** Match filter for Post#list (any subset of Post fields). */
+/** Request payload for Post#list. */
 class PostListMatch
 {
     public ?string $body = null;
@@ -114,7 +114,7 @@ class PostListMatch
     public ?int $view = null;
 }
 
-/** Match filter for Post#create (any subset of Post fields). */
+/** Request payload for Post#create. */
 class PostCreateData
 {
     public ?string $body = null;
@@ -154,7 +154,7 @@ class ProductLoadMatch
     public int $id;
 }
 
-/** Match filter for Product#list (any subset of Product fields). */
+/** Request payload for Product#list. */
 class ProductListMatch
 {
     public ?string $brand = null;
@@ -181,7 +181,7 @@ class Todo
     public ?int $user_id = null;
 }
 
-/** Match filter for Todo#list (any subset of Todo fields). */
+/** Request payload for Todo#list. */
 class TodoListMatch
 {
     public ?bool $completed = null;
@@ -212,7 +212,7 @@ class UserLoadMatch
     public int $id;
 }
 
-/** Match filter for User#list (any subset of User fields). */
+/** Request payload for User#list. */
 class UserListMatch
 {
     public ?array $address = null;
@@ -225,7 +225,7 @@ class UserListMatch
     public ?string $website = null;
 }
 
-/** Match filter for User#create (any subset of User fields). */
+/** Request payload for User#create. */
 class UserCreateData
 {
     public ?array $address = null;

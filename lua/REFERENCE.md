@@ -110,9 +110,9 @@ local category = client:Category(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `count` | `number` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -164,19 +164,19 @@ local comment = client:Comment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avatar` | ``$STRING`` | No |  |
-| `body` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `device_info` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `is_verified` | ``$BOOLEAN`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_comment_id` | ``$INTEGER`` | No |  |
-| `post_id` | ``$INTEGER`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `avatar` | `string` | No |  |
+| `body` | `string` | No |  |
+| `created_at` | `string` | No |  |
+| `device_info` | `table` | No |  |
+| `email` | `string` | No |  |
+| `id` | `number` | No |  |
+| `is_verified` | `boolean` | No |  |
+| `like` | `number` | No |  |
+| `location` | `string` | No |  |
+| `name` | `string` | No |  |
+| `parent_comment_id` | `number` | No |  |
+| `post_id` | `number` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
@@ -237,20 +237,20 @@ local post = client:Post(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `body` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `cover_image` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `featured` | ``$BOOLEAN`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `meta_description` | ``$STRING`` | No |  |
-| `published` | ``$BOOLEAN`` | No |  |
-| `read_time` | ``$INTEGER`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
-| `view` | ``$INTEGER`` | No |  |
+| `body` | `string` | No |  |
+| `category` | `string` | No |  |
+| `cover_image` | `string` | No |  |
+| `created_at` | `string` | No |  |
+| `featured` | `boolean` | No |  |
+| `id` | `number` | No |  |
+| `like` | `number` | No |  |
+| `meta_description` | `string` | No |  |
+| `published` | `boolean` | No |  |
+| `read_time` | `number` | No |  |
+| `tag` | `table` | No |  |
+| `title` | `string` | No |  |
+| `user_id` | `number` | No |  |
+| `view` | `number` | No |  |
 
 ### Operations
 
@@ -319,16 +319,16 @@ local product = client:Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `brand` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$NUMBER`` | No |  |
-| `review` | ``$INTEGER`` | No |  |
-| `sku` | ``$STRING`` | No |  |
-| `stock` | ``$INTEGER`` | No |  |
+| `brand` | `string` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
+| `rating` | `number` | No |  |
+| `review` | `number` | No |  |
+| `sku` | `string` | No |  |
+| `stock` | `number` | No |  |
 
 ### Operations
 
@@ -388,13 +388,13 @@ local todo = client:Todo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `due_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `priority` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `completed` | `boolean` | No |  |
+| `created_at` | `string` | No |  |
+| `due_date` | `string` | No |  |
+| `id` | `number` | No |  |
+| `priority` | `string` | No |  |
+| `title` | `string` | No |  |
+| `user_id` | `number` | No |  |
 
 ### Operations
 
@@ -446,14 +446,14 @@ local user = client:User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `company` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `phone` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `table` | No |  |
+| `company` | `table` | No |  |
+| `email` | `string` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `phone` | `string` | No |  |
+| `username` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 

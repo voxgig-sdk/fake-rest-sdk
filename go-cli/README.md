@@ -17,8 +17,6 @@ go build -o fake-rest-cli ./...
 ```sh
 # One-shot: arguments form a single AQL expression
 ./fake-rest-cli list category
-./fake-rest-cli load 1 category
-./fake-rest-cli load '{id:1}' category
 
 # REPL
 ./fake-rest-cli

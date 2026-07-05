@@ -4,6 +4,8 @@
 
 The PHP SDK for the FakeRest API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->Category()` — with named operations (`list`/`load`/`create`/`update`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,10 +38,41 @@ try {
     // list() returns an array of Category records — iterate directly.
     $categorys = $client->Category()->list();
     foreach ($categorys as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["count"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $categorys = $client->Category()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -63,7 +96,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -84,16 +120,13 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = FakeRestSDK::test([
-    "entity" => ["category" => ["test01" => ["id" => "test01"]]],
-]);
+$client = FakeRestSDK::test();
 
-// load() returns the bare mock record (throws on error).
-$category = $client->Category()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$category = $client->Category()->list();
 print_r($category);
 ```
 
@@ -187,7 +220,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `create` | `($reqdata, $ctrl): array` | Create a new entity. |
 | `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
 | `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
@@ -346,9 +379,9 @@ Create an instance: `$category = $client->Category();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | ``$INTEGER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
+| `count` | `int` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
 
 #### Example: List
 
@@ -373,19 +406,19 @@ Create an instance: `$comment = $client->Comment();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avatar` | ``$STRING`` |  |
-| `body` | ``$STRING`` |  |
-| `created_at` | ``$STRING`` |  |
-| `device_info` | ``$OBJECT`` |  |
-| `email` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `is_verified` | ``$BOOLEAN`` |  |
-| `like` | ``$INTEGER`` |  |
-| `location` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `parent_comment_id` | ``$INTEGER`` |  |
-| `post_id` | ``$INTEGER`` |  |
-| `website` | ``$STRING`` |  |
+| `avatar` | `string` |  |
+| `body` | `string` |  |
+| `created_at` | `string` |  |
+| `device_info` | `array` |  |
+| `email` | `string` |  |
+| `id` | `int` |  |
+| `is_verified` | `bool` |  |
+| `like` | `int` |  |
+| `location` | `string` |  |
+| `name` | `string` |  |
+| `parent_comment_id` | `int` |  |
+| `post_id` | `int` |  |
+| `website` | `string` |  |
 
 #### Example: List
 
@@ -418,20 +451,20 @@ Create an instance: `$post = $client->Post();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `body` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `cover_image` | ``$STRING`` |  |
-| `created_at` | ``$STRING`` |  |
-| `featured` | ``$BOOLEAN`` |  |
-| `id` | ``$INTEGER`` |  |
-| `like` | ``$INTEGER`` |  |
-| `meta_description` | ``$STRING`` |  |
-| `published` | ``$BOOLEAN`` |  |
-| `read_time` | ``$INTEGER`` |  |
-| `tag` | ``$ARRAY`` |  |
-| `title` | ``$STRING`` |  |
-| `user_id` | ``$INTEGER`` |  |
-| `view` | ``$INTEGER`` |  |
+| `body` | `string` |  |
+| `category` | `string` |  |
+| `cover_image` | `string` |  |
+| `created_at` | `string` |  |
+| `featured` | `bool` |  |
+| `id` | `int` |  |
+| `like` | `int` |  |
+| `meta_description` | `string` |  |
+| `published` | `bool` |  |
+| `read_time` | `int` |  |
+| `tag` | `array` |  |
+| `title` | `string` |  |
+| `user_id` | `int` |  |
+| `view` | `int` |  |
 
 #### Example: Load
 
@@ -470,16 +503,16 @@ Create an instance: `$product = $client->Product();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `brand` | ``$STRING`` |  |
-| `category` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `price` | ``$NUMBER`` |  |
-| `rating` | ``$NUMBER`` |  |
-| `review` | ``$INTEGER`` |  |
-| `sku` | ``$STRING`` |  |
-| `stock` | ``$INTEGER`` |  |
+| `brand` | `string` |  |
+| `category` | `string` |  |
+| `description` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `price` | `float` |  |
+| `rating` | `float` |  |
+| `review` | `int` |  |
+| `sku` | `string` |  |
+| `stock` | `int` |  |
 
 #### Example: Load
 
@@ -510,13 +543,13 @@ Create an instance: `$todo = $client->Todo();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` |  |
-| `created_at` | ``$STRING`` |  |
-| `due_date` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `priority` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `user_id` | ``$INTEGER`` |  |
+| `completed` | `bool` |  |
+| `created_at` | `string` |  |
+| `due_date` | `string` |  |
+| `id` | `int` |  |
+| `priority` | `string` |  |
+| `title` | `string` |  |
+| `user_id` | `int` |  |
 
 #### Example: List
 
@@ -544,14 +577,14 @@ Create an instance: `$user = $client->User();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | ``$OBJECT`` |  |
-| `company` | ``$OBJECT`` |  |
-| `email` | ``$STRING`` |  |
-| `id` | ``$INTEGER`` |  |
-| `name` | ``$STRING`` |  |
-| `phone` | ``$STRING`` |  |
-| `username` | ``$STRING`` |  |
-| `website` | ``$STRING`` |  |
+| `address` | `array` |  |
+| `company` | `array` |  |
+| `email` | `string` |  |
+| `id` | `int` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `username` | `string` |  |
+| `website` | `string` |  |
 
 #### Example: Load
 
@@ -575,12 +608,16 @@ $user = $client->User()->create([
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -597,8 +634,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -642,15 +680,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $category = $client->Category();
-$category->load(["id" => "example_id"]);
+$category->list();
 
-// $category->dataGet() now returns the loaded category data
-// $category->matchGet() returns the last match criteria
+// $category->data_get() now returns the category data from the last list
+// $category->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

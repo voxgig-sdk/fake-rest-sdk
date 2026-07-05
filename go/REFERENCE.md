@@ -117,9 +117,9 @@ category := client.Category(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -165,19 +165,19 @@ comment := client.Comment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avatar` | ``$STRING`` | No |  |
-| `body` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `device_info` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `is_verified` | ``$BOOLEAN`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `parent_comment_id` | ``$INTEGER`` | No |  |
-| `post_id` | ``$INTEGER`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `avatar` | `string` | No |  |
+| `body` | `string` | No |  |
+| `created_at` | `string` | No |  |
+| `device_info` | `map[string]any` | No |  |
+| `email` | `string` | No |  |
+| `id` | `int` | No |  |
+| `is_verified` | `bool` | No |  |
+| `like` | `int` | No |  |
+| `location` | `string` | No |  |
+| `name` | `string` | No |  |
+| `parent_comment_id` | `int` | No |  |
+| `post_id` | `int` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
@@ -232,20 +232,20 @@ post := client.Post(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `body` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `cover_image` | ``$STRING`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `featured` | ``$BOOLEAN`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `like` | ``$INTEGER`` | No |  |
-| `meta_description` | ``$STRING`` | No |  |
-| `published` | ``$BOOLEAN`` | No |  |
-| `read_time` | ``$INTEGER`` | No |  |
-| `tag` | ``$ARRAY`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
-| `view` | ``$INTEGER`` | No |  |
+| `body` | `string` | No |  |
+| `category` | `string` | No |  |
+| `cover_image` | `string` | No |  |
+| `created_at` | `string` | No |  |
+| `featured` | `bool` | No |  |
+| `id` | `int` | No |  |
+| `like` | `int` | No |  |
+| `meta_description` | `string` | No |  |
+| `published` | `bool` | No |  |
+| `read_time` | `int` | No |  |
+| `tag` | `[]any` | No |  |
+| `title` | `string` | No |  |
+| `user_id` | `int` | No |  |
+| `view` | `int` | No |  |
 
 ### Operations
 
@@ -308,16 +308,16 @@ product := client.Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `brand` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `rating` | ``$NUMBER`` | No |  |
-| `review` | ``$INTEGER`` | No |  |
-| `sku` | ``$STRING`` | No |  |
-| `stock` | ``$INTEGER`` | No |  |
+| `brand` | `string` | No |  |
+| `category` | `string` | No |  |
+| `description` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `price` | `float64` | No |  |
+| `rating` | `float64` | No |  |
+| `review` | `int` | No |  |
+| `sku` | `string` | No |  |
+| `stock` | `int` | No |  |
 
 ### Operations
 
@@ -371,13 +371,13 @@ todo := client.Todo(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `completed` | ``$BOOLEAN`` | No |  |
-| `created_at` | ``$STRING`` | No |  |
-| `due_date` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `priority` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `user_id` | ``$INTEGER`` | No |  |
+| `completed` | `bool` | No |  |
+| `created_at` | `string` | No |  |
+| `due_date` | `string` | No |  |
+| `id` | `int` | No |  |
+| `priority` | `string` | No |  |
+| `title` | `string` | No |  |
+| `user_id` | `int` | No |  |
 
 ### Operations
 
@@ -423,14 +423,14 @@ user := client.User(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `company` | ``$OBJECT`` | No |  |
-| `email` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `phone` | ``$STRING`` | No |  |
-| `username` | ``$STRING`` | No |  |
-| `website` | ``$STRING`` | No |  |
+| `address` | `map[string]any` | No |  |
+| `company` | `map[string]any` | No |  |
+| `email` | `string` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `phone` | `string` | No |  |
+| `username` | `string` | No |  |
+| `website` | `string` | No |  |
 
 ### Operations
 
