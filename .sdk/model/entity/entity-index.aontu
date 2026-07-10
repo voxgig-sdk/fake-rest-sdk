@@ -1,0 +1,8 @@
+# Entity Models
+
+@"category.aontu"
+@"comment.aontu"
+@"post.aontu"
+@"product.aontu"
+@"todo.aontu"
+@"user.aontu"

@@ -34,7 +34,7 @@ export interface Comment {
 }
 
 export interface CommentListMatch {
-  post_id: number
+  post_id?: number
 }
 
 export interface CommentCreateData {

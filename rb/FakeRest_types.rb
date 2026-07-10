@@ -102,7 +102,7 @@ Comment = Struct.new(
 # Request payload for Comment#list.
 #
 # @!attribute [rw] post_id
-#   @return [Integer]
+#   @return [Integer, nil]
 CommentListMatch = Struct.new(
   :post_id,
   keyword_init: true

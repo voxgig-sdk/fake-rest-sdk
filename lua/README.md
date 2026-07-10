@@ -453,7 +453,7 @@ Create an instance: `local post = client:Post(nil)`
 #### Example: Load
 
 ```lua
-local post, err = client:Post():load({ id = "post_id" })
+local post, err = client:Post():load({ id = 1 })
 ```
 
 #### Example: List
@@ -499,7 +499,7 @@ Create an instance: `local product = client:Product(nil)`
 #### Example: Load
 
 ```lua
-local product, err = client:Product():load({ id = "product_id" })
+local product, err = client:Product():load({ id = 1 })
 ```
 
 #### Example: List
@@ -568,7 +568,7 @@ Create an instance: `local user = client:User(nil)`
 #### Example: Load
 
 ```lua
-local user, err = client:User():load({ id = "user_id" })
+local user, err = client:User():load({ id = 1 })
 ```
 
 #### Example: List

@@ -460,7 +460,7 @@ Create an instance: `post = client.Post`
 
 ```ruby
 # load returns the bare Post record (raises on error).
-post = client.Post.load({ "id" => "post_id" })
+post = client.Post.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -508,7 +508,7 @@ Create an instance: `product = client.Product`
 
 ```ruby
 # load returns the bare Product record (raises on error).
-product = client.Product.load({ "id" => "product_id" })
+product = client.Product.load({ "id" => 1 })
 ```
 
 #### Example: List
@@ -580,7 +580,7 @@ Create an instance: `user = client.User`
 
 ```ruby
 # load returns the bare User record (raises on error).
-user = client.User.load({ "id" => "user_id" })
+user = client.User.load({ "id" => 1 })
 ```
 
 #### Example: List

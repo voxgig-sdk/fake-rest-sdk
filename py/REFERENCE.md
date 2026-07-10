@@ -277,7 +277,7 @@ for post in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Post().load({"id": "post_id"})
+result = client.Post().load({"id": 1})
 ```
 
 ### Common Methods
@@ -347,7 +347,7 @@ for product in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Product().load({"id": "product_id"})
+result = client.Product().load({"id": 1})
 ```
 
 ### Common Methods
@@ -483,7 +483,7 @@ for user in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.User().load({"id": "user_id"})
+result = client.User().load({"id": 1})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -491,7 +491,7 @@ result = client.User().load({"id": "user_id"})
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.User().remove({"id": "user_id"})
+result = client.User().remove({"id": 1})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -500,7 +500,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.User().update({
-    "id": "user_id",
+    "id": 1,
     # Fields to update
 })
 ```

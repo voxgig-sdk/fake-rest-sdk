@@ -41,7 +41,7 @@ type Comment struct {
 
 // CommentListMatch is the typed request payload for Comment.ListTyped.
 type CommentListMatch struct {
-	PostId int `json:"post_id"`
+	PostId *int `json:"post_id,omitempty"`
 }
 
 // CommentCreateData is the typed request payload for Comment.CreateTyped.

@@ -49,7 +49,7 @@ class Comment
 /** Request payload for Comment#list. */
 class CommentListMatch
 {
-    public int $post_id;
+    public ?int $post_id = null;
 }
 
 /** Request payload for Comment#create. */

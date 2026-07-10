@@ -417,8 +417,8 @@ Create an instance: `comment := client.Comment(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `List(match, ctrl)` | List entities matching the criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
@@ -453,6 +453,10 @@ fmt.Println(comments) // the array of records
 ```go
 result, err := client.Comment(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
@@ -464,9 +468,9 @@ Create an instance: `post := client.Post(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
@@ -490,7 +494,7 @@ Create an instance: `post := client.Post(nil)`
 #### Example: Load
 
 ```go
-post, err := client.Post(nil).Load(map[string]any{"id": "post_id"}, nil)
+post, err := client.Post(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -512,6 +516,10 @@ fmt.Println(posts) // the array of records
 ```go
 result, err := client.Post(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
@@ -544,7 +552,7 @@ Create an instance: `product := client.Product(nil)`
 #### Example: Load
 
 ```go
-product, err := client.Product(nil).Load(map[string]any{"id": "product_id"}, nil)
+product, err := client.Product(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -603,11 +611,11 @@ Create an instance: `user := client.User(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
-| `Remove(match, ctrl)` | Remove the matching entity. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Update(data, ctrl)` | Update an existing entity. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
 
 #### Fields
 
@@ -625,7 +633,7 @@ Create an instance: `user := client.User(nil)`
 #### Example: Load
 
 ```go
-user, err := client.User(nil).Load(map[string]any{"id": "user_id"}, nil)
+user, err := client.User(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -647,6 +655,10 @@ fmt.Println(users) // the array of records
 ```go
 result, err := client.User(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 

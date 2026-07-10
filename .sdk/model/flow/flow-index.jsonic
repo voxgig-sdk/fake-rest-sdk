@@ -1,8 +1,0 @@
-# Flows
-
-@"BasicCategoryFlow.jsonic"
-@"BasicCommentFlow.jsonic"
-@"BasicPostFlow.jsonic"
-@"BasicProductFlow.jsonic"
-@"BasicTodoFlow.jsonic"
-@"BasicUserFlow.jsonic"

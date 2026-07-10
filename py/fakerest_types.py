@@ -44,7 +44,7 @@ class Comment(TypedDict, total=False):
     website: str
 
 
-class CommentListMatch(TypedDict):
+class CommentListMatch(TypedDict, total=False):
     post_id: int
 
 

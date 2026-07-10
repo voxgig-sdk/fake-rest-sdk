@@ -276,7 +276,7 @@ local results, err = client:Post():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Post():load({ id = "post_id" })
+local result, err = client:Post():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -345,7 +345,7 @@ local results, err = client:Product():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product():load({ id = "product_id" })
+local result, err = client:Product():load({ id = 1 })
 ```
 
 ### Common Methods
@@ -479,7 +479,7 @@ local results, err = client:User():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:User():load({ id = "user_id" })
+local result, err = client:User():load({ id = 1 })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -487,7 +487,7 @@ local result, err = client:User():load({ id = "user_id" })
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:User():remove({ id = "user_id" })
+local result, err = client:User():remove({ id = 1 })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -496,7 +496,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:User():update({
-  id = "user_id",
+  id = 1,
   -- Fields to update
 })
 ```

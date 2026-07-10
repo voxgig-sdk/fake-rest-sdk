@@ -1,8 +1,0 @@
-# Entity Models
-
-@"category.jsonic"
-@"comment.jsonic"
-@"post.jsonic"
-@"product.jsonic"
-@"todo.jsonic"
-@"user.jsonic"

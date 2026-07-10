@@ -15,9 +15,9 @@ main: {
           url: "https://fake-rest-api-mobile-apps.vercel.app"
         }
       ]
+      summary: "This API provides a simple and free platform to generate realistic JSON data for testing mobile apps and web applications."
       title: "Fake REST API"
       version: "1.0.0"
+      website: "https://fake-rest-api-mobile-apps.vercel.app"
     }
   }
-}
-

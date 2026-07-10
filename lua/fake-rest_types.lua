@@ -32,7 +32,7 @@
 ---@field website? string
 
 ---@class CommentListMatch
----@field post_id number
+---@field post_id? number
 
 ---@class CommentCreateData
 ---@field avatar? string
