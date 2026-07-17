@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- FakeRest SDK configuration
 
 local function make_config()
   return {

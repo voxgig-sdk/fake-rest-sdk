@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- FakeRest SDK exists test
 
 local sdk = require("fake-rest_sdk")
 
