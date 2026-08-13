@@ -11,12 +11,12 @@ main: kit: entity: todo: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "created_at"
+      name: "createdAt"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "due_date"
+      name: "dueDate"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: todo: {
       type: "`$STRING`"
     }
     {
-      name: "user_id"
+      name: "userId"
       req: false
       type: "`$INTEGER`"
     }

@@ -26,8 +26,8 @@ import {
 describe('PostEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FAKEREST_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FAKEREST_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FAKE_REST_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FAKE_REST_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FakeRestSDK.test()
@@ -62,14 +62,14 @@ describe('PostEntity', async () => {
     const post_ref01_ent = client.Post()
     let post_ref01_data = setup.data.new.post['post_ref01']
 
-    post_ref01_data = await post_ref01_ent.create(post_ref01_data)
+    post_ref01_data = (await post_ref01_ent.create(post_ref01_data)).data()
     assert(null != post_ref01_data.id)
 
 
     // LIST
     const post_ref01_match: any = {}
 
-    const post_ref01_list = await post_ref01_ent.list(post_ref01_match)
+    const post_ref01_list = (await post_ref01_ent.list(post_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(post_ref01_list, { id: post_ref01_data.id })))
 
@@ -77,7 +77,7 @@ describe('PostEntity', async () => {
     // LOAD
     const post_ref01_match_dt0: any = {}
     post_ref01_match_dt0.id = post_ref01_data.id
-    const post_ref01_data_dt0 = await post_ref01_ent.load(post_ref01_match_dt0)
+    const post_ref01_data_dt0 = (await post_ref01_ent.load(post_ref01_match_dt0)).data()
     assert(post_ref01_data_dt0.id === post_ref01_data.id)
 
 

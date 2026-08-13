@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import FakeRestSDK
-from core.error import FakeRestError
-from core.result import FakeRestResult
-from core.response import FakeRestResponse
-from core.spec import FakeRestSpec
-from feature.base_feature import FakeRestBaseFeature
+from projectname_sdk.core.error import FakeRestError
+from projectname_sdk.core.result import FakeRestResult
+from projectname_sdk.core.response import FakeRestResponse
+from projectname_sdk.core.spec import FakeRestSpec
+from projectname_sdk.feature.base_feature import FakeRestBaseFeature
 
 
 def _client():

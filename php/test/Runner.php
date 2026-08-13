@@ -43,8 +43,8 @@ class FakeRestTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('FAKEREST_TEST_LIVE');
-        $override = self::getenv('FAKEREST_TEST_OVERRIDE');
+        $live = self::getenv('FAKE_REST_TEST_LIVE');
+        $override = self::getenv('FAKE_REST_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class FakeRestTestRunner
             }
         }
 
-        $explain = self::getenv('FAKEREST_TEST_EXPLAIN');
+        $explain = self::getenv('FAKE_REST_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['FAKEREST_TEST_EXPLAIN'] = $explain;
+            $m['FAKE_REST_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

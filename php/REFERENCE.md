@@ -168,16 +168,16 @@ $comment = $client->Comment();
 | --- | --- | --- | --- |
 | `avatar` | `string` | No |  |
 | `body` | `string` | No |  |
-| `created_at` | `string` | No |  |
-| `device_info` | `array` | No |  |
+| `createdAt` | `string` | No |  |
+| `deviceInfo` | `array` | No |  |
 | `email` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_verified` | `bool` | No |  |
-| `like` | `int` | No |  |
+| `isVerified` | `bool` | No |  |
+| `likes` | `int` | No |  |
 | `location` | `string` | No |  |
 | `name` | `string` | No |  |
-| `parent_comment_id` | `int` | No |  |
-| `post_id` | `int` | No |  |
+| `parentCommentId` | `int` | No |  |
+| `postId` | `int` | No |  |
 | `website` | `string` | No |  |
 
 ### Operations
@@ -241,18 +241,18 @@ $post = $client->Post();
 | --- | --- | --- | --- |
 | `body` | `string` | No |  |
 | `category` | `string` | No |  |
-| `cover_image` | `string` | No |  |
-| `created_at` | `string` | No |  |
+| `coverImage` | `string` | No |  |
+| `createdAt` | `string` | No |  |
 | `featured` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `like` | `int` | No |  |
-| `meta_description` | `string` | No |  |
+| `likes` | `int` | No |  |
+| `metaDescription` | `string` | No |  |
 | `published` | `bool` | No |  |
-| `read_time` | `int` | No |  |
-| `tag` | `array` | No |  |
+| `readTime` | `int` | No |  |
+| `tags` | `array` | No |  |
 | `title` | `string` | No |  |
-| `user_id` | `int` | No |  |
-| `view` | `int` | No |  |
+| `userId` | `int` | No |  |
+| `views` | `int` | No |  |
 
 ### Operations
 
@@ -328,7 +328,7 @@ $product = $client->Product();
 | `name` | `string` | No |  |
 | `price` | `float` | No |  |
 | `rating` | `float` | No |  |
-| `review` | `int` | No |  |
+| `reviews` | `int` | No |  |
 | `sku` | `string` | No |  |
 | `stock` | `int` | No |  |
 
@@ -391,12 +391,12 @@ $todo = $client->Todo();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `completed` | `bool` | No |  |
-| `created_at` | `string` | No |  |
-| `due_date` | `string` | No |  |
+| `createdAt` | `string` | No |  |
+| `dueDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `priority` | `string` | No |  |
 | `title` | `string` | No |  |
-| `user_id` | `int` | No |  |
+| `userId` | `int` | No |  |
 
 ### Operations
 

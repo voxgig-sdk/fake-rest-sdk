@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'FakeRest',
   }
 
 
@@ -100,6 +100,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/products/categories",
               "parts": [
@@ -140,14 +141,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "created_at",
+          "name": "createdAt",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "device_info",
+          "name": "deviceInfo",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 3
@@ -168,14 +169,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "is_verified",
+          "name": "isVerified",
           "req": false,
           "type": "`$BOOLEAN`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "like",
+          "name": "likes",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 7
@@ -196,14 +197,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "parent_comment_id",
+          "name": "parentCommentId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "post_id",
+          "name": "postId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 11
@@ -225,6 +226,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/comments",
               "parts": [
@@ -260,6 +262,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/posts/{postId}/comments",
               "parts": [
@@ -287,6 +290,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/comments",
               "parts": [
@@ -330,14 +334,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "cover_image",
+          "name": "coverImage",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "created_at",
+          "name": "createdAt",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -358,14 +362,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "like",
+          "name": "likes",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "meta_description",
+          "name": "metaDescription",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
@@ -379,14 +383,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "read_time",
+          "name": "readTime",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "tag",
+          "name": "tags",
           "req": false,
           "type": "`$ARRAY`",
           "index$": 10
@@ -400,14 +404,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "user_id",
+          "name": "userId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "view",
+          "name": "views",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 13
@@ -422,6 +426,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/posts",
               "parts": [
@@ -445,6 +450,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/posts",
               "parts": [
@@ -480,6 +486,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/posts/{id}",
               "parts": [
@@ -559,7 +566,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "review",
+          "name": "reviews",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 7
@@ -588,6 +595,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/products",
               "parts": [
@@ -623,6 +631,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/products/{id}",
               "parts": [
@@ -660,14 +669,14 @@ class Config {
         },
         {
           "active": true,
-          "name": "created_at",
+          "name": "createdAt",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "due_date",
+          "name": "dueDate",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
@@ -695,7 +704,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "user_id",
+          "name": "userId",
           "req": false,
           "type": "`$INTEGER`",
           "index$": 6
@@ -745,6 +754,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/todos",
               "parts": [
@@ -841,6 +851,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/api/users",
               "parts": [
@@ -864,6 +875,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/api/users",
               "parts": [
@@ -899,6 +911,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/api/users/{id}",
               "parts": [
@@ -939,6 +952,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/api/users/{id}",
               "parts": [
@@ -979,6 +993,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PUT",
               "orig": "/api/users/{id}",
               "parts": [

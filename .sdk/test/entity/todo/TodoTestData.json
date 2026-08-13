@@ -3,30 +3,30 @@
     "todo": {
       "TODO00": {
         "completed": true,
-        "created_at": "s47",
-        "due_date": "s48",
+        "createdAt": "s47",
+        "dueDate": "s48",
         "id": "TODO00",
         "priority": "s4a",
         "title": "s4b",
-        "user_id": "USER01"
+        "userId": "s4c"
       },
       "TODO01": {
         "completed": true,
-        "created_at": "s8d",
-        "due_date": "s8e",
+        "createdAt": "s8d",
+        "dueDate": "s8e",
         "id": "TODO01",
         "priority": "s90",
         "title": "s91",
-        "user_id": "USER01"
+        "userId": "s92"
       },
       "TODO02": {
         "completed": true,
-        "created_at": "sd3",
-        "due_date": "sd4",
+        "createdAt": "sd3",
+        "dueDate": "sd4",
         "id": "TODO02",
         "priority": "sd6",
         "title": "sd7",
-        "user_id": "USER01"
+        "userId": "sd8"
       }
     }
   },
@@ -34,11 +34,11 @@
     "todo": {
       "todo_ref01": {
         "completed": true,
-        "created_at": "s119",
-        "due_date": "s11a",
+        "createdAt": "s119",
+        "dueDate": "s11a",
         "priority": "s11c",
         "title": "s11d",
-        "user_id": "USER01"
+        "userId": "s11e"
       }
     }
   }

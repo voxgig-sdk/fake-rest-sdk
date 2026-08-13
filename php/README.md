@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $categorys = $client->Category()->list();
+    $products = $client->Product()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -120,14 +120,18 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = FakeRestSDK::test();
+$client = FakeRestSDK::test([
+    "entity" => ["product" => ["test01" => ["id" => "test01"]]],
+]);
 
-// Entity ops return the bare mock record (throws on error).
-$category = $client->Category()->list();
-print_r($category);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$product = $client->Product()->list();
+print_r($product);
 ```
 
 ### Use a custom fetch function
@@ -233,7 +237,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -269,16 +273,16 @@ API path: `/api/products/categories`
 | --- | --- |
 | `avatar` |  |
 | `body` |  |
-| `created_at` |  |
-| `device_info` |  |
+| `createdAt` |  |
+| `deviceInfo` |  |
 | `email` |  |
 | `id` |  |
-| `is_verified` |  |
-| `like` |  |
+| `isVerified` |  |
+| `likes` |  |
 | `location` |  |
 | `name` |  |
-| `parent_comment_id` |  |
-| `post_id` |  |
+| `parentCommentId` |  |
+| `postId` |  |
 | `website` |  |
 
 Operations: Create, List.
@@ -291,18 +295,18 @@ API path: `/api/comments`
 | --- | --- |
 | `body` |  |
 | `category` |  |
-| `cover_image` |  |
-| `created_at` |  |
+| `coverImage` |  |
+| `createdAt` |  |
 | `featured` |  |
 | `id` |  |
-| `like` |  |
-| `meta_description` |  |
+| `likes` |  |
+| `metaDescription` |  |
 | `published` |  |
-| `read_time` |  |
-| `tag` |  |
+| `readTime` |  |
+| `tags` |  |
 | `title` |  |
-| `user_id` |  |
-| `view` |  |
+| `userId` |  |
+| `views` |  |
 
 Operations: Create, List, Load.
 
@@ -319,7 +323,7 @@ API path: `/api/posts`
 | `name` |  |
 | `price` |  |
 | `rating` |  |
-| `review` |  |
+| `reviews` |  |
 | `sku` |  |
 | `stock` |  |
 
@@ -332,12 +336,12 @@ API path: `/api/products`
 | Field | Description |
 | --- | --- |
 | `completed` |  |
-| `created_at` |  |
-| `due_date` |  |
+| `createdAt` |  |
+| `dueDate` |  |
 | `id` |  |
 | `priority` |  |
 | `title` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List.
 
@@ -408,16 +412,16 @@ Create an instance: `$comment = $client->Comment();`
 | --- | --- | --- |
 | `avatar` | `string` |  |
 | `body` | `string` |  |
-| `created_at` | `string` |  |
-| `device_info` | `array` |  |
+| `createdAt` | `string` |  |
+| `deviceInfo` | `array` |  |
 | `email` | `string` |  |
 | `id` | `int` |  |
-| `is_verified` | `bool` |  |
-| `like` | `int` |  |
+| `isVerified` | `bool` |  |
+| `likes` | `int` |  |
 | `location` | `string` |  |
 | `name` | `string` |  |
-| `parent_comment_id` | `int` |  |
-| `post_id` | `int` |  |
+| `parentCommentId` | `int` |  |
+| `postId` | `int` |  |
 | `website` | `string` |  |
 
 #### Example: List
@@ -453,23 +457,23 @@ Create an instance: `$post = $client->Post();`
 | --- | --- | --- |
 | `body` | `string` |  |
 | `category` | `string` |  |
-| `cover_image` | `string` |  |
-| `created_at` | `string` |  |
+| `coverImage` | `string` |  |
+| `createdAt` | `string` |  |
 | `featured` | `bool` |  |
 | `id` | `int` |  |
-| `like` | `int` |  |
-| `meta_description` | `string` |  |
+| `likes` | `int` |  |
+| `metaDescription` | `string` |  |
 | `published` | `bool` |  |
-| `read_time` | `int` |  |
-| `tag` | `array` |  |
+| `readTime` | `int` |  |
+| `tags` | `array` |  |
 | `title` | `string` |  |
-| `user_id` | `int` |  |
-| `view` | `int` |  |
+| `userId` | `int` |  |
+| `views` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Post record (throws on error).
+// load() returns the ENTITY — call data_get() for the Post record (throws on error).
 $post = $client->Post()->load(["id" => 1]);
 ```
 
@@ -510,14 +514,14 @@ Create an instance: `$product = $client->Product();`
 | `name` | `string` |  |
 | `price` | `float` |  |
 | `rating` | `float` |  |
-| `review` | `int` |  |
+| `reviews` | `int` |  |
 | `sku` | `string` |  |
 | `stock` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Product record (throws on error).
+// load() returns the ENTITY — call data_get() for the Product record (throws on error).
 $product = $client->Product()->load(["id" => 1]);
 ```
 
@@ -544,12 +548,12 @@ Create an instance: `$todo = $client->Todo();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `completed` | `bool` |  |
-| `created_at` | `string` |  |
-| `due_date` | `string` |  |
+| `createdAt` | `string` |  |
+| `dueDate` | `string` |  |
 | `id` | `int` |  |
 | `priority` | `string` |  |
 | `title` | `string` |  |
-| `user_id` | `int` |  |
+| `userId` | `int` |  |
 
 #### Example: List
 
@@ -589,7 +593,7 @@ Create an instance: `$user = $client->User();`
 #### Example: Load
 
 ```php
-// load() returns the bare User record (throws on error).
+// load() returns the ENTITY — call data_get() for the User record (throws on error).
 $user = $client->User()->load(["id" => 1]);
 ```
 
@@ -684,11 +688,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$category = $client->Category();
-$category->list();
+$product = $client->Product();
+$product->list();
 
-// $category->data_get() now returns the category data from the last list
-// $category->match_get() returns the last match criteria
+// $product->data_get() now returns the product data from the last list
+// $product->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

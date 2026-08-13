@@ -23,8 +23,8 @@ module FakeRestTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("FAKEREST_TEST_LIVE")
-    override = getenv("FAKEREST_TEST_OVERRIDE")
+    live = getenv("FAKE_REST_TEST_LIVE")
+    override = getenv("FAKE_REST_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module FakeRestTestRunner
       end
     end
 
-    explain = getenv("FAKEREST_TEST_EXPLAIN")
-    m["FAKEREST_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("FAKE_REST_TEST_EXPLAIN")
+    m["FAKE_REST_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

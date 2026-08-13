@@ -173,16 +173,16 @@ fmt.Println(comment.GetName()) // "comment"
 | --- | --- | --- | --- |
 | `avatar` | `string` | No |  |
 | `body` | `string` | No |  |
-| `created_at` | `string` | No |  |
-| `device_info` | `map[string]any` | No |  |
+| `createdAt` | `string` | No |  |
+| `deviceInfo` | `map[string]any` | No |  |
 | `email` | `string` | No |  |
 | `id` | `int` | No |  |
-| `is_verified` | `bool` | No |  |
-| `like` | `int` | No |  |
+| `isVerified` | `bool` | No |  |
+| `likes` | `int` | No |  |
 | `location` | `string` | No |  |
 | `name` | `string` | No |  |
-| `parent_comment_id` | `int` | No |  |
-| `post_id` | `int` | No |  |
+| `parentCommentId` | `int` | No |  |
+| `postId` | `int` | No |  |
 | `website` | `string` | No |  |
 
 ### Operations
@@ -249,18 +249,18 @@ fmt.Println(post.GetName()) // "post"
 | --- | --- | --- | --- |
 | `body` | `string` | No |  |
 | `category` | `string` | No |  |
-| `cover_image` | `string` | No |  |
-| `created_at` | `string` | No |  |
+| `coverImage` | `string` | No |  |
+| `createdAt` | `string` | No |  |
 | `featured` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `like` | `int` | No |  |
-| `meta_description` | `string` | No |  |
+| `likes` | `int` | No |  |
+| `metaDescription` | `string` | No |  |
 | `published` | `bool` | No |  |
-| `read_time` | `int` | No |  |
-| `tag` | `[]any` | No |  |
+| `readTime` | `int` | No |  |
+| `tags` | `[]any` | No |  |
 | `title` | `string` | No |  |
-| `user_id` | `int` | No |  |
-| `view` | `int` | No |  |
+| `userId` | `int` | No |  |
+| `views` | `int` | No |  |
 
 ### Operations
 
@@ -343,7 +343,7 @@ fmt.Println(product.GetName()) // "product"
 | `name` | `string` | No |  |
 | `price` | `float64` | No |  |
 | `rating` | `float64` | No |  |
-| `review` | `int` | No |  |
+| `reviews` | `int` | No |  |
 | `sku` | `string` | No |  |
 | `stock` | `int` | No |  |
 
@@ -409,12 +409,12 @@ fmt.Println(todo.GetName()) // "todo"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `completed` | `bool` | No |  |
-| `created_at` | `string` | No |  |
-| `due_date` | `string` | No |  |
+| `createdAt` | `string` | No |  |
+| `dueDate` | `string` | No |  |
 | `id` | `int` | No |  |
 | `priority` | `string` | No |  |
 | `title` | `string` | No |  |
-| `user_id` | `int` | No |  |
+| `userId` | `int` | No |  |
 
 ### Operations
 

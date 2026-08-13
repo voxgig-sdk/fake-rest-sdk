@@ -19,16 +19,16 @@
 ---@class Comment
 ---@field avatar? string
 ---@field body? string
----@field created_at? string
----@field device_info? table
+---@field createdAt? string
+---@field deviceInfo? table
 ---@field email? string
 ---@field id? number
----@field is_verified? boolean
----@field like? number
+---@field isVerified? boolean
+---@field likes? number
 ---@field location? string
 ---@field name? string
----@field parent_comment_id? number
----@field post_id? number
+---@field parentCommentId? number
+---@field postId? number
 ---@field website? string
 
 ---@class CommentListMatch
@@ -37,33 +37,33 @@
 ---@class CommentCreateData
 ---@field avatar? string
 ---@field body? string
----@field created_at? string
----@field device_info? table
+---@field createdAt? string
+---@field deviceInfo? table
 ---@field email? string
 ---@field id? number
----@field is_verified? boolean
----@field like? number
+---@field isVerified? boolean
+---@field likes? number
 ---@field location? string
 ---@field name? string
----@field parent_comment_id? number
----@field post_id? number
+---@field parentCommentId? number
+---@field postId? number
 ---@field website? string
 
 ---@class Post
 ---@field body? string
 ---@field category? string
----@field cover_image? string
----@field created_at? string
+---@field coverImage? string
+---@field createdAt? string
 ---@field featured? boolean
 ---@field id? number
----@field like? number
----@field meta_description? string
+---@field likes? number
+---@field metaDescription? string
 ---@field published? boolean
----@field read_time? number
----@field tag? table
+---@field readTime? number
+---@field tags? table
 ---@field title? string
----@field user_id? number
----@field view? number
+---@field userId? number
+---@field views? number
 
 ---@class PostLoadMatch
 ---@field id number
@@ -71,34 +71,34 @@
 ---@class PostListMatch
 ---@field body? string
 ---@field category? string
----@field cover_image? string
----@field created_at? string
+---@field coverImage? string
+---@field createdAt? string
 ---@field featured? boolean
 ---@field id? number
----@field like? number
----@field meta_description? string
+---@field likes? number
+---@field metaDescription? string
 ---@field published? boolean
----@field read_time? number
----@field tag? table
+---@field readTime? number
+---@field tags? table
 ---@field title? string
----@field user_id? number
----@field view? number
+---@field userId? number
+---@field views? number
 
 ---@class PostCreateData
 ---@field body? string
 ---@field category? string
----@field cover_image? string
----@field created_at? string
+---@field coverImage? string
+---@field createdAt? string
 ---@field featured? boolean
 ---@field id? number
----@field like? number
----@field meta_description? string
+---@field likes? number
+---@field metaDescription? string
 ---@field published? boolean
----@field read_time? number
----@field tag? table
+---@field readTime? number
+---@field tags? table
 ---@field title? string
----@field user_id? number
----@field view? number
+---@field userId? number
+---@field views? number
 
 ---@class Product
 ---@field brand? string
@@ -108,7 +108,7 @@
 ---@field name? string
 ---@field price? number
 ---@field rating? number
----@field review? number
+---@field reviews? number
 ---@field sku? string
 ---@field stock? number
 
@@ -123,27 +123,27 @@
 ---@field name? string
 ---@field price? number
 ---@field rating? number
----@field review? number
+---@field reviews? number
 ---@field sku? string
 ---@field stock? number
 
 ---@class Todo
 ---@field completed? boolean
----@field created_at? string
----@field due_date? string
+---@field createdAt? string
+---@field dueDate? string
 ---@field id? number
 ---@field priority? string
 ---@field title? string
----@field user_id? number
+---@field userId? number
 
 ---@class TodoListMatch
 ---@field completed? boolean
----@field created_at? string
----@field due_date? string
+---@field createdAt? string
+---@field dueDate? string
 ---@field id? number
 ---@field priority? string
 ---@field title? string
----@field user_id? number
+---@field userId? number
 
 ---@class User
 ---@field address? table
@@ -180,6 +180,13 @@
 
 ---@class UserUpdateData
 ---@field id number
+---@field address? table
+---@field company? table
+---@field email? string
+---@field name? string
+---@field phone? string
+---@field username? string
+---@field website? string
 
 ---@class UserRemoveMatch
 ---@field id number

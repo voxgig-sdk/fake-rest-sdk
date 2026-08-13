@@ -16,12 +16,12 @@ main: kit: entity: post: {
       type: "`$STRING`"
     }
     {
-      name: "cover_image"
+      name: "coverImage"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "created_at"
+      name: "createdAt"
       req: false
       type: "`$STRING`"
     }
@@ -36,12 +36,12 @@ main: kit: entity: post: {
       type: "`$INTEGER`"
     }
     {
-      name: "like"
+      name: "likes"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "meta_description"
+      name: "metaDescription"
       req: false
       type: "`$STRING`"
     }
@@ -51,12 +51,12 @@ main: kit: entity: post: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "read_time"
+      name: "readTime"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "tag"
+      name: "tags"
       req: false
       type: "`$ARRAY`"
     }
@@ -66,12 +66,12 @@ main: kit: entity: post: {
       type: "`$STRING`"
     }
     {
-      name: "user_id"
+      name: "userId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "view"
+      name: "views"
       req: false
       type: "`$INTEGER`"
     }

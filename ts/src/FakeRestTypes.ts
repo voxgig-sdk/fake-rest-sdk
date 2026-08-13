@@ -20,16 +20,16 @@ export interface CategoryListMatch {
 export interface Comment {
   avatar?: string
   body?: string
-  created_at?: string
-  device_info?: Record<string, any>
+  createdAt?: string
+  deviceInfo?: Record<string, any>
   email?: string
   id?: number
-  is_verified?: boolean
-  like?: number
+  isVerified?: boolean
+  likes?: number
   location?: string
   name?: string
-  parent_comment_id?: number
-  post_id?: number
+  parentCommentId?: number
+  postId?: number
   website?: string
 }
 
@@ -40,34 +40,34 @@ export interface CommentListMatch {
 export interface CommentCreateData {
   avatar?: string
   body?: string
-  created_at?: string
-  device_info?: Record<string, any>
+  createdAt?: string
+  deviceInfo?: Record<string, any>
   email?: string
   id?: number
-  is_verified?: boolean
-  like?: number
+  isVerified?: boolean
+  likes?: number
   location?: string
   name?: string
-  parent_comment_id?: number
-  post_id?: number
+  parentCommentId?: number
+  postId?: number
   website?: string
 }
 
 export interface Post {
   body?: string
   category?: string
-  cover_image?: string
-  created_at?: string
+  coverImage?: string
+  createdAt?: string
   featured?: boolean
   id?: number
-  like?: number
-  meta_description?: string
+  likes?: number
+  metaDescription?: string
   published?: boolean
-  read_time?: number
-  tag?: any[]
+  readTime?: number
+  tags?: any[]
   title?: string
-  user_id?: number
-  view?: number
+  userId?: number
+  views?: number
 }
 
 export interface PostLoadMatch {
@@ -77,35 +77,35 @@ export interface PostLoadMatch {
 export interface PostListMatch {
   body?: string
   category?: string
-  cover_image?: string
-  created_at?: string
+  coverImage?: string
+  createdAt?: string
   featured?: boolean
   id?: number
-  like?: number
-  meta_description?: string
+  likes?: number
+  metaDescription?: string
   published?: boolean
-  read_time?: number
-  tag?: any[]
+  readTime?: number
+  tags?: any[]
   title?: string
-  user_id?: number
-  view?: number
+  userId?: number
+  views?: number
 }
 
 export interface PostCreateData {
   body?: string
   category?: string
-  cover_image?: string
-  created_at?: string
+  coverImage?: string
+  createdAt?: string
   featured?: boolean
   id?: number
-  like?: number
-  meta_description?: string
+  likes?: number
+  metaDescription?: string
   published?: boolean
-  read_time?: number
-  tag?: any[]
+  readTime?: number
+  tags?: any[]
   title?: string
-  user_id?: number
-  view?: number
+  userId?: number
+  views?: number
 }
 
 export interface Product {
@@ -116,7 +116,7 @@ export interface Product {
   name?: string
   price?: number
   rating?: number
-  review?: number
+  reviews?: number
   sku?: string
   stock?: number
 }
@@ -133,29 +133,29 @@ export interface ProductListMatch {
   name?: string
   price?: number
   rating?: number
-  review?: number
+  reviews?: number
   sku?: string
   stock?: number
 }
 
 export interface Todo {
   completed?: boolean
-  created_at?: string
-  due_date?: string
+  createdAt?: string
+  dueDate?: string
   id?: number
   priority?: string
   title?: string
-  user_id?: number
+  userId?: number
 }
 
 export interface TodoListMatch {
   completed?: boolean
-  created_at?: string
-  due_date?: string
+  createdAt?: string
+  dueDate?: string
   id?: number
   priority?: string
   title?: string
-  user_id?: number
+  userId?: number
 }
 
 export interface User {
@@ -197,6 +197,13 @@ export interface UserCreateData {
 
 export interface UserUpdateData {
   id: number
+  address?: Record<string, any>
+  company?: Record<string, any>
+  email?: string
+  name?: string
+  phone?: string
+  username?: string
+  website?: string
 }
 
 export interface UserRemoveMatch {

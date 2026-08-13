@@ -35,7 +35,9 @@ const client = new FakeRestSDK()
 
 ### 2. List category records
 
-`list()` resolves to an array of Category objects — iterate it directly:
+`list()` resolves to an array of Category ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const categorys = await client.Category().list()
@@ -52,8 +54,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const categorys = await client.Category().list()
-  console.log(categorys)
+  const products = await client.Product().list()
+  console.log(products)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -119,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = FakeRestSDK.test()
 
-const category = await client.Category().list()
-// category is a bare entity populated with mock response data
-console.log(category)
+const product = await client.Product().list()
+// product is the entity, populated with mock response data
+// — call product.data() for the record itself
+console.log(product)
 ```
 
 You can also use the instance method:
@@ -136,7 +139,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Category()
+const entity = client.Product()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -309,16 +312,16 @@ API path: `/api/products/categories`
 | --- | --- |
 | `avatar` |  |
 | `body` |  |
-| `created_at` |  |
-| `device_info` |  |
+| `createdAt` |  |
+| `deviceInfo` |  |
 | `email` |  |
 | `id` |  |
-| `is_verified` |  |
-| `like` |  |
+| `isVerified` |  |
+| `likes` |  |
 | `location` |  |
 | `name` |  |
-| `parent_comment_id` |  |
-| `post_id` |  |
+| `parentCommentId` |  |
+| `postId` |  |
 | `website` |  |
 
 Operations: create, list.
@@ -331,18 +334,18 @@ API path: `/api/comments`
 | --- | --- |
 | `body` |  |
 | `category` |  |
-| `cover_image` |  |
-| `created_at` |  |
+| `coverImage` |  |
+| `createdAt` |  |
 | `featured` |  |
 | `id` |  |
-| `like` |  |
-| `meta_description` |  |
+| `likes` |  |
+| `metaDescription` |  |
 | `published` |  |
-| `read_time` |  |
-| `tag` |  |
+| `readTime` |  |
+| `tags` |  |
 | `title` |  |
-| `user_id` |  |
-| `view` |  |
+| `userId` |  |
+| `views` |  |
 
 Operations: create, list, load.
 
@@ -359,7 +362,7 @@ API path: `/api/posts`
 | `name` |  |
 | `price` |  |
 | `rating` |  |
-| `review` |  |
+| `reviews` |  |
 | `sku` |  |
 | `stock` |  |
 
@@ -372,12 +375,12 @@ API path: `/api/products`
 | Field | Description |
 | --- | --- |
 | `completed` |  |
-| `created_at` |  |
-| `due_date` |  |
+| `createdAt` |  |
+| `dueDate` |  |
 | `id` |  |
 | `priority` |  |
 | `title` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: list.
 
@@ -447,16 +450,16 @@ Create an instance: `const comment = client.Comment()`
 | --- | --- | --- |
 | `avatar` | `string` |  |
 | `body` | `string` |  |
-| `created_at` | `string` |  |
-| `device_info` | `Record<string, any>` |  |
+| `createdAt` | `string` |  |
+| `deviceInfo` | `Record<string, any>` |  |
 | `email` | `string` |  |
 | `id` | `number` |  |
-| `is_verified` | `boolean` |  |
-| `like` | `number` |  |
+| `isVerified` | `boolean` |  |
+| `likes` | `number` |  |
 | `location` | `string` |  |
 | `name` | `string` |  |
-| `parent_comment_id` | `number` |  |
-| `post_id` | `number` |  |
+| `parentCommentId` | `number` |  |
+| `postId` | `number` |  |
 | `website` | `string` |  |
 
 #### Example: List
@@ -491,18 +494,18 @@ Create an instance: `const post = client.Post()`
 | --- | --- | --- |
 | `body` | `string` |  |
 | `category` | `string` |  |
-| `cover_image` | `string` |  |
-| `created_at` | `string` |  |
+| `coverImage` | `string` |  |
+| `createdAt` | `string` |  |
 | `featured` | `boolean` |  |
 | `id` | `number` |  |
-| `like` | `number` |  |
-| `meta_description` | `string` |  |
+| `likes` | `number` |  |
+| `metaDescription` | `string` |  |
 | `published` | `boolean` |  |
-| `read_time` | `number` |  |
-| `tag` | `any[]` |  |
+| `readTime` | `number` |  |
+| `tags` | `any[]` |  |
 | `title` | `string` |  |
-| `user_id` | `number` |  |
-| `view` | `number` |  |
+| `userId` | `number` |  |
+| `views` | `number` |  |
 
 #### Example: Load
 
@@ -546,7 +549,7 @@ Create an instance: `const product = client.Product()`
 | `name` | `string` |  |
 | `price` | `number` |  |
 | `rating` | `number` |  |
-| `review` | `number` |  |
+| `reviews` | `number` |  |
 | `sku` | `string` |  |
 | `stock` | `number` |  |
 
@@ -578,12 +581,12 @@ Create an instance: `const todo = client.Todo()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `completed` | `boolean` |  |
-| `created_at` | `string` |  |
-| `due_date` | `string` |  |
+| `createdAt` | `string` |  |
+| `dueDate` | `string` |  |
 | `id` | `number` |  |
 | `priority` | `string` |  |
 | `title` | `string` |  |
-| `user_id` | `number` |  |
+| `userId` | `number` |  |
 
 #### Example: List
 
@@ -708,11 +711,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const category = client.Category()
-await category.list()
+const product = client.Product()
+await product.list()
 
-// category.data() now returns the category data from the last `list`
-// category.match() returns the last match criteria
+// product.data() now returns the product data from the last `list`
+// product.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

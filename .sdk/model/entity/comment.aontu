@@ -16,12 +16,12 @@ main: kit: entity: comment: {
       type: "`$STRING`"
     }
     {
-      name: "created_at"
+      name: "createdAt"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "device_info"
+      name: "deviceInfo"
       req: false
       type: "`$OBJECT`"
     }
@@ -36,12 +36,12 @@ main: kit: entity: comment: {
       type: "`$INTEGER`"
     }
     {
-      name: "is_verified"
+      name: "isVerified"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "like"
+      name: "likes"
       req: false
       type: "`$INTEGER`"
     }
@@ -56,12 +56,12 @@ main: kit: entity: comment: {
       type: "`$STRING`"
     }
     {
-      name: "parent_comment_id"
+      name: "parentCommentId"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "post_id"
+      name: "postId"
       req: false
       type: "`$INTEGER`"
     }

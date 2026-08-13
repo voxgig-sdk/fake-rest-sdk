@@ -57,8 +57,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    categorys = client.Category().list()
-    print(categorys)
+    products = client.Product().list()
+    print(products)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -124,9 +124,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = FakeRestSDK.test()
 
-# Entity ops return the bare record and raise on error.
-category = client.Category().list()
-# category contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+product = client.Product().list()
+# product contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -229,7 +230,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -265,16 +266,16 @@ API path: `/api/products/categories`
 | --- | --- |
 | `avatar` |  |
 | `body` |  |
-| `created_at` |  |
-| `device_info` |  |
+| `createdAt` |  |
+| `deviceInfo` |  |
 | `email` |  |
 | `id` |  |
-| `is_verified` |  |
-| `like` |  |
+| `isVerified` |  |
+| `likes` |  |
 | `location` |  |
 | `name` |  |
-| `parent_comment_id` |  |
-| `post_id` |  |
+| `parentCommentId` |  |
+| `postId` |  |
 | `website` |  |
 
 Operations: Create, List.
@@ -287,18 +288,18 @@ API path: `/api/comments`
 | --- | --- |
 | `body` |  |
 | `category` |  |
-| `cover_image` |  |
-| `created_at` |  |
+| `coverImage` |  |
+| `createdAt` |  |
 | `featured` |  |
 | `id` |  |
-| `like` |  |
-| `meta_description` |  |
+| `likes` |  |
+| `metaDescription` |  |
 | `published` |  |
-| `read_time` |  |
-| `tag` |  |
+| `readTime` |  |
+| `tags` |  |
 | `title` |  |
-| `user_id` |  |
-| `view` |  |
+| `userId` |  |
+| `views` |  |
 
 Operations: Create, List, Load.
 
@@ -315,7 +316,7 @@ API path: `/api/posts`
 | `name` |  |
 | `price` |  |
 | `rating` |  |
-| `review` |  |
+| `reviews` |  |
 | `sku` |  |
 | `stock` |  |
 
@@ -328,12 +329,12 @@ API path: `/api/products`
 | Field | Description |
 | --- | --- |
 | `completed` |  |
-| `created_at` |  |
-| `due_date` |  |
+| `createdAt` |  |
+| `dueDate` |  |
 | `id` |  |
 | `priority` |  |
 | `title` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List.
 
@@ -403,16 +404,16 @@ Create an instance: `comment = client.Comment()`
 | --- | --- | --- |
 | `avatar` | `str` |  |
 | `body` | `str` |  |
-| `created_at` | `str` |  |
-| `device_info` | `dict` |  |
+| `createdAt` | `str` |  |
+| `deviceInfo` | `dict` |  |
 | `email` | `str` |  |
 | `id` | `int` |  |
-| `is_verified` | `bool` |  |
-| `like` | `int` |  |
+| `isVerified` | `bool` |  |
+| `likes` | `int` |  |
 | `location` | `str` |  |
 | `name` | `str` |  |
-| `parent_comment_id` | `int` |  |
-| `post_id` | `int` |  |
+| `parentCommentId` | `int` |  |
+| `postId` | `int` |  |
 | `website` | `str` |  |
 
 #### Example: List
@@ -447,18 +448,18 @@ Create an instance: `post = client.Post()`
 | --- | --- | --- |
 | `body` | `str` |  |
 | `category` | `str` |  |
-| `cover_image` | `str` |  |
-| `created_at` | `str` |  |
+| `coverImage` | `str` |  |
+| `createdAt` | `str` |  |
 | `featured` | `bool` |  |
 | `id` | `int` |  |
-| `like` | `int` |  |
-| `meta_description` | `str` |  |
+| `likes` | `int` |  |
+| `metaDescription` | `str` |  |
 | `published` | `bool` |  |
-| `read_time` | `int` |  |
-| `tag` | `list` |  |
+| `readTime` | `int` |  |
+| `tags` | `list` |  |
 | `title` | `str` |  |
-| `user_id` | `int` |  |
-| `view` | `int` |  |
+| `userId` | `int` |  |
+| `views` | `int` |  |
 
 #### Example: Load
 
@@ -502,7 +503,7 @@ Create an instance: `product = client.Product()`
 | `name` | `str` |  |
 | `price` | `float` |  |
 | `rating` | `float` |  |
-| `review` | `int` |  |
+| `reviews` | `int` |  |
 | `sku` | `str` |  |
 | `stock` | `int` |  |
 
@@ -534,12 +535,12 @@ Create an instance: `todo = client.Todo()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `completed` | `bool` |  |
-| `created_at` | `str` |  |
-| `due_date` | `str` |  |
+| `createdAt` | `str` |  |
+| `dueDate` | `str` |  |
 | `id` | `int` |  |
 | `priority` | `str` |  |
 | `title` | `str` |  |
-| `user_id` | `int` |  |
+| `userId` | `int` |  |
 
 #### Example: List
 
@@ -670,11 +671,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-category = client.Category()
-category.list()
+product = client.Product()
+product.list()
 
-# category.data_get() now returns the category data from the last list
-# category.match_get() returns the last match criteria
+# product.data_get() now returns the product data from the last list
+# product.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -70,7 +70,7 @@ describe("ProductEntity", function()
     -- The basic flow consumes synthetic IDs from the fixture. In live mode
     -- without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set FAKEREST_TEST_PRODUCT_ENTID JSON to run live")
+      pending("live entity test uses synthetic IDs from fixture — set FAKE_REST_TEST_PRODUCT_ENTID JSON to run live")
       return
     end
     local client = setup.client
@@ -97,7 +97,7 @@ describe("ProductEntity", function()
     }
     local product_ref01_data_dt0_loaded, err = product_ref01_ent:load(product_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local product_ref01_data_dt0_load_result = helpers.to_map(product_ref01_data_dt0_loaded)
+    local product_ref01_data_dt0_load_result = helpers.to_map(type(product_ref01_data_dt0_loaded) == 'table' and product_ref01_data_dt0_loaded.data_get and product_ref01_data_dt0_loaded:data_get() or product_ref01_data_dt0_loaded)
     assert.is_not_nil(product_ref01_data_dt0_load_result)
     assert.are.equal(product_ref01_data_dt0_load_result["id"], product_ref01_data["id"])
 
@@ -136,22 +136,22 @@ function product_basic_setup(extra)
   -- Detect ENTID env override before envOverride consumes it. When live
   -- mode is on without a real override, the basic test runs against synthetic
   -- IDs from the fixture and 4xx's. Surface this so the test can skip.
-  local entid_env_raw = os.getenv("FAKEREST_TEST_PRODUCT_ENTID")
+  local entid_env_raw = os.getenv("FAKE_REST_TEST_PRODUCT_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 
   local env = runner.env_override({
-    ["FAKEREST_TEST_PRODUCT_ENTID"] = idmap,
-    ["FAKEREST_TEST_LIVE"] = "FALSE",
-    ["FAKEREST_TEST_EXPLAIN"] = "FALSE",
+    ["FAKE_REST_TEST_PRODUCT_ENTID"] = idmap,
+    ["FAKE_REST_TEST_LIVE"] = "FALSE",
+    ["FAKE_REST_TEST_EXPLAIN"] = "FALSE",
   })
 
   local idmap_resolved = helpers.to_map(
-    env["FAKEREST_TEST_PRODUCT_ENTID"])
+    env["FAKE_REST_TEST_PRODUCT_ENTID"])
   if idmap_resolved == nil then
     idmap_resolved = helpers.to_map(idmap)
   end
 
-  if env["FAKEREST_TEST_LIVE"] == "TRUE" then
+  if env["FAKE_REST_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
       },
@@ -160,13 +160,13 @@ function product_basic_setup(extra)
     client = sdk.new(helpers.to_map(merged_opts))
   end
 
-  local live = env["FAKEREST_TEST_LIVE"] == "TRUE"
+  local live = env["FAKE_REST_TEST_LIVE"] == "TRUE"
   return {
     client = client,
     data = entity_data,
     idmap = idmap_resolved,
     env = env,
-    explain = env["FAKEREST_TEST_EXPLAIN"] == "TRUE",
+    explain = env["FAKE_REST_TEST_EXPLAIN"] == "TRUE",
     live = live,
     synthetic_only = live and not idmap_overridden,
     now = os.time() * 1000,

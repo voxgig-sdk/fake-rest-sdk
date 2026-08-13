@@ -21,3 +21,5 @@ main: {
       website: "https://fake-rest-api-mobile-apps.vercel.app"
     }
   }
+}
+

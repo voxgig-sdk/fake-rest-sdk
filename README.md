@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = FakeRestSDK.test()
-const categorys = await client.Category().list()
-// categorys is an array of bare Category records populated with mock data
-console.log(categorys)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = FakeRestSDK.test({
+  entity: {
+    product: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const products = await client.Product().list()
+// products is an array of Product entities, populated with mock data
+// — call products[0].data() for the record itself
+console.log(products)
 ```
 
 ### Python
 
 ```python
 client = FakeRestSDK.test()
-categorys = client.Category().list()
-print(categorys)
+products = client.Product().list()
+print(products)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(categorys)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = FakeRestSDK::test([
-    "entity" => ["category" => ["test01" => []]],
+    "entity" => ["product" => ["test01" => ["id" => "test01"]]],
 ]);
-$categorys = $client->Category()->list();
+$products = $client->Product()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Category(nil).List(
+result, err := client.Product(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Category(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = FakeRestSDK.test({
-  "entity" => { "category" => { "test01" => {} } },
+  "entity" => { "product" => { "test01" => { "id" => "test01" } } },
 })
-categorys = client.Category.list()
+products = client.Product.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:Category():list()
+local results, err = client:Product():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { FakeRestSDK } from '@voxgig-sdk/fake-rest'
 
 const client = new FakeRestSDK()
 
-// List all categorys (returns Category[])
+// List all categorys (returns CategoryEntity[] — .data() for the record)
 const categorys = await client.Category().list()
 for (const category of categorys) {
   console.log(category)
@@ -156,7 +165,7 @@ The API exposes 6 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Category** | The Category entity (list). | `/api/products/categories` |
-| **Comment** | The Comment entity (create, list). | `/api/comments` |
+| **Comment** | The Comment entity (create, list). | `/api/posts/{postId}/comments` |
 | **Post** | The Post entity (create, list, load). | `/api/posts` |
 | **Product** | The Product entity (list, load). | `/api/products` |
 | **Todo** | The Todo entity (list). | `/api/todos` |
@@ -348,6 +357,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://fake-rest-api-mobile-apps.vercel.app](https://fake-rest-api-mobile-apps.vercel.app)
 

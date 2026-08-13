@@ -164,16 +164,16 @@ comment = client.Comment()
 | --- | --- | --- | --- |
 | `avatar` | `str` | No |  |
 | `body` | `str` | No |  |
-| `created_at` | `str` | No |  |
-| `device_info` | `dict` | No |  |
+| `createdAt` | `str` | No |  |
+| `deviceInfo` | `dict` | No |  |
 | `email` | `str` | No |  |
 | `id` | `int` | No |  |
-| `is_verified` | `bool` | No |  |
-| `like` | `int` | No |  |
+| `isVerified` | `bool` | No |  |
+| `likes` | `int` | No |  |
 | `location` | `str` | No |  |
 | `name` | `str` | No |  |
-| `parent_comment_id` | `int` | No |  |
-| `post_id` | `int` | No |  |
+| `parentCommentId` | `int` | No |  |
+| `postId` | `int` | No |  |
 | `website` | `str` | No |  |
 
 ### Operations
@@ -238,18 +238,18 @@ post = client.Post()
 | --- | --- | --- | --- |
 | `body` | `str` | No |  |
 | `category` | `str` | No |  |
-| `cover_image` | `str` | No |  |
-| `created_at` | `str` | No |  |
+| `coverImage` | `str` | No |  |
+| `createdAt` | `str` | No |  |
 | `featured` | `bool` | No |  |
 | `id` | `int` | No |  |
-| `like` | `int` | No |  |
-| `meta_description` | `str` | No |  |
+| `likes` | `int` | No |  |
+| `metaDescription` | `str` | No |  |
 | `published` | `bool` | No |  |
-| `read_time` | `int` | No |  |
-| `tag` | `list` | No |  |
+| `readTime` | `int` | No |  |
+| `tags` | `list` | No |  |
 | `title` | `str` | No |  |
-| `user_id` | `int` | No |  |
-| `view` | `int` | No |  |
+| `userId` | `int` | No |  |
+| `views` | `int` | No |  |
 
 ### Operations
 
@@ -326,7 +326,7 @@ product = client.Product()
 | `name` | `str` | No |  |
 | `price` | `float` | No |  |
 | `rating` | `float` | No |  |
-| `review` | `int` | No |  |
+| `reviews` | `int` | No |  |
 | `sku` | `str` | No |  |
 | `stock` | `int` | No |  |
 
@@ -390,12 +390,12 @@ todo = client.Todo()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `completed` | `bool` | No |  |
-| `created_at` | `str` | No |  |
-| `due_date` | `str` | No |  |
+| `createdAt` | `str` | No |  |
+| `dueDate` | `str` | No |  |
 | `id` | `int` | No |  |
 | `priority` | `str` | No |  |
 | `title` | `str` | No |  |
-| `user_id` | `int` | No |  |
+| `userId` | `int` | No |  |
 
 ### Operations
 

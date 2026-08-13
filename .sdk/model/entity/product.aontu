@@ -41,7 +41,7 @@ main: kit: entity: product: {
       type: "`$NUMBER`"
     }
     {
-      name: "review"
+      name: "reviews"
       req: false
       type: "`$INTEGER`"
     }

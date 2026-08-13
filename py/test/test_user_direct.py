@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from fakerest_sdk.utility.voxgig_struct import voxgig_struct as vs
 from fakerest_sdk import FakeRestSDK
-from core import helpers
+from fakerest_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _user_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "FAKEREST_TEST_USER_ENTID": {},
-        "FAKEREST_TEST_LIVE": "FALSE",
+        "FAKE_REST_TEST_USER_ENTID": {},
+        "FAKE_REST_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("FAKEREST_TEST_LIVE") == "TRUE"
+    live = env.get("FAKE_REST_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

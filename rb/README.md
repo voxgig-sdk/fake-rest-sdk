@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  categorys = client.Category.list()
+  products = client.Product.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -114,14 +114,18 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = FakeRestSDK.test
+client = FakeRestSDK.test({
+  "entity" => { "product" => { "test01" => { "id" => "test01" } } },
+})
 
-# Entity ops return the bare mock record (raises on error).
-category = client.Category.list()
-puts category
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+product = client.Product.list()
+puts product
 ```
 
 ### Use a custom fetch function
@@ -259,16 +263,16 @@ API path: `/api/products/categories`
 | --- | --- |
 | `avatar` |  |
 | `body` |  |
-| `created_at` |  |
-| `device_info` |  |
+| `createdAt` |  |
+| `deviceInfo` |  |
 | `email` |  |
 | `id` |  |
-| `is_verified` |  |
-| `like` |  |
+| `isVerified` |  |
+| `likes` |  |
 | `location` |  |
 | `name` |  |
-| `parent_comment_id` |  |
-| `post_id` |  |
+| `parentCommentId` |  |
+| `postId` |  |
 | `website` |  |
 
 Operations: Create, List.
@@ -281,18 +285,18 @@ API path: `/api/comments`
 | --- | --- |
 | `body` |  |
 | `category` |  |
-| `cover_image` |  |
-| `created_at` |  |
+| `coverImage` |  |
+| `createdAt` |  |
 | `featured` |  |
 | `id` |  |
-| `like` |  |
-| `meta_description` |  |
+| `likes` |  |
+| `metaDescription` |  |
 | `published` |  |
-| `read_time` |  |
-| `tag` |  |
+| `readTime` |  |
+| `tags` |  |
 | `title` |  |
-| `user_id` |  |
-| `view` |  |
+| `userId` |  |
+| `views` |  |
 
 Operations: Create, List, Load.
 
@@ -309,7 +313,7 @@ API path: `/api/posts`
 | `name` |  |
 | `price` |  |
 | `rating` |  |
-| `review` |  |
+| `reviews` |  |
 | `sku` |  |
 | `stock` |  |
 
@@ -322,12 +326,12 @@ API path: `/api/products`
 | Field | Description |
 | --- | --- |
 | `completed` |  |
-| `created_at` |  |
-| `due_date` |  |
+| `createdAt` |  |
+| `dueDate` |  |
 | `id` |  |
 | `priority` |  |
 | `title` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List.
 
@@ -398,16 +402,16 @@ Create an instance: `comment = client.Comment`
 | --- | --- | --- |
 | `avatar` | `String` |  |
 | `body` | `String` |  |
-| `created_at` | `String` |  |
-| `device_info` | `Hash` |  |
+| `createdAt` | `String` |  |
+| `deviceInfo` | `Hash` |  |
 | `email` | `String` |  |
 | `id` | `Integer` |  |
-| `is_verified` | `Boolean` |  |
-| `like` | `Integer` |  |
+| `isVerified` | `Boolean` |  |
+| `likes` | `Integer` |  |
 | `location` | `String` |  |
 | `name` | `String` |  |
-| `parent_comment_id` | `Integer` |  |
-| `post_id` | `Integer` |  |
+| `parentCommentId` | `Integer` |  |
+| `postId` | `Integer` |  |
 | `website` | `String` |  |
 
 #### Example: List
@@ -443,23 +447,23 @@ Create an instance: `post = client.Post`
 | --- | --- | --- |
 | `body` | `String` |  |
 | `category` | `String` |  |
-| `cover_image` | `String` |  |
-| `created_at` | `String` |  |
+| `coverImage` | `String` |  |
+| `createdAt` | `String` |  |
 | `featured` | `Boolean` |  |
 | `id` | `Integer` |  |
-| `like` | `Integer` |  |
-| `meta_description` | `String` |  |
+| `likes` | `Integer` |  |
+| `metaDescription` | `String` |  |
 | `published` | `Boolean` |  |
-| `read_time` | `Integer` |  |
-| `tag` | `Array` |  |
+| `readTime` | `Integer` |  |
+| `tags` | `Array` |  |
 | `title` | `String` |  |
-| `user_id` | `Integer` |  |
-| `view` | `Integer` |  |
+| `userId` | `Integer` |  |
+| `views` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Post record (raises on error).
+# load returns the ENTITY — call data_get for the Post record (raises on error).
 post = client.Post.load({ "id" => 1 })
 ```
 
@@ -500,14 +504,14 @@ Create an instance: `product = client.Product`
 | `name` | `String` |  |
 | `price` | `Float` |  |
 | `rating` | `Float` |  |
-| `review` | `Integer` |  |
+| `reviews` | `Integer` |  |
 | `sku` | `String` |  |
 | `stock` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Product record (raises on error).
+# load returns the ENTITY — call data_get for the Product record (raises on error).
 product = client.Product.load({ "id" => 1 })
 ```
 
@@ -534,12 +538,12 @@ Create an instance: `todo = client.Todo`
 | Field | Type | Description |
 | --- | --- | --- |
 | `completed` | `Boolean` |  |
-| `created_at` | `String` |  |
-| `due_date` | `String` |  |
+| `createdAt` | `String` |  |
+| `dueDate` | `String` |  |
 | `id` | `Integer` |  |
 | `priority` | `String` |  |
 | `title` | `String` |  |
-| `user_id` | `Integer` |  |
+| `userId` | `Integer` |  |
 
 #### Example: List
 
@@ -579,7 +583,7 @@ Create an instance: `user = client.User`
 #### Example: Load
 
 ```ruby
-# load returns the bare User record (raises on error).
+# load returns the ENTITY — call data_get for the User record (raises on error).
 user = client.User.load({ "id" => 1 })
 ```
 
@@ -674,11 +678,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-category = client.Category
-category.list()
+product = client.Product
+product.list()
 
-# category.data_get now returns the category data from the last list
-# category.match_get returns the last match criteria
+# product.data_get now returns the product data from the last list
+# product.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

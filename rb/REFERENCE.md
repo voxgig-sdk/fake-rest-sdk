@@ -169,16 +169,16 @@ comment = client.Comment
 | --- | --- | --- | --- |
 | `avatar` | `String` | No |  |
 | `body` | `String` | No |  |
-| `created_at` | `String` | No |  |
-| `device_info` | `Hash` | No |  |
+| `createdAt` | `String` | No |  |
+| `deviceInfo` | `Hash` | No |  |
 | `email` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `is_verified` | `Boolean` | No |  |
-| `like` | `Integer` | No |  |
+| `isVerified` | `Boolean` | No |  |
+| `likes` | `Integer` | No |  |
 | `location` | `String` | No |  |
 | `name` | `String` | No |  |
-| `parent_comment_id` | `Integer` | No |  |
-| `post_id` | `Integer` | No |  |
+| `parentCommentId` | `Integer` | No |  |
+| `postId` | `Integer` | No |  |
 | `website` | `String` | No |  |
 
 ### Operations
@@ -242,18 +242,18 @@ post = client.Post
 | --- | --- | --- | --- |
 | `body` | `String` | No |  |
 | `category` | `String` | No |  |
-| `cover_image` | `String` | No |  |
-| `created_at` | `String` | No |  |
+| `coverImage` | `String` | No |  |
+| `createdAt` | `String` | No |  |
 | `featured` | `Boolean` | No |  |
 | `id` | `Integer` | No |  |
-| `like` | `Integer` | No |  |
-| `meta_description` | `String` | No |  |
+| `likes` | `Integer` | No |  |
+| `metaDescription` | `String` | No |  |
 | `published` | `Boolean` | No |  |
-| `read_time` | `Integer` | No |  |
-| `tag` | `Array` | No |  |
+| `readTime` | `Integer` | No |  |
+| `tags` | `Array` | No |  |
 | `title` | `String` | No |  |
-| `user_id` | `Integer` | No |  |
-| `view` | `Integer` | No |  |
+| `userId` | `Integer` | No |  |
+| `views` | `Integer` | No |  |
 
 ### Operations
 
@@ -329,7 +329,7 @@ product = client.Product
 | `name` | `String` | No |  |
 | `price` | `Float` | No |  |
 | `rating` | `Float` | No |  |
-| `review` | `Integer` | No |  |
+| `reviews` | `Integer` | No |  |
 | `sku` | `String` | No |  |
 | `stock` | `Integer` | No |  |
 
@@ -392,12 +392,12 @@ todo = client.Todo
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `completed` | `Boolean` | No |  |
-| `created_at` | `String` | No |  |
-| `due_date` | `String` | No |  |
+| `createdAt` | `String` | No |  |
+| `dueDate` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `priority` | `String` | No |  |
 | `title` | `String` | No |  |
-| `user_id` | `Integer` | No |  |
+| `userId` | `Integer` | No |  |
 
 ### Operations
 

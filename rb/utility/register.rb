@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ FakeRestUtility.registrar = ->(u) {
   u.prepare_params = FakeRestUtilities::PrepareParams
   u.prepare_path = FakeRestUtilities::PreparePath
   u.prepare_query = FakeRestUtilities::PrepareQuery
+  u.graphql_body = FakeRestUtilities::GraphqlBody
+  u.graphql_errors = FakeRestUtilities::GraphqlErrors
   u.result_basic = FakeRestUtilities::ResultBasic
   u.result_body = FakeRestUtilities::ResultBody
   u.result_headers = FakeRestUtilities::ResultHeaders

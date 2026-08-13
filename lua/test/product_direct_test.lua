@@ -115,11 +115,11 @@ function product_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["FAKEREST_TEST_PRODUCT_ENTID"] = {},
-    ["FAKEREST_TEST_LIVE"] = "FALSE",
+    ["FAKE_REST_TEST_PRODUCT_ENTID"] = {},
+    ["FAKE_REST_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["FAKEREST_TEST_LIVE"] == "TRUE"
+  local live = env["FAKE_REST_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

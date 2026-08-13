@@ -60,6 +60,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/products/categories",
                 ["parts"] = {
@@ -100,14 +101,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "created_at",
+            ["name"] = "createdAt",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "device_info",
+            ["name"] = "deviceInfo",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 3,
@@ -128,14 +129,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "is_verified",
+            ["name"] = "isVerified",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "like",
+            ["name"] = "likes",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -156,14 +157,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "parent_comment_id",
+            ["name"] = "parentCommentId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 10,
           },
           {
             ["active"] = true,
-            ["name"] = "post_id",
+            ["name"] = "postId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 11,
@@ -185,6 +186,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/comments",
                 ["parts"] = {
@@ -220,6 +222,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/posts/{postId}/comments",
                 ["parts"] = {
@@ -247,6 +250,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/comments",
                 ["parts"] = {
@@ -290,14 +294,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "cover_image",
+            ["name"] = "coverImage",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "created_at",
+            ["name"] = "createdAt",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
@@ -318,14 +322,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "like",
+            ["name"] = "likes",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "meta_description",
+            ["name"] = "metaDescription",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 7,
@@ -339,14 +343,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "read_time",
+            ["name"] = "readTime",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 9,
           },
           {
             ["active"] = true,
-            ["name"] = "tag",
+            ["name"] = "tags",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 10,
@@ -360,14 +364,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "user_id",
+            ["name"] = "userId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 12,
           },
           {
             ["active"] = true,
-            ["name"] = "view",
+            ["name"] = "views",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 13,
@@ -382,6 +386,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/posts",
                 ["parts"] = {
@@ -405,6 +410,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/posts",
                 ["parts"] = {
@@ -440,6 +446,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/posts/{id}",
                 ["parts"] = {
@@ -519,7 +526,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "review",
+            ["name"] = "reviews",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -548,6 +555,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/products",
                 ["parts"] = {
@@ -583,6 +591,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/products/{id}",
                 ["parts"] = {
@@ -620,14 +629,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "created_at",
+            ["name"] = "createdAt",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "due_date",
+            ["name"] = "dueDate",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -655,7 +664,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "user_id",
+            ["name"] = "userId",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -705,6 +714,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/todos",
                 ["parts"] = {
@@ -801,6 +811,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/users",
                 ["parts"] = {
@@ -824,6 +835,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/users",
                 ["parts"] = {
@@ -859,6 +871,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/users/{id}",
                 ["parts"] = {
@@ -899,6 +912,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/api/users/{id}",
                 ["parts"] = {
@@ -939,6 +953,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/api/users/{id}",
                 ["parts"] = {

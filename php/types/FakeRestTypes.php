@@ -33,16 +33,16 @@ class Comment
 {
     public ?string $avatar = null;
     public ?string $body = null;
-    public ?string $created_at = null;
-    public ?array $device_info = null;
+    public ?string $createdAt = null;
+    public ?array $deviceInfo = null;
     public ?string $email = null;
     public ?int $id = null;
-    public ?bool $is_verified = null;
-    public ?int $like = null;
+    public ?bool $isVerified = null;
+    public ?int $likes = null;
     public ?string $location = null;
     public ?string $name = null;
-    public ?int $parent_comment_id = null;
-    public ?int $post_id = null;
+    public ?int $parentCommentId = null;
+    public ?int $postId = null;
     public ?string $website = null;
 }
 
@@ -57,16 +57,16 @@ class CommentCreateData
 {
     public ?string $avatar = null;
     public ?string $body = null;
-    public ?string $created_at = null;
-    public ?array $device_info = null;
+    public ?string $createdAt = null;
+    public ?array $deviceInfo = null;
     public ?string $email = null;
     public ?int $id = null;
-    public ?bool $is_verified = null;
-    public ?int $like = null;
+    public ?bool $isVerified = null;
+    public ?int $likes = null;
     public ?string $location = null;
     public ?string $name = null;
-    public ?int $parent_comment_id = null;
-    public ?int $post_id = null;
+    public ?int $parentCommentId = null;
+    public ?int $postId = null;
     public ?string $website = null;
 }
 
@@ -75,18 +75,18 @@ class Post
 {
     public ?string $body = null;
     public ?string $category = null;
-    public ?string $cover_image = null;
-    public ?string $created_at = null;
+    public ?string $coverImage = null;
+    public ?string $createdAt = null;
     public ?bool $featured = null;
     public ?int $id = null;
-    public ?int $like = null;
-    public ?string $meta_description = null;
+    public ?int $likes = null;
+    public ?string $metaDescription = null;
     public ?bool $published = null;
-    public ?int $read_time = null;
-    public ?array $tag = null;
+    public ?int $readTime = null;
+    public ?array $tags = null;
     public ?string $title = null;
-    public ?int $user_id = null;
-    public ?int $view = null;
+    public ?int $userId = null;
+    public ?int $views = null;
 }
 
 /** Request payload for Post#load. */
@@ -100,18 +100,18 @@ class PostListMatch
 {
     public ?string $body = null;
     public ?string $category = null;
-    public ?string $cover_image = null;
-    public ?string $created_at = null;
+    public ?string $coverImage = null;
+    public ?string $createdAt = null;
     public ?bool $featured = null;
     public ?int $id = null;
-    public ?int $like = null;
-    public ?string $meta_description = null;
+    public ?int $likes = null;
+    public ?string $metaDescription = null;
     public ?bool $published = null;
-    public ?int $read_time = null;
-    public ?array $tag = null;
+    public ?int $readTime = null;
+    public ?array $tags = null;
     public ?string $title = null;
-    public ?int $user_id = null;
-    public ?int $view = null;
+    public ?int $userId = null;
+    public ?int $views = null;
 }
 
 /** Request payload for Post#create. */
@@ -119,18 +119,18 @@ class PostCreateData
 {
     public ?string $body = null;
     public ?string $category = null;
-    public ?string $cover_image = null;
-    public ?string $created_at = null;
+    public ?string $coverImage = null;
+    public ?string $createdAt = null;
     public ?bool $featured = null;
     public ?int $id = null;
-    public ?int $like = null;
-    public ?string $meta_description = null;
+    public ?int $likes = null;
+    public ?string $metaDescription = null;
     public ?bool $published = null;
-    public ?int $read_time = null;
-    public ?array $tag = null;
+    public ?int $readTime = null;
+    public ?array $tags = null;
     public ?string $title = null;
-    public ?int $user_id = null;
-    public ?int $view = null;
+    public ?int $userId = null;
+    public ?int $views = null;
 }
 
 /** Product entity data model. */
@@ -143,7 +143,7 @@ class Product
     public ?string $name = null;
     public ?float $price = null;
     public ?float $rating = null;
-    public ?int $review = null;
+    public ?int $reviews = null;
     public ?string $sku = null;
     public ?int $stock = null;
 }
@@ -164,7 +164,7 @@ class ProductListMatch
     public ?string $name = null;
     public ?float $price = null;
     public ?float $rating = null;
-    public ?int $review = null;
+    public ?int $reviews = null;
     public ?string $sku = null;
     public ?int $stock = null;
 }
@@ -173,24 +173,24 @@ class ProductListMatch
 class Todo
 {
     public ?bool $completed = null;
-    public ?string $created_at = null;
-    public ?string $due_date = null;
+    public ?string $createdAt = null;
+    public ?string $dueDate = null;
     public ?int $id = null;
     public ?string $priority = null;
     public ?string $title = null;
-    public ?int $user_id = null;
+    public ?int $userId = null;
 }
 
 /** Request payload for Todo#list. */
 class TodoListMatch
 {
     public ?bool $completed = null;
-    public ?string $created_at = null;
-    public ?string $due_date = null;
+    public ?string $createdAt = null;
+    public ?string $dueDate = null;
     public ?int $id = null;
     public ?string $priority = null;
     public ?string $title = null;
-    public ?int $user_id = null;
+    public ?int $userId = null;
 }
 
 /** User entity data model. */
@@ -242,6 +242,13 @@ class UserCreateData
 class UserUpdateData
 {
     public int $id;
+    public ?array $address = null;
+    public ?array $company = null;
+    public ?string $email = null;
+    public ?string $name = null;
+    public ?string $phone = null;
+    public ?string $username = null;
+    public ?string $website = null;
 }
 
 /** Request payload for User#remove. */

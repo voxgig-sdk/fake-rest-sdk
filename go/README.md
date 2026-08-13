@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-categorys, err := client.Category(nil).List(nil, nil)
+products, err := client.Product(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = categorys
+_ = products
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-category, err := client.Category(nil).List(
+product, err := client.Product(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(category) // the returned mock data
+fmt.Println(product) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -284,16 +284,16 @@ API path: `/api/products/categories`
 | --- | --- |
 | `"avatar"` |  |
 | `"body"` |  |
-| `"created_at"` |  |
-| `"device_info"` |  |
+| `"createdAt"` |  |
+| `"deviceInfo"` |  |
 | `"email"` |  |
 | `"id"` |  |
-| `"is_verified"` |  |
-| `"like"` |  |
+| `"isVerified"` |  |
+| `"likes"` |  |
 | `"location"` |  |
 | `"name"` |  |
-| `"parent_comment_id"` |  |
-| `"post_id"` |  |
+| `"parentCommentId"` |  |
+| `"postId"` |  |
 | `"website"` |  |
 
 Operations: Create, List.
@@ -306,18 +306,18 @@ API path: `/api/comments`
 | --- | --- |
 | `"body"` |  |
 | `"category"` |  |
-| `"cover_image"` |  |
-| `"created_at"` |  |
+| `"coverImage"` |  |
+| `"createdAt"` |  |
 | `"featured"` |  |
 | `"id"` |  |
-| `"like"` |  |
-| `"meta_description"` |  |
+| `"likes"` |  |
+| `"metaDescription"` |  |
 | `"published"` |  |
-| `"read_time"` |  |
-| `"tag"` |  |
+| `"readTime"` |  |
+| `"tags"` |  |
 | `"title"` |  |
-| `"user_id"` |  |
-| `"view"` |  |
+| `"userId"` |  |
+| `"views"` |  |
 
 Operations: Create, List, Load.
 
@@ -334,7 +334,7 @@ API path: `/api/posts`
 | `"name"` |  |
 | `"price"` |  |
 | `"rating"` |  |
-| `"review"` |  |
+| `"reviews"` |  |
 | `"sku"` |  |
 | `"stock"` |  |
 
@@ -347,12 +347,12 @@ API path: `/api/products`
 | Field | Description |
 | --- | --- |
 | `"completed"` |  |
-| `"created_at"` |  |
-| `"due_date"` |  |
+| `"createdAt"` |  |
+| `"dueDate"` |  |
 | `"id"` |  |
 | `"priority"` |  |
 | `"title"` |  |
-| `"user_id"` |  |
+| `"userId"` |  |
 
 Operations: List.
 
@@ -426,16 +426,16 @@ Create an instance: `comment := client.Comment(nil)`
 | --- | --- | --- |
 | `avatar` | `string` |  |
 | `body` | `string` |  |
-| `created_at` | `string` |  |
-| `device_info` | `map[string]any` |  |
+| `createdAt` | `string` |  |
+| `deviceInfo` | `map[string]any` |  |
 | `email` | `string` |  |
 | `id` | `int` |  |
-| `is_verified` | `bool` |  |
-| `like` | `int` |  |
+| `isVerified` | `bool` |  |
+| `likes` | `int` |  |
 | `location` | `string` |  |
 | `name` | `string` |  |
-| `parent_comment_id` | `int` |  |
-| `post_id` | `int` |  |
+| `parentCommentId` | `int` |  |
+| `postId` | `int` |  |
 | `website` | `string` |  |
 
 #### Example: List
@@ -478,18 +478,18 @@ Create an instance: `post := client.Post(nil)`
 | --- | --- | --- |
 | `body` | `string` |  |
 | `category` | `string` |  |
-| `cover_image` | `string` |  |
-| `created_at` | `string` |  |
+| `coverImage` | `string` |  |
+| `createdAt` | `string` |  |
 | `featured` | `bool` |  |
 | `id` | `int` |  |
-| `like` | `int` |  |
-| `meta_description` | `string` |  |
+| `likes` | `int` |  |
+| `metaDescription` | `string` |  |
 | `published` | `bool` |  |
-| `read_time` | `int` |  |
-| `tag` | `[]any` |  |
+| `readTime` | `int` |  |
+| `tags` | `[]any` |  |
 | `title` | `string` |  |
-| `user_id` | `int` |  |
-| `view` | `int` |  |
+| `userId` | `int` |  |
+| `views` | `int` |  |
 
 #### Example: Load
 
@@ -545,7 +545,7 @@ Create an instance: `product := client.Product(nil)`
 | `name` | `string` |  |
 | `price` | `float64` |  |
 | `rating` | `float64` |  |
-| `review` | `int` |  |
+| `reviews` | `int` |  |
 | `sku` | `string` |  |
 | `stock` | `int` |  |
 
@@ -585,12 +585,12 @@ Create an instance: `todo := client.Todo(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `completed` | `bool` |  |
-| `created_at` | `string` |  |
-| `due_date` | `string` |  |
+| `createdAt` | `string` |  |
+| `dueDate` | `string` |  |
 | `id` | `int` |  |
 | `priority` | `string` |  |
 | `title` | `string` |  |
-| `user_id` | `int` |  |
+| `userId` | `int` |  |
 
 #### Example: List
 
@@ -735,11 +735,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-category := client.Category(nil)
-category.List(nil, nil)
+product := client.Product(nil)
+product.List(nil, nil)
 
-// category.Data() now returns the category data from the last list
-// category.Match() returns the last match criteria
+// product.Data() now returns the product data from the last list
+// product.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -37,7 +37,7 @@ class TodoEntity extends FakeRestEntityBase<Todo> {
 
 
 
-  async list(this: any, reqmatch?: TodoListMatch, ctrl?: Control): Promise<Todo[]> {
+  async list(this: any, reqmatch?: TodoListMatch, ctrl?: Control): Promise<TodoEntity[]> {
 
     const utility = this._utility
 

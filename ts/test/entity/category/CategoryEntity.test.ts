@@ -26,8 +26,8 @@ import {
 describe('CategoryEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FAKEREST_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FAKEREST_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FAKE_REST_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FAKE_REST_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FakeRestSDK.test()
@@ -63,7 +63,7 @@ describe('CategoryEntity', async () => {
     const category_ref01_ent = client.Category()
     const category_ref01_match: any = {}
 
-    const category_ref01_list = await category_ref01_ent.list(category_ref01_match)
+    const category_ref01_list = (await category_ref01_ent.list(category_ref01_match)).map((e: any) => e.data())
 
 
   })

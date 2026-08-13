@@ -26,8 +26,8 @@ import {
 describe('ProductEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FAKEREST_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FAKEREST_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FAKE_REST_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FAKE_REST_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FakeRestSDK.test()
@@ -63,13 +63,13 @@ describe('ProductEntity', async () => {
     const product_ref01_ent = client.Product()
     const product_ref01_match: any = {}
 
-    const product_ref01_list = await product_ref01_ent.list(product_ref01_match)
+    const product_ref01_list = (await product_ref01_ent.list(product_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const product_ref01_match_dt0: any = {}
     product_ref01_match_dt0.id = product_ref01_data.id
-    const product_ref01_data_dt0 = await product_ref01_ent.load(product_ref01_match_dt0)
+    const product_ref01_data_dt0 = (await product_ref01_ent.load(product_ref01_match_dt0)).data()
     assert(product_ref01_data_dt0.id === product_ref01_data.id)
 
 

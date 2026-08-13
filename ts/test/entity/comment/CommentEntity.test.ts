@@ -26,8 +26,8 @@ import {
 describe('CommentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when FAKEREST_TEST_LIVE=TRUE.
-  afterEach(liveDelay('FAKEREST_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when FAKE_REST_TEST_LIVE=TRUE.
+  afterEach(liveDelay('FAKE_REST_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = FakeRestSDK.test()
@@ -63,14 +63,14 @@ describe('CommentEntity', async () => {
     let comment_ref01_data = setup.data.new.comment['comment_ref01']
     comment_ref01_data['post_id'] = setup.idmap['post01']
 
-    comment_ref01_data = await comment_ref01_ent.create(comment_ref01_data)
+    comment_ref01_data = (await comment_ref01_ent.create(comment_ref01_data)).data()
     assert(null != comment_ref01_data.id)
 
 
     // LIST
     const comment_ref01_match: any = {}
 
-    const comment_ref01_list = await comment_ref01_ent.list(comment_ref01_match)
+    const comment_ref01_list = (await comment_ref01_ent.list(comment_ref01_match)).map((e: any) => e.data())
 
     assert(!isempty(select(comment_ref01_list, { id: comment_ref01_data.id })))
 

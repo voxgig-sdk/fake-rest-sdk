@@ -54,7 +54,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local categorys, err = client:Category():list()
+local products, err = client:Product():list()
 if err then error(err) end
 ```
 
@@ -112,7 +112,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Category():list()
+local result, err = client:Product():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -228,9 +228,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local category, err = client:Category():load()
+    local post, err = client:Post():load({ id = "example_id" })
     if err then error(err) end
-    -- category is the loaded record
+    -- post is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -255,16 +255,16 @@ API path: `/api/products/categories`
 | --- | --- |
 | `avatar` |  |
 | `body` |  |
-| `created_at` |  |
-| `device_info` |  |
+| `createdAt` |  |
+| `deviceInfo` |  |
 | `email` |  |
 | `id` |  |
-| `is_verified` |  |
-| `like` |  |
+| `isVerified` |  |
+| `likes` |  |
 | `location` |  |
 | `name` |  |
-| `parent_comment_id` |  |
-| `post_id` |  |
+| `parentCommentId` |  |
+| `postId` |  |
 | `website` |  |
 
 Operations: Create, List.
@@ -277,18 +277,18 @@ API path: `/api/comments`
 | --- | --- |
 | `body` |  |
 | `category` |  |
-| `cover_image` |  |
-| `created_at` |  |
+| `coverImage` |  |
+| `createdAt` |  |
 | `featured` |  |
 | `id` |  |
-| `like` |  |
-| `meta_description` |  |
+| `likes` |  |
+| `metaDescription` |  |
 | `published` |  |
-| `read_time` |  |
-| `tag` |  |
+| `readTime` |  |
+| `tags` |  |
 | `title` |  |
-| `user_id` |  |
-| `view` |  |
+| `userId` |  |
+| `views` |  |
 
 Operations: Create, List, Load.
 
@@ -305,7 +305,7 @@ API path: `/api/posts`
 | `name` |  |
 | `price` |  |
 | `rating` |  |
-| `review` |  |
+| `reviews` |  |
 | `sku` |  |
 | `stock` |  |
 
@@ -318,12 +318,12 @@ API path: `/api/products`
 | Field | Description |
 | --- | --- |
 | `completed` |  |
-| `created_at` |  |
-| `due_date` |  |
+| `createdAt` |  |
+| `dueDate` |  |
 | `id` |  |
 | `priority` |  |
 | `title` |  |
-| `user_id` |  |
+| `userId` |  |
 
 Operations: List.
 
@@ -393,16 +393,16 @@ Create an instance: `local comment = client:Comment(nil)`
 | --- | --- | --- |
 | `avatar` | `string` |  |
 | `body` | `string` |  |
-| `created_at` | `string` |  |
-| `device_info` | `table` |  |
+| `createdAt` | `string` |  |
+| `deviceInfo` | `table` |  |
 | `email` | `string` |  |
 | `id` | `number` |  |
-| `is_verified` | `boolean` |  |
-| `like` | `number` |  |
+| `isVerified` | `boolean` |  |
+| `likes` | `number` |  |
 | `location` | `string` |  |
 | `name` | `string` |  |
-| `parent_comment_id` | `number` |  |
-| `post_id` | `number` |  |
+| `parentCommentId` | `number` |  |
+| `postId` | `number` |  |
 | `website` | `string` |  |
 
 #### Example: List
@@ -437,18 +437,18 @@ Create an instance: `local post = client:Post(nil)`
 | --- | --- | --- |
 | `body` | `string` |  |
 | `category` | `string` |  |
-| `cover_image` | `string` |  |
-| `created_at` | `string` |  |
+| `coverImage` | `string` |  |
+| `createdAt` | `string` |  |
 | `featured` | `boolean` |  |
 | `id` | `number` |  |
-| `like` | `number` |  |
-| `meta_description` | `string` |  |
+| `likes` | `number` |  |
+| `metaDescription` | `string` |  |
 | `published` | `boolean` |  |
-| `read_time` | `number` |  |
-| `tag` | `table` |  |
+| `readTime` | `number` |  |
+| `tags` | `table` |  |
 | `title` | `string` |  |
-| `user_id` | `number` |  |
-| `view` | `number` |  |
+| `userId` | `number` |  |
+| `views` | `number` |  |
 
 #### Example: Load
 
@@ -492,7 +492,7 @@ Create an instance: `local product = client:Product(nil)`
 | `name` | `string` |  |
 | `price` | `number` |  |
 | `rating` | `number` |  |
-| `review` | `number` |  |
+| `reviews` | `number` |  |
 | `sku` | `string` |  |
 | `stock` | `number` |  |
 
@@ -524,12 +524,12 @@ Create an instance: `local todo = client:Todo(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `completed` | `boolean` |  |
-| `created_at` | `string` |  |
-| `due_date` | `string` |  |
+| `createdAt` | `string` |  |
+| `dueDate` | `string` |  |
 | `id` | `number` |  |
 | `priority` | `string` |  |
 | `title` | `string` |  |
-| `user_id` | `number` |  |
+| `userId` | `number` |  |
 
 #### Example: List
 
@@ -661,11 +661,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local category = client:Category()
-category:list()
+local product = client:Product()
+product:list()
 
--- category:data_get() now returns the category data from the last list
--- category:match_get() returns the last match criteria
+-- product:data_get() now returns the product data from the last list
+-- product:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

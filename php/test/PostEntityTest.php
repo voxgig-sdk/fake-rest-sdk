@@ -72,7 +72,7 @@ class PostEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set FAKEREST_TEST_POST_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set FAKE_REST_TEST_POST_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -83,7 +83,7 @@ class PostEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.post"), "post_ref01"));
 
         $post_ref01_data_result = $post_ref01_ent->create($post_ref01_data, null);
-        $post_ref01_data = Helpers::to_map($post_ref01_data_result);
+        $post_ref01_data = Helpers::to_map(is_object($post_ref01_data_result) && method_exists($post_ref01_data_result, 'data_get') ? $post_ref01_data_result->data_get() : $post_ref01_data_result);
         $this->assertNotNull($post_ref01_data);
         $this->assertNotNull($post_ref01_data["id"]);
 
@@ -103,7 +103,7 @@ class PostEntityTest extends TestCase
             "id" => $post_ref01_data["id"],
         ];
         $post_ref01_data_dt0_loaded = $post_ref01_ent->load($post_ref01_match_dt0, null);
-        $post_ref01_data_dt0_load_result = Helpers::to_map($post_ref01_data_dt0_loaded);
+        $post_ref01_data_dt0_load_result = Helpers::to_map(is_object($post_ref01_data_dt0_loaded) && method_exists($post_ref01_data_dt0_loaded, 'data_get') ? $post_ref01_data_dt0_loaded->data_get() : $post_ref01_data_dt0_loaded);
         $this->assertNotNull($post_ref01_data_dt0_load_result);
         $this->assertEquals($post_ref01_data_dt0_load_result["id"], $post_ref01_data["id"]);
 
@@ -132,22 +132,22 @@ function post_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("FAKEREST_TEST_POST_ENTID");
+    $entid_env_raw = getenv("FAKE_REST_TEST_POST_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "FAKEREST_TEST_POST_ENTID" => $idmap,
-        "FAKEREST_TEST_LIVE" => "FALSE",
-        "FAKEREST_TEST_EXPLAIN" => "FALSE",
+        "FAKE_REST_TEST_POST_ENTID" => $idmap,
+        "FAKE_REST_TEST_LIVE" => "FALSE",
+        "FAKE_REST_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["FAKEREST_TEST_POST_ENTID"]);
+        $env["FAKE_REST_TEST_POST_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["FAKEREST_TEST_LIVE"] === "TRUE") {
+    if ($env["FAKE_REST_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -156,13 +156,13 @@ function post_basic_setup($extra)
         $client = new FakeRestSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["FAKEREST_TEST_LIVE"] === "TRUE";
+    $live = $env["FAKE_REST_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["FAKEREST_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["FAKE_REST_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

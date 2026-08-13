@@ -230,16 +230,16 @@ const comment = client.Comment()
 | --- | --- | --- | --- |
 | `avatar` | `string` | No |  |
 | `body` | `string` | No |  |
-| `created_at` | `string` | No |  |
-| `device_info` | `Record<string, any>` | No |  |
+| `createdAt` | `string` | No |  |
+| `deviceInfo` | `Record<string, any>` | No |  |
 | `email` | `string` | No |  |
 | `id` | `number` | No |  |
-| `is_verified` | `boolean` | No |  |
-| `like` | `number` | No |  |
+| `isVerified` | `boolean` | No |  |
+| `likes` | `number` | No |  |
 | `location` | `string` | No |  |
 | `name` | `string` | No |  |
-| `parent_comment_id` | `number` | No |  |
-| `post_id` | `number` | No |  |
+| `parentCommentId` | `number` | No |  |
+| `postId` | `number` | No |  |
 | `website` | `string` | No |  |
 
 ### Operations
@@ -301,18 +301,18 @@ const post = client.Post()
 | --- | --- | --- | --- |
 | `body` | `string` | No |  |
 | `category` | `string` | No |  |
-| `cover_image` | `string` | No |  |
-| `created_at` | `string` | No |  |
+| `coverImage` | `string` | No |  |
+| `createdAt` | `string` | No |  |
 | `featured` | `boolean` | No |  |
 | `id` | `number` | No |  |
-| `like` | `number` | No |  |
-| `meta_description` | `string` | No |  |
+| `likes` | `number` | No |  |
+| `metaDescription` | `string` | No |  |
 | `published` | `boolean` | No |  |
-| `read_time` | `number` | No |  |
-| `tag` | `any[]` | No |  |
+| `readTime` | `number` | No |  |
+| `tags` | `any[]` | No |  |
 | `title` | `string` | No |  |
-| `user_id` | `number` | No |  |
-| `view` | `number` | No |  |
+| `userId` | `number` | No |  |
+| `views` | `number` | No |  |
 
 ### Operations
 
@@ -386,7 +386,7 @@ const product = client.Product()
 | `name` | `string` | No |  |
 | `price` | `number` | No |  |
 | `rating` | `number` | No |  |
-| `review` | `number` | No |  |
+| `reviews` | `number` | No |  |
 | `sku` | `string` | No |  |
 | `stock` | `number` | No |  |
 
@@ -447,12 +447,12 @@ const todo = client.Todo()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `completed` | `boolean` | No |  |
-| `created_at` | `string` | No |  |
-| `due_date` | `string` | No |  |
+| `createdAt` | `string` | No |  |
+| `dueDate` | `string` | No |  |
 | `id` | `number` | No |  |
 | `priority` | `string` | No |  |
 | `title` | `string` | No |  |
-| `user_id` | `number` | No |  |
+| `userId` | `number` | No |  |
 
 ### Operations
 

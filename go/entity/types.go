@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/fake-rest-sdk/go/core"
+)
 
 // Category is the typed data model for the category entity.
 type Category struct {
@@ -26,16 +30,16 @@ type CategoryListMatch struct {
 type Comment struct {
 	Avatar *string `json:"avatar,omitempty"`
 	Body *string `json:"body,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	DeviceInfo *map[string]any `json:"device_info,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	DeviceInfo *map[string]any `json:"deviceInfo,omitempty"`
 	Email *string `json:"email,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsVerified *bool `json:"is_verified,omitempty"`
-	Like *int `json:"like,omitempty"`
+	IsVerified *bool `json:"isVerified,omitempty"`
+	Likes *int `json:"likes,omitempty"`
 	Location *string `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ParentCommentId *int `json:"parent_comment_id,omitempty"`
-	PostId *int `json:"post_id,omitempty"`
+	ParentCommentId *int `json:"parentCommentId,omitempty"`
+	PostId *int `json:"postId,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
 
@@ -48,16 +52,16 @@ type CommentListMatch struct {
 type CommentCreateData struct {
 	Avatar *string `json:"avatar,omitempty"`
 	Body *string `json:"body,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	DeviceInfo *map[string]any `json:"device_info,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	DeviceInfo *map[string]any `json:"deviceInfo,omitempty"`
 	Email *string `json:"email,omitempty"`
 	Id *int `json:"id,omitempty"`
-	IsVerified *bool `json:"is_verified,omitempty"`
-	Like *int `json:"like,omitempty"`
+	IsVerified *bool `json:"isVerified,omitempty"`
+	Likes *int `json:"likes,omitempty"`
 	Location *string `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
-	ParentCommentId *int `json:"parent_comment_id,omitempty"`
-	PostId *int `json:"post_id,omitempty"`
+	ParentCommentId *int `json:"parentCommentId,omitempty"`
+	PostId *int `json:"postId,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
 
@@ -65,18 +69,18 @@ type CommentCreateData struct {
 type Post struct {
 	Body *string `json:"body,omitempty"`
 	Category *string `json:"category,omitempty"`
-	CoverImage *string `json:"cover_image,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
+	CoverImage *string `json:"coverImage,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	Featured *bool `json:"featured,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Like *int `json:"like,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
+	Likes *int `json:"likes,omitempty"`
+	MetaDescription *string `json:"metaDescription,omitempty"`
 	Published *bool `json:"published,omitempty"`
-	ReadTime *int `json:"read_time,omitempty"`
-	Tag *[]any `json:"tag,omitempty"`
+	ReadTime *int `json:"readTime,omitempty"`
+	Tags *[]any `json:"tags,omitempty"`
 	Title *string `json:"title,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
-	View *int `json:"view,omitempty"`
+	UserId *int `json:"userId,omitempty"`
+	Views *int `json:"views,omitempty"`
 }
 
 // PostLoadMatch is the typed request payload for Post.LoadTyped.
@@ -88,36 +92,36 @@ type PostLoadMatch struct {
 type PostListMatch struct {
 	Body *string `json:"body,omitempty"`
 	Category *string `json:"category,omitempty"`
-	CoverImage *string `json:"cover_image,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
+	CoverImage *string `json:"coverImage,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	Featured *bool `json:"featured,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Like *int `json:"like,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
+	Likes *int `json:"likes,omitempty"`
+	MetaDescription *string `json:"metaDescription,omitempty"`
 	Published *bool `json:"published,omitempty"`
-	ReadTime *int `json:"read_time,omitempty"`
-	Tag *[]any `json:"tag,omitempty"`
+	ReadTime *int `json:"readTime,omitempty"`
+	Tags *[]any `json:"tags,omitempty"`
 	Title *string `json:"title,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
-	View *int `json:"view,omitempty"`
+	UserId *int `json:"userId,omitempty"`
+	Views *int `json:"views,omitempty"`
 }
 
 // PostCreateData is the typed request payload for Post.CreateTyped.
 type PostCreateData struct {
 	Body *string `json:"body,omitempty"`
 	Category *string `json:"category,omitempty"`
-	CoverImage *string `json:"cover_image,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
+	CoverImage *string `json:"coverImage,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	Featured *bool `json:"featured,omitempty"`
 	Id *int `json:"id,omitempty"`
-	Like *int `json:"like,omitempty"`
-	MetaDescription *string `json:"meta_description,omitempty"`
+	Likes *int `json:"likes,omitempty"`
+	MetaDescription *string `json:"metaDescription,omitempty"`
 	Published *bool `json:"published,omitempty"`
-	ReadTime *int `json:"read_time,omitempty"`
-	Tag *[]any `json:"tag,omitempty"`
+	ReadTime *int `json:"readTime,omitempty"`
+	Tags *[]any `json:"tags,omitempty"`
 	Title *string `json:"title,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
-	View *int `json:"view,omitempty"`
+	UserId *int `json:"userId,omitempty"`
+	Views *int `json:"views,omitempty"`
 }
 
 // Product is the typed data model for the product entity.
@@ -129,7 +133,7 @@ type Product struct {
 	Name *string `json:"name,omitempty"`
 	Price *float64 `json:"price,omitempty"`
 	Rating *float64 `json:"rating,omitempty"`
-	Review *int `json:"review,omitempty"`
+	Reviews *int `json:"reviews,omitempty"`
 	Sku *string `json:"sku,omitempty"`
 	Stock *int `json:"stock,omitempty"`
 }
@@ -148,7 +152,7 @@ type ProductListMatch struct {
 	Name *string `json:"name,omitempty"`
 	Price *float64 `json:"price,omitempty"`
 	Rating *float64 `json:"rating,omitempty"`
-	Review *int `json:"review,omitempty"`
+	Reviews *int `json:"reviews,omitempty"`
 	Sku *string `json:"sku,omitempty"`
 	Stock *int `json:"stock,omitempty"`
 }
@@ -156,23 +160,23 @@ type ProductListMatch struct {
 // Todo is the typed data model for the todo entity.
 type Todo struct {
 	Completed *bool `json:"completed,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	DueDate *string `json:"due_date,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	DueDate *string `json:"dueDate,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Priority *string `json:"priority,omitempty"`
 	Title *string `json:"title,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
+	UserId *int `json:"userId,omitempty"`
 }
 
 // TodoListMatch is the typed request payload for Todo.ListTyped.
 type TodoListMatch struct {
 	Completed *bool `json:"completed,omitempty"`
-	CreatedAt *string `json:"created_at,omitempty"`
-	DueDate *string `json:"due_date,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	DueDate *string `json:"dueDate,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Priority *string `json:"priority,omitempty"`
 	Title *string `json:"title,omitempty"`
-	UserId *int `json:"user_id,omitempty"`
+	UserId *int `json:"userId,omitempty"`
 }
 
 // User is the typed data model for the user entity.
@@ -219,6 +223,13 @@ type UserCreateData struct {
 // UserUpdateData is the typed request payload for User.UpdateTyped.
 type UserUpdateData struct {
 	Id int `json:"id"`
+	Address *map[string]any `json:"address,omitempty"`
+	Company *map[string]any `json:"company,omitempty"`
+	Email *string `json:"email,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Phone *string `json:"phone,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // UserRemoveMatch is the typed request payload for User.RemoveTyped.
@@ -238,12 +249,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -255,12 +280,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

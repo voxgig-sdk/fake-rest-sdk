@@ -114,11 +114,11 @@ def product_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "FAKEREST_TEST_PRODUCT_ENTID" => {},
-    "FAKEREST_TEST_LIVE" => "FALSE",
+    "FAKE_REST_TEST_PRODUCT_ENTID" => {},
+    "FAKE_REST_TEST_LIVE" => "FALSE",
   })
 
-  live = env["FAKEREST_TEST_LIVE"] == "TRUE"
+  live = env["FAKE_REST_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
