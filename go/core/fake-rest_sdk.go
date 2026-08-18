@@ -23,7 +23,7 @@ func NewFakeRestSDK(options map[string]any) *FakeRestSDK {
 
 	sdk.utility = NewUtility()
 
-	config := MakeConfig()
+	config := SharedConfig()
 
 	sdk.rootctx = sdk.utility.MakeContext(map[string]any{
 		"client":  sdk,

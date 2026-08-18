@@ -40,7 +40,7 @@ class FakeRestSDK
         $utility = new FakeRestUtility();
         $this->_utility = $utility;
 
-        $config = FakeRestConfig::make_config();
+        $config = FakeRestConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

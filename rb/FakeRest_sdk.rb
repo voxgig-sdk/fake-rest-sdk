@@ -28,7 +28,7 @@ class FakeRestSDK
     utility = FakeRestUtility.new
     @_utility = utility
 
-    config = FakeRestConfig.make_config
+    config = FakeRestConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

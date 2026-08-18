@@ -32,7 +32,19 @@
 ---@field website? string
 
 ---@class CommentListMatch
----@field post_id? number
+---@field avatar? string
+---@field body? string
+---@field createdAt? string
+---@field deviceInfo? table
+---@field email? string
+---@field id? number
+---@field isVerified? boolean
+---@field likes? number
+---@field location? string
+---@field name? string
+---@field parentCommentId? number
+---@field postId? number
+---@field website? string
 
 ---@class CommentCreateData
 ---@field avatar? string

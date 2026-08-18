@@ -34,7 +34,19 @@ export interface Comment {
 }
 
 export interface CommentListMatch {
-  post_id?: number
+  avatar?: string
+  body?: string
+  createdAt?: string
+  deviceInfo?: Record<string, any>
+  email?: string
+  id?: number
+  isVerified?: boolean
+  likes?: number
+  location?: string
+  name?: string
+  parentCommentId?: number
+  postId?: number
+  website?: string
 }
 
 export interface CommentCreateData {

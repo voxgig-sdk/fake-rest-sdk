@@ -101,10 +101,58 @@ Comment = Struct.new(
 
 # Request payload for Comment#list.
 #
-# @!attribute [rw] post_id
+# @!attribute [rw] avatar
+#   @return [String, nil]
+#
+# @!attribute [rw] body
+#   @return [String, nil]
+#
+# @!attribute [rw] createdAt
+#   @return [String, nil]
+#
+# @!attribute [rw] deviceInfo
+#   @return [Hash, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] id
 #   @return [Integer, nil]
+#
+# @!attribute [rw] isVerified
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] likes
+#   @return [Integer, nil]
+#
+# @!attribute [rw] location
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] parentCommentId
+#   @return [Integer, nil]
+#
+# @!attribute [rw] postId
+#   @return [Integer, nil]
+#
+# @!attribute [rw] website
+#   @return [String, nil]
 CommentListMatch = Struct.new(
-  :post_id,
+  :avatar,
+  :body,
+  :createdAt,
+  :deviceInfo,
+  :email,
+  :id,
+  :isVerified,
+  :likes,
+  :location,
+  :name,
+  :parentCommentId,
+  :postId,
+  :website,
   keyword_init: true
 )
 

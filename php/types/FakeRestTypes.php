@@ -49,7 +49,19 @@ class Comment
 /** Request payload for Comment#list. */
 class CommentListMatch
 {
-    public ?int $post_id = null;
+    public ?string $avatar = null;
+    public ?string $body = null;
+    public ?string $createdAt = null;
+    public ?array $deviceInfo = null;
+    public ?string $email = null;
+    public ?int $id = null;
+    public ?bool $isVerified = null;
+    public ?int $likes = null;
+    public ?string $location = null;
+    public ?string $name = null;
+    public ?int $parentCommentId = null;
+    public ?int $postId = null;
+    public ?string $website = null;
 }
 
 /** Request payload for Comment#create. */

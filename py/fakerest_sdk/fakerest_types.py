@@ -45,7 +45,19 @@ class Comment(TypedDict, total=False):
 
 
 class CommentListMatch(TypedDict, total=False):
-    post_id: int
+    avatar: str
+    body: str
+    createdAt: str
+    deviceInfo: dict
+    email: str
+    id: int
+    isVerified: bool
+    likes: int
+    location: str
+    name: str
+    parentCommentId: int
+    postId: int
+    website: str
 
 
 class CommentCreateData(TypedDict, total=False):

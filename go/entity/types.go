@@ -45,7 +45,19 @@ type Comment struct {
 
 // CommentListMatch is the typed request payload for Comment.ListTyped.
 type CommentListMatch struct {
-	PostId *int `json:"post_id,omitempty"`
+	Avatar *string `json:"avatar,omitempty"`
+	Body *string `json:"body,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	DeviceInfo *map[string]any `json:"deviceInfo,omitempty"`
+	Email *string `json:"email,omitempty"`
+	Id *int `json:"id,omitempty"`
+	IsVerified *bool `json:"isVerified,omitempty"`
+	Likes *int `json:"likes,omitempty"`
+	Location *string `json:"location,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ParentCommentId *int `json:"parentCommentId,omitempty"`
+	PostId *int `json:"postId,omitempty"`
+	Website *string `json:"website,omitempty"`
 }
 
 // CommentCreateData is the typed request payload for Comment.CreateTyped.
