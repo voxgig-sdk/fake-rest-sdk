@@ -19,6 +19,9 @@ module FakeRestConfig
     {
       "main" => {
         "name" => "FakeRest",
+        "slug" => "fake-rest",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

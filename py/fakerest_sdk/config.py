@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "FakeRest",
+            "slug": "fake-rest",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {

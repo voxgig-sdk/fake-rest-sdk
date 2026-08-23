@@ -1,0 +1,8 @@
+# Flows
+
+@"BasicCategoryFlow.aon"
+@"BasicCommentFlow.aon"
+@"BasicPostFlow.aon"
+@"BasicProductFlow.aon"
+@"BasicTodoFlow.aon"
+@"BasicUserFlow.aon"

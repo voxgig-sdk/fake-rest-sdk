@@ -1,8 +1,0 @@
-# Flows
-
-@"BasicCategoryFlow.aontu"
-@"BasicCommentFlow.aontu"
-@"BasicPostFlow.aontu"
-@"BasicProductFlow.aontu"
-@"BasicTodoFlow.aontu"
-@"BasicUserFlow.aontu"
