@@ -162,12 +162,9 @@ export interface Todo {
 
 export interface TodoListMatch {
   completed?: boolean
-  createdAt?: string
-  dueDate?: string
-  id?: number
-  priority?: string
-  title?: string
-  userId?: number
+  limit?: number
+  page?: number
+  user_id?: number
 }
 
 export interface User {

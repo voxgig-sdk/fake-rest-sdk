@@ -197,12 +197,9 @@ class Todo
 class TodoListMatch
 {
     public ?bool $completed = null;
-    public ?string $createdAt = null;
-    public ?string $dueDate = null;
-    public ?int $id = null;
-    public ?string $priority = null;
-    public ?string $title = null;
-    public ?int $userId = null;
+    public ?int $limit = null;
+    public ?int $page = null;
+    public ?int $user_id = null;
 }
 
 /** User entity data model. */

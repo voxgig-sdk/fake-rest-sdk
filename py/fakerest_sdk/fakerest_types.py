@@ -173,12 +173,9 @@ class Todo(TypedDict, total=False):
 
 class TodoListMatch(TypedDict, total=False):
     completed: bool
-    createdAt: str
-    dueDate: str
-    id: int
-    priority: str
-    title: str
-    userId: int
+    limit: int
+    page: int
+    user_id: int
 
 
 class User(TypedDict, total=False):

@@ -542,31 +542,19 @@ Todo = Struct.new(
 # @!attribute [rw] completed
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] createdAt
-#   @return [String, nil]
-#
-# @!attribute [rw] dueDate
-#   @return [String, nil]
-#
-# @!attribute [rw] id
+# @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] priority
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer, nil]
 #
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] userId
+# @!attribute [rw] user_id
 #   @return [Integer, nil]
 TodoListMatch = Struct.new(
   :completed,
-  :createdAt,
-  :dueDate,
-  :id,
-  :priority,
-  :title,
-  :userId,
+  :limit,
+  :page,
+  :user_id,
   keyword_init: true
 )
 

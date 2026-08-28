@@ -150,12 +150,9 @@
 
 ---@class TodoListMatch
 ---@field completed? boolean
----@field createdAt? string
----@field dueDate? string
----@field id? number
----@field priority? string
----@field title? string
----@field userId? number
+---@field limit? number
+---@field page? number
+---@field user_id? number
 
 ---@class User
 ---@field address? table

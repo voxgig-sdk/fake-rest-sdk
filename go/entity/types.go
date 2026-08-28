@@ -183,12 +183,9 @@ type Todo struct {
 // TodoListMatch is the typed request payload for Todo.ListTyped.
 type TodoListMatch struct {
 	Completed *bool `json:"completed,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	DueDate *string `json:"dueDate,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Priority *string `json:"priority,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UserId *int `json:"userId,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Page *int `json:"page,omitempty"`
+	UserId *int `json:"user_id,omitempty"`
 }
 
 // User is the typed data model for the user entity.
