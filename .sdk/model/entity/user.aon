@@ -16,6 +16,7 @@ main: kit: entity: user: {
       type: "`$OBJECT`"
     }
     {
+      format: "email"
       name: "email"
       req: false
       type: "`$STRING`"
@@ -60,9 +61,13 @@ main: kit: entity: user: {
         {
           method: "POST"
           orig: "/api/users"
-          parts: [
-            "api"
-            "users"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "users"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -77,9 +82,13 @@ main: kit: entity: user: {
         {
           method: "GET"
           orig: "/api/users"
-          parts: [
-            "api"
-            "users"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "users"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -105,10 +114,16 @@ main: kit: entity: user: {
           }
           method: "GET"
           orig: "/api/users/{id}"
-          parts: [
-            "api"
-            "users"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -139,10 +154,16 @@ main: kit: entity: user: {
           }
           method: "DELETE"
           orig: "/api/users/{id}"
-          parts: [
-            "api"
-            "users"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
@@ -173,10 +194,16 @@ main: kit: entity: user: {
           }
           method: "PUT"
           orig: "/api/users/{id}"
-          parts: [
-            "api"
-            "users"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

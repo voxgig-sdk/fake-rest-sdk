@@ -31,11 +31,13 @@ main: kit: entity: product: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "price"
       req: false
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "rating"
       req: false
       type: "`$NUMBER`"
@@ -70,9 +72,13 @@ main: kit: entity: product: {
         {
           method: "GET"
           orig: "/api/products"
-          parts: [
-            "api"
-            "products"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "products"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -98,10 +104,16 @@ main: kit: entity: product: {
           }
           method: "GET"
           orig: "/api/products/{id}"
-          parts: [
-            "api"
-            "products"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

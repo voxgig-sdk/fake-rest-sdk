@@ -49,6 +49,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "category",
         ["op"] = {
           ["list"] = {
@@ -60,15 +64,26 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/products/categories",
-                ["parts"] = {
-                  "api",
-                  "products",
-                  "categories",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "products",
+                  },
+                  {
+                    ["lit"] = "categories",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "products",
+                  "categories",
                 },
               },
             },
@@ -81,6 +96,7 @@ local function make_config()
       ["comment"] = {
         ["fields"] = {
           {
+            ["format"] = "uri",
             ["name"] = "avatar",
             ["type"] = "`$STRING`",
           },
@@ -89,6 +105,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "createdAt",
             ["type"] = "`$STRING`",
           },
@@ -97,6 +114,7 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["type"] = "`$STRING`",
           },
@@ -129,9 +147,14 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "website",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "comment",
         ["op"] = {
@@ -144,14 +167,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/comments",
-                ["parts"] = {
-                  "api",
-                  "comments",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "comments",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "comments",
                 },
               },
             },
@@ -175,15 +206,23 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/posts/{postId}/comments",
-                ["parts"] = {
-                  "api",
-                  "posts",
-                  "{post_id}",
-                  "comments",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["postId"] = "post_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "posts",
+                  },
+                  {
+                    ["var"] = "post_id",
+                  },
+                  {
+                    ["lit"] = "comments",
                   },
                 },
                 ["select"] = {
@@ -195,20 +234,34 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "api",
+                  "posts",
+                  "{post_id}",
+                  "comments",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/comments",
-                ["parts"] = {
-                  "api",
-                  "comments",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "comments",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "comments",
                 },
               },
             },
@@ -233,10 +286,12 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "coverImage",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "createdAt",
             ["type"] = "`$STRING`",
           },
@@ -281,6 +336,10 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "post",
         ["op"] = {
           ["create"] = {
@@ -292,14 +351,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/posts",
-                ["parts"] = {
-                  "api",
-                  "posts",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "posts",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "posts",
                 },
               },
             },
@@ -313,14 +380,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/posts",
-                ["parts"] = {
-                  "api",
-                  "posts",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "posts",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "posts",
                 },
               },
             },
@@ -344,10 +419,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/posts/{id}",
-                ["parts"] = {
-                  "api",
-                  "posts",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "posts",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -357,6 +438,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "posts",
+                  "{id}",
                 },
               },
             },
@@ -389,10 +475,12 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "price",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "rating",
             ["type"] = "`$NUMBER`",
           },
@@ -409,6 +497,10 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "product",
         ["op"] = {
           ["list"] = {
@@ -420,14 +512,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/products",
-                ["parts"] = {
-                  "api",
-                  "products",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "products",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "products",
                 },
               },
             },
@@ -451,10 +551,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/products/{id}",
-                ["parts"] = {
-                  "api",
-                  "products",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "products",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -464,6 +570,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "products",
+                  "{id}",
                 },
               },
             },
@@ -480,10 +591,12 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "createdAt",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "dueDate",
             ["type"] = "`$STRING`",
           },
@@ -503,6 +616,10 @@ local function make_config()
             ["name"] = "userId",
             ["type"] = "`$INTEGER`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "todo",
         ["op"] = {
@@ -542,9 +659,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/todos",
-                ["parts"] = {
-                  "api",
-                  "todos",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "todos",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -557,6 +678,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "todos",
                 },
               },
             },
@@ -577,6 +702,7 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "email",
             ["name"] = "email",
             ["type"] = "`$STRING`",
           },
@@ -601,6 +727,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "user",
         ["op"] = {
           ["create"] = {
@@ -612,14 +742,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/api/users",
-                ["parts"] = {
-                  "api",
-                  "users",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "users",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "users",
                 },
               },
             },
@@ -633,14 +771,22 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/users",
-                ["parts"] = {
-                  "api",
-                  "users",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "users",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "users",
                 },
               },
             },
@@ -664,10 +810,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/users/{id}",
-                ["parts"] = {
-                  "api",
-                  "users",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "users",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -677,6 +829,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "users",
+                  "{id}",
                 },
               },
             },
@@ -700,10 +857,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/api/users/{id}",
-                ["parts"] = {
-                  "api",
-                  "users",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "users",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -713,6 +876,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "users",
+                  "{id}",
                 },
               },
             },
@@ -736,10 +904,16 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/api/users/{id}",
-                ["parts"] = {
-                  "api",
-                  "users",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "users",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -749,6 +923,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "api",
+                  "users",
+                  "{id}",
                 },
               },
             },

@@ -16,11 +16,13 @@ main: kit: entity: post: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "coverImage"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "createdAt"
       req: false
       type: "`$STRING`"
@@ -90,9 +92,13 @@ main: kit: entity: post: {
         {
           method: "POST"
           orig: "/api/posts"
-          parts: [
-            "api"
-            "posts"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -107,9 +113,13 @@ main: kit: entity: post: {
         {
           method: "GET"
           orig: "/api/posts"
-          parts: [
-            "api"
-            "posts"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -135,10 +145,16 @@ main: kit: entity: post: {
           }
           method: "GET"
           orig: "/api/posts/{id}"
-          parts: [
-            "api"
-            "posts"
-            "{id}"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

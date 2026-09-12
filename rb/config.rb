@@ -61,6 +61,10 @@ module FakeRestConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "category",
           "op" => {
             "list" => {
@@ -72,16 +76,27 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/products/categories",
-                  "parts" => [
-                    "api",
-                    "products",
-                    "categories",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "lit" => "categories",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "products",
+                    "categories",
+                  ],
                 },
               ],
             },
@@ -93,6 +108,7 @@ module FakeRestConfig
         "comment" => {
           "fields" => [
             {
+              "format" => "uri",
               "name" => "avatar",
               "type" => "`$STRING`",
             },
@@ -101,6 +117,7 @@ module FakeRestConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "createdAt",
               "type" => "`$STRING`",
             },
@@ -109,6 +126,7 @@ module FakeRestConfig
               "type" => "`$OBJECT`",
             },
             {
+              "format" => "email",
               "name" => "email",
               "type" => "`$STRING`",
             },
@@ -141,10 +159,15 @@ module FakeRestConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "website",
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "comment",
           "op" => {
             "create" => {
@@ -156,15 +179,23 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/comments",
-                  "parts" => [
-                    "api",
-                    "comments",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "comments",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "comments",
+                  ],
                 },
               ],
             },
@@ -187,17 +218,25 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/posts/{postId}/comments",
-                  "parts" => [
-                    "api",
-                    "posts",
-                    "{post_id}",
-                    "comments",
-                  ],
                   "rename" => {
                     "param" => {
                       "postId" => "post_id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "posts",
+                    },
+                    {
+                      "var" => "post_id",
+                    },
+                    {
+                      "lit" => "comments",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "post_id",
@@ -207,21 +246,35 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "posts",
+                    "{post_id}",
+                    "comments",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/comments",
-                  "parts" => [
-                    "api",
-                    "comments",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "comments",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "comments",
+                  ],
                 },
               ],
             },
@@ -245,10 +298,12 @@ module FakeRestConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "coverImage",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "createdAt",
               "type" => "`$STRING`",
             },
@@ -293,6 +348,10 @@ module FakeRestConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "post",
           "op" => {
             "create" => {
@@ -304,15 +363,23 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/posts",
-                  "parts" => [
-                    "api",
-                    "posts",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "posts",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "posts",
+                  ],
                 },
               ],
             },
@@ -325,15 +392,23 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/posts",
-                  "parts" => [
-                    "api",
-                    "posts",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "posts",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "posts",
+                  ],
                 },
               ],
             },
@@ -356,10 +431,16 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/posts/{id}",
-                  "parts" => [
-                    "api",
-                    "posts",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "posts",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -370,6 +451,11 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "posts",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -401,10 +487,12 @@ module FakeRestConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "price",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "float",
               "name" => "rating",
               "type" => "`$NUMBER`",
             },
@@ -421,6 +509,10 @@ module FakeRestConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "product",
           "op" => {
             "list" => {
@@ -432,15 +524,23 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/products",
-                  "parts" => [
-                    "api",
-                    "products",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "products",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "products",
+                  ],
                 },
               ],
             },
@@ -463,10 +563,16 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/products/{id}",
-                  "parts" => [
-                    "api",
-                    "products",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "products",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -477,6 +583,11 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "products",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -492,10 +603,12 @@ module FakeRestConfig
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "date-time",
               "name" => "createdAt",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "dueDate",
               "type" => "`$STRING`",
             },
@@ -516,6 +629,10 @@ module FakeRestConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "todo",
           "op" => {
             "list" => {
@@ -554,9 +671,13 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/todos",
-                  "parts" => [
-                    "api",
-                    "todos",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "todos",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -570,6 +691,10 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "todos",
+                  ],
                 },
               ],
             },
@@ -589,6 +714,7 @@ module FakeRestConfig
               "type" => "`$OBJECT`",
             },
             {
+              "format" => "email",
               "name" => "email",
               "type" => "`$STRING`",
             },
@@ -613,6 +739,10 @@ module FakeRestConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "user",
           "op" => {
             "create" => {
@@ -624,15 +754,23 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/users",
-                  "parts" => [
-                    "api",
-                    "users",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "users",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "users",
+                  ],
                 },
               ],
             },
@@ -645,15 +783,23 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/users",
-                  "parts" => [
-                    "api",
-                    "users",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "users",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "users",
+                  ],
                 },
               ],
             },
@@ -676,10 +822,16 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/users/{id}",
-                  "parts" => [
-                    "api",
-                    "users",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "users",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -690,6 +842,11 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "users",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -712,10 +869,16 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/api/users/{id}",
-                  "parts" => [
-                    "api",
-                    "users",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "users",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -726,6 +889,11 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "users",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -748,10 +916,16 @@ module FakeRestConfig
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/api/users/{id}",
-                  "parts" => [
-                    "api",
-                    "users",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "users",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -762,6 +936,11 @@ module FakeRestConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "users",
+                    "{id}",
+                  ],
                 },
               ],
             },

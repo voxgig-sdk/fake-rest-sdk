@@ -35,10 +35,16 @@ main: kit: entity: category: {
         {
           method: "GET"
           orig: "/api/products/categories"
-          parts: [
-            "api"
-            "products"
-            "categories"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "products"
+            }
+            {
+              lit: "categories"
+            }
           ]
           transform: {
             req: "`reqdata`"

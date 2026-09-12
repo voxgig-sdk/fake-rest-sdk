@@ -6,6 +6,7 @@ main: kit: entity: comment: {
 
   fields: [
     {
+      format: "uri"
       name: "avatar"
       req: false
       type: "`$STRING`"
@@ -16,6 +17,7 @@ main: kit: entity: comment: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "createdAt"
       req: false
       type: "`$STRING`"
@@ -26,6 +28,7 @@ main: kit: entity: comment: {
       type: "`$OBJECT`"
     }
     {
+      format: "email"
       name: "email"
       req: false
       type: "`$STRING`"
@@ -66,6 +69,7 @@ main: kit: entity: comment: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "website"
       req: false
       type: "`$STRING`"
@@ -85,9 +89,13 @@ main: kit: entity: comment: {
         {
           method: "POST"
           orig: "/api/comments"
-          parts: [
-            "api"
-            "comments"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "comments"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -113,17 +121,25 @@ main: kit: entity: comment: {
           }
           method: "GET"
           orig: "/api/posts/{postId}/comments"
-          parts: [
-            "api"
-            "posts"
-            "{post_id}"
-            "comments"
-          ]
           rename: {
             param: {
               postId: "post_id"
             }
           }
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
+            {
+              var: "post_id"
+            }
+            {
+              lit: "comments"
+            }
+          ]
           select: {
             exist: [
               "post_id"
@@ -137,9 +153,13 @@ main: kit: entity: comment: {
         {
           method: "GET"
           orig: "/api/comments"
-          parts: [
-            "api"
-            "comments"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "comments"
+            }
           ]
           transform: {
             req: "`reqdata`"

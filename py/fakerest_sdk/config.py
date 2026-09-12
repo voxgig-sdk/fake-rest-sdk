@@ -1,6 +1,14 @@
 # FakeRest SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -70,6 +78,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "category",
         "op": {
           "list": {
@@ -81,16 +93,27 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/products/categories",
-                "parts": [
-                  "api",
-                  "products",
-                  "categories",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "lit": "categories",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "products",
+                  "categories",
+                ],
               },
             ],
           },
@@ -102,6 +125,7 @@ def make_config():
       "comment": {
         "fields": [
           {
+            "format": "uri",
             "name": "avatar",
             "type": "`$STRING`",
           },
@@ -110,6 +134,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "createdAt",
             "type": "`$STRING`",
           },
@@ -118,6 +143,7 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "email",
             "name": "email",
             "type": "`$STRING`",
           },
@@ -150,10 +176,15 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "website",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "comment",
         "op": {
           "create": {
@@ -165,15 +196,23 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/comments",
-                "parts": [
-                  "api",
-                  "comments",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "comments",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "comments",
+                ],
               },
             ],
           },
@@ -196,17 +235,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/posts/{postId}/comments",
-                "parts": [
-                  "api",
-                  "posts",
-                  "{post_id}",
-                  "comments",
-                ],
                 "rename": {
                   "param": {
                     "postId": "post_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "posts",
+                  },
+                  {
+                    "var": "post_id",
+                  },
+                  {
+                    "lit": "comments",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "post_id",
@@ -216,21 +263,35 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "posts",
+                  "{post_id}",
+                  "comments",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/comments",
-                "parts": [
-                  "api",
-                  "comments",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "comments",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "comments",
+                ],
               },
             ],
           },
@@ -254,10 +315,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "coverImage",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "createdAt",
             "type": "`$STRING`",
           },
@@ -302,6 +365,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "post",
         "op": {
           "create": {
@@ -313,15 +380,23 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/posts",
-                "parts": [
-                  "api",
-                  "posts",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "posts",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "posts",
+                ],
               },
             ],
           },
@@ -334,15 +409,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/posts",
-                "parts": [
-                  "api",
-                  "posts",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "posts",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "posts",
+                ],
               },
             ],
           },
@@ -365,10 +448,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/posts/{id}",
-                "parts": [
-                  "api",
-                  "posts",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "posts",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -379,6 +468,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "posts",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -410,10 +504,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "price",
             "type": "`$NUMBER`",
           },
           {
+            "format": "float",
             "name": "rating",
             "type": "`$NUMBER`",
           },
@@ -430,6 +526,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "product",
         "op": {
           "list": {
@@ -441,15 +541,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/products",
-                "parts": [
-                  "api",
-                  "products",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "products",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "products",
+                ],
               },
             ],
           },
@@ -472,10 +580,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/products/{id}",
-                "parts": [
-                  "api",
-                  "products",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -486,6 +600,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "products",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -501,10 +620,12 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "date-time",
             "name": "createdAt",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "dueDate",
             "type": "`$STRING`",
           },
@@ -525,6 +646,10 @@ def make_config():
             "type": "`$INTEGER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "todo",
         "op": {
           "list": {
@@ -563,9 +688,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/todos",
-                "parts": [
-                  "api",
-                  "todos",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "todos",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -579,6 +708,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "todos",
+                ],
               },
             ],
           },
@@ -598,6 +731,7 @@ def make_config():
             "type": "`$OBJECT`",
           },
           {
+            "format": "email",
             "name": "email",
             "type": "`$STRING`",
           },
@@ -622,6 +756,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "user",
         "op": {
           "create": {
@@ -633,15 +771,23 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/api/users",
-                "parts": [
-                  "api",
-                  "users",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "users",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "users",
+                ],
               },
             ],
           },
@@ -654,15 +800,23 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/users",
-                "parts": [
-                  "api",
-                  "users",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "users",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "users",
+                ],
               },
             ],
           },
@@ -685,10 +839,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/users/{id}",
-                "parts": [
-                  "api",
-                  "users",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "users",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -699,6 +859,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "users",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -721,10 +886,16 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/api/users/{id}",
-                "parts": [
-                  "api",
-                  "users",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "users",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -735,6 +906,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "users",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -757,10 +933,16 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/api/users/{id}",
-                "parts": [
-                  "api",
-                  "users",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "users",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -771,6 +953,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "users",
+                  "{id}",
+                ],
               },
             ],
           },
