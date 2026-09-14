@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { FakeRestSDK } from '@voxgig-sdk/fake-rest'
+import { FakeRestSDK } from '@voxgig-sdk/fake-rest-sdk'
 
 const client = new FakeRestSDK()
 ```
@@ -724,7 +724,7 @@ fake-rest/
 Import the SDK from the package root:
 
 ```ts
-import { FakeRestSDK } from '@voxgig-sdk/fake-rest'
+import { FakeRestSDK } from '@voxgig-sdk/fake-rest-sdk'
 ```
 
 ### Entity state

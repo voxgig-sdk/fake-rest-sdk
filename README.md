@@ -105,7 +105,7 @@ local results, err = client:Product():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
+| TypeScript | `@voxgig-sdk/fake-rest-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
 | Python | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
 | PHP | `voxgig-sdk/fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/fake-rest-sdk/go` | `go get github.com/voxgig-sdk/fake-rest-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Product():list()
 ### TypeScript
 
 ```ts
-import { FakeRestSDK } from '@voxgig-sdk/fake-rest'
+import { FakeRestSDK } from '@voxgig-sdk/fake-rest-sdk'
 
 const client = new FakeRestSDK()
 
