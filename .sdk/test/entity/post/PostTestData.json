@@ -8,14 +8,14 @@
         "createdAt": "s8f",
         "featured": true,
         "id": "POST00",
-        "likes": "s92",
+        "likes": 146,
         "metaDescription": "s93",
         "published": true,
-        "readTime": "s95",
+        "readTime": 149,
         "tags": [],
         "title": "s97",
-        "userId": "s98",
-        "views": "s99"
+        "userId": 152,
+        "views": 153
       },
       "POST01": {
         "body": "s118",
@@ -24,14 +24,14 @@
         "createdAt": "s11b",
         "featured": true,
         "id": "POST01",
-        "likes": "s11e",
+        "likes": 286,
         "metaDescription": "s11f",
         "published": true,
-        "readTime": "s121",
+        "readTime": 289,
         "tags": [],
         "title": "s123",
-        "userId": "s124",
-        "views": "s125"
+        "userId": 292,
+        "views": 293
       },
       "POST02": {
         "body": "s1a4",
@@ -40,14 +40,14 @@
         "createdAt": "s1a7",
         "featured": true,
         "id": "POST02",
-        "likes": "s1aa",
+        "likes": 426,
         "metaDescription": "s1ab",
         "published": true,
-        "readTime": "s1ad",
+        "readTime": 429,
         "tags": [],
         "title": "s1af",
-        "userId": "s1b0",
-        "views": "s1b1"
+        "userId": 432,
+        "views": 433
       }
     }
   },
@@ -59,14 +59,311 @@
         "coverImage": "s232",
         "createdAt": "s233",
         "featured": true,
-        "likes": "s236",
+        "likes": 566,
         "metaDescription": "s237",
         "published": true,
-        "readTime": "s239",
+        "readTime": 569,
         "tags": [],
         "title": "s23b",
-        "userId": "s23c",
-        "views": "s23d"
+        "userId": 572,
+        "views": 573
+      }
+    }
+  },
+  "requests": {
+    "POST /api/posts": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createPost",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "body": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "coverImage": {
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "featured": {
+                    "type": "boolean"
+                  },
+                  "metaDescription": {
+                    "type": "string"
+                  },
+                  "published": {
+                    "type": "boolean"
+                  },
+                  "readTime": {
+                    "type": "integer"
+                  },
+                  "tags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "body": {
+                          "example": "quia et suscipit suscipit recusandae...",
+                          "type": "string"
+                        },
+                        "category": {
+                          "example": "technology",
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "id": {
+                          "example": 1,
+                          "type": "integer"
+                        },
+                        "likes": {
+                          "example": 89,
+                          "type": "integer"
+                        },
+                        "published": {
+                          "example": true,
+                          "type": "boolean"
+                        },
+                        "tags": {
+                          "example": [
+                            "sample",
+                            "test"
+                          ],
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "title": {
+                          "example": "sunt aut facere repellat",
+                          "type": "string"
+                        },
+                        "userId": {
+                          "example": 1,
+                          "type": "integer"
+                        },
+                        "views": {
+                          "example": 1247,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "coverImage": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "featured": {
+                          "type": "boolean"
+                        },
+                        "metaDescription": {
+                          "type": "string"
+                        },
+                        "readTime": {
+                          "type": "integer"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Post created successfully"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/posts": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllPosts",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "body": {
+                        "example": "quia et suscipit suscipit recusandae...",
+                        "type": "string"
+                      },
+                      "category": {
+                        "example": "technology",
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "id": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "likes": {
+                        "example": 89,
+                        "type": "integer"
+                      },
+                      "published": {
+                        "example": true,
+                        "type": "boolean"
+                      },
+                      "tags": {
+                        "example": [
+                          "sample",
+                          "test"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "title": {
+                        "example": "sunt aut facere repellat",
+                        "type": "string"
+                      },
+                      "userId": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "views": {
+                        "example": 1247,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/posts/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPostById",
+        "parameters": [
+          {
+            "description": "Post ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "body": {
+                      "example": "quia et suscipit suscipit recusandae...",
+                      "type": "string"
+                    },
+                    "category": {
+                      "example": "technology",
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "id": {
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "likes": {
+                      "example": 89,
+                      "type": "integer"
+                    },
+                    "published": {
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "tags": {
+                      "example": [
+                        "sample",
+                        "test"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "title": {
+                      "example": "sunt aut facere repellat",
+                      "type": "string"
+                    },
+                    "userId": {
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "views": {
+                      "example": 1247,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -87,6 +87,12 @@ main: kit: entity: todo: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/todos"
+            json: "{\"operationId\":\"getAllTodos\",\"parameters\":[{\"description\":\"Filter todos by user ID (range 1-100)\",\"in\":\"query\",\"name\":\"userId\",\"schema\":{\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Filter todos by completion status\",\"in\":\"query\",\"name\":\"completed\",\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"_page\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"_limit\",\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"completed\":{\"example\":false,\"type\":\"boolean\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"dueDate\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"priority\":{\"enum\":[\"low\",\"medium\",\"high\"],\"example\":\"high\",\"type\":\"string\"},\"title\":{\"example\":\"Complete project documentation\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/todos"
           segments: [

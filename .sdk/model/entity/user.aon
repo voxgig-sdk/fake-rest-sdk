@@ -59,6 +59,12 @@ main: kit: entity: user: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /api/users"
+            json: "{\"operationId\":\"createUser\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"username\":{\"type\":\"string\"},\"website\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"User created successfully\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/api/users"
           segments: [
@@ -80,6 +86,12 @@ main: kit: entity: user: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/users"
+            json: "{\"operationId\":\"getAllUsers\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/users"
           segments: [
@@ -111,6 +123,12 @@ main: kit: entity: user: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/users/{id}"
+            json: "{\"operationId\":\"getUserById\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/users/{id}"
@@ -152,6 +170,12 @@ main: kit: entity: user: {
               }
             ]
           }
+          contract: {
+            id: "DELETE /api/users/{id}"
+            json: "{\"operationId\":\"deleteUser\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"User deleted successfully\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "DELETE"
           orig: "/api/users/{id}"
           segments: [
@@ -191,6 +215,12 @@ main: kit: entity: user: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "PUT /api/users/{id}"
+            json: "{\"operationId\":\"updateUser\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"username\":{\"type\":\"string\"},\"website\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"User updated successfully\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "PUT"
           orig: "/api/users/{id}"

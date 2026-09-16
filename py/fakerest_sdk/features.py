@@ -1,12 +1,18 @@
 # FakeRest SDK feature factory
 
 from fakerest_sdk.feature.base_feature import FakeRestBaseFeature
+from fakerest_sdk.feature.ratelimit_feature import FakeRestRatelimitFeature
+from fakerest_sdk.feature.retry_feature import FakeRestRetryFeature
 from fakerest_sdk.feature.test_feature import FakeRestTestFeature
+from fakerest_sdk.feature.timeout_feature import FakeRestTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: FakeRestBaseFeature(),
+    "ratelimit": lambda: FakeRestRatelimitFeature(),
+    "retry": lambda: FakeRestRetryFeature(),
     "test": lambda: FakeRestTestFeature(),
+    "timeout": lambda: FakeRestTimeoutFeature(),
 }
 
 

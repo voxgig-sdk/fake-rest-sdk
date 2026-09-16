@@ -45,5 +45,616 @@
         "website": "s147"
       }
     }
+  },
+  "requests": {
+    "POST /api/users": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createUser",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "address": {
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "geo": {
+                        "properties": {
+                          "lat": {
+                            "type": "string"
+                          },
+                          "lng": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "street": {
+                        "type": "string"
+                      },
+                      "suite": {
+                        "type": "string"
+                      },
+                      "zipcode": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "company": {
+                    "properties": {
+                      "bs": {
+                        "type": "string"
+                      },
+                      "catchPhrase": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "website": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "address": {
+                          "properties": {
+                            "city": {
+                              "example": "Gwenborough",
+                              "type": "string"
+                            },
+                            "geo": {
+                              "properties": {
+                                "lat": {
+                                  "type": "string"
+                                },
+                                "lng": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "street": {
+                              "example": "Kulas Light",
+                              "type": "string"
+                            },
+                            "suite": {
+                              "type": "string"
+                            },
+                            "zipcode": {
+                              "example": "92998-3874",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "company": {
+                          "properties": {
+                            "bs": {
+                              "type": "string"
+                            },
+                            "catchPhrase": {
+                              "example": "Multi-layered client-server neural-net",
+                              "type": "string"
+                            },
+                            "name": {
+                              "example": "Romaguera-Crona",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "email": {
+                          "example": "Sincere@april.biz",
+                          "format": "email",
+                          "type": "string"
+                        },
+                        "id": {
+                          "example": 1,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "example": "Leanne Graham",
+                          "type": "string"
+                        },
+                        "phone": {
+                          "example": "1-770-736-8031",
+                          "type": "string"
+                        },
+                        "username": {
+                          "example": "Bret",
+                          "type": "string"
+                        },
+                        "website": {
+                          "example": "hildegard.org",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "avatar": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "User created successfully"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/users": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllUsers",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "address": {
+                        "properties": {
+                          "city": {
+                            "example": "Gwenborough",
+                            "type": "string"
+                          },
+                          "geo": {
+                            "properties": {
+                              "lat": {
+                                "type": "string"
+                              },
+                              "lng": {
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "street": {
+                            "example": "Kulas Light",
+                            "type": "string"
+                          },
+                          "suite": {
+                            "type": "string"
+                          },
+                          "zipcode": {
+                            "example": "92998-3874",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "company": {
+                        "properties": {
+                          "bs": {
+                            "type": "string"
+                          },
+                          "catchPhrase": {
+                            "example": "Multi-layered client-server neural-net",
+                            "type": "string"
+                          },
+                          "name": {
+                            "example": "Romaguera-Crona",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "email": {
+                        "example": "Sincere@april.biz",
+                        "format": "email",
+                        "type": "string"
+                      },
+                      "id": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "name": {
+                        "example": "Leanne Graham",
+                        "type": "string"
+                      },
+                      "phone": {
+                        "example": "1-770-736-8031",
+                        "type": "string"
+                      },
+                      "username": {
+                        "example": "Bret",
+                        "type": "string"
+                      },
+                      "website": {
+                        "example": "hildegard.org",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/users/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getUserById",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "address": {
+                      "properties": {
+                        "city": {
+                          "example": "Gwenborough",
+                          "type": "string"
+                        },
+                        "geo": {
+                          "properties": {
+                            "lat": {
+                              "type": "string"
+                            },
+                            "lng": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "street": {
+                          "example": "Kulas Light",
+                          "type": "string"
+                        },
+                        "suite": {
+                          "type": "string"
+                        },
+                        "zipcode": {
+                          "example": "92998-3874",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "company": {
+                      "properties": {
+                        "bs": {
+                          "type": "string"
+                        },
+                        "catchPhrase": {
+                          "example": "Multi-layered client-server neural-net",
+                          "type": "string"
+                        },
+                        "name": {
+                          "example": "Romaguera-Crona",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "email": {
+                      "example": "Sincere@april.biz",
+                      "format": "email",
+                      "type": "string"
+                    },
+                    "id": {
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "example": "Leanne Graham",
+                      "type": "string"
+                    },
+                    "phone": {
+                      "example": "1-770-736-8031",
+                      "type": "string"
+                    },
+                    "username": {
+                      "example": "Bret",
+                      "type": "string"
+                    },
+                    "website": {
+                      "example": "hildegard.org",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "DELETE /api/users/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteUser",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "User deleted successfully"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /api/users/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "address": {
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "geo": {
+                        "properties": {
+                          "lat": {
+                            "type": "string"
+                          },
+                          "lng": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "street": {
+                        "type": "string"
+                      },
+                      "suite": {
+                        "type": "string"
+                      },
+                      "zipcode": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "company": {
+                    "properties": {
+                      "bs": {
+                        "type": "string"
+                      },
+                      "catchPhrase": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "website": {
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "address": {
+                          "properties": {
+                            "city": {
+                              "example": "Gwenborough",
+                              "type": "string"
+                            },
+                            "geo": {
+                              "properties": {
+                                "lat": {
+                                  "type": "string"
+                                },
+                                "lng": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "street": {
+                              "example": "Kulas Light",
+                              "type": "string"
+                            },
+                            "suite": {
+                              "type": "string"
+                            },
+                            "zipcode": {
+                              "example": "92998-3874",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "company": {
+                          "properties": {
+                            "bs": {
+                              "type": "string"
+                            },
+                            "catchPhrase": {
+                              "example": "Multi-layered client-server neural-net",
+                              "type": "string"
+                            },
+                            "name": {
+                              "example": "Romaguera-Crona",
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "email": {
+                          "example": "Sincere@april.biz",
+                          "format": "email",
+                          "type": "string"
+                        },
+                        "id": {
+                          "example": 1,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "example": "Leanne Graham",
+                          "type": "string"
+                        },
+                        "phone": {
+                          "example": "1-770-736-8031",
+                          "type": "string"
+                        },
+                        "username": {
+                          "example": "Bret",
+                          "type": "string"
+                        },
+                        "website": {
+                          "example": "hildegard.org",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "avatar": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "User updated successfully"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

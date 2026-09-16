@@ -33,6 +33,12 @@ main: kit: entity: category: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/products/categories"
+            json: "{\"operationId\":\"getProductCategories\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"count\":{\"example\":15,\"type\":\"integer\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Electronics\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/products/categories"
           segments: [

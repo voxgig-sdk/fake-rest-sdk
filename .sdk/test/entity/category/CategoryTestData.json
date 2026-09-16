@@ -2,17 +2,17 @@
   "existing": {
     "category": {
       "CATEGORY00": {
-        "count": "s1e",
+        "count": 30,
         "id": "CATEGORY00",
         "name": "s20"
       },
       "CATEGORY01": {
-        "count": "s3c",
+        "count": 60,
         "id": "CATEGORY01",
         "name": "s3e"
       },
       "CATEGORY02": {
-        "count": "s5a",
+        "count": 90,
         "id": "CATEGORY02",
         "name": "s5c"
       }
@@ -21,8 +21,48 @@
   "new": {
     "category": {
       "category_ref01": {
-        "count": "s78",
+        "count": 120,
         "name": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/products/categories": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getProductCategories",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "count": {
+                        "example": 15,
+                        "type": "integer"
+                      },
+                      "id": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "name": {
+                        "example": "Electronics",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

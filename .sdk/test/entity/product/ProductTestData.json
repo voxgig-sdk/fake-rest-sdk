@@ -9,9 +9,9 @@
         "name": "s68",
         "price": 105,
         "rating": 106,
-        "reviews": "s6b",
+        "reviews": 107,
         "sku": "s6c",
-        "stock": "s6d"
+        "stock": 109
       },
       "PRODUCT01": {
         "brand": "sc8",
@@ -21,9 +21,9 @@
         "name": "scc",
         "price": 205,
         "rating": 206,
-        "reviews": "scf",
+        "reviews": 207,
         "sku": "sd0",
-        "stock": "sd1"
+        "stock": 209
       },
       "PRODUCT02": {
         "brand": "s12c",
@@ -33,9 +33,9 @@
         "name": "s130",
         "price": 305,
         "rating": 306,
-        "reviews": "s133",
+        "reviews": 307,
         "sku": "s134",
-        "stock": "s135"
+        "stock": 309
       }
     }
   },
@@ -48,9 +48,154 @@
         "name": "s194",
         "price": 405,
         "rating": 406,
-        "reviews": "s197",
+        "reviews": 407,
         "sku": "s198",
-        "stock": "s199"
+        "stock": 409
+      }
+    }
+  },
+  "requests": {
+    "GET /api/products": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllProducts",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "brand": {
+                        "example": "TechCorp",
+                        "type": "string"
+                      },
+                      "category": {
+                        "example": "electronics",
+                        "type": "string"
+                      },
+                      "description": {
+                        "example": "High-quality product...",
+                        "type": "string"
+                      },
+                      "id": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "name": {
+                        "example": "Awesome Product",
+                        "type": "string"
+                      },
+                      "price": {
+                        "example": 299.99,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "rating": {
+                        "example": 4.3,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "reviews": {
+                        "example": 127,
+                        "type": "integer"
+                      },
+                      "sku": {
+                        "example": "TC-AP-001",
+                        "type": "string"
+                      },
+                      "stock": {
+                        "example": 45,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/products/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getProductById",
+        "parameters": [
+          {
+            "description": "Product ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "brand": {
+                      "example": "TechCorp",
+                      "type": "string"
+                    },
+                    "category": {
+                      "example": "electronics",
+                      "type": "string"
+                    },
+                    "description": {
+                      "example": "High-quality product...",
+                      "type": "string"
+                    },
+                    "id": {
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "example": "Awesome Product",
+                      "type": "string"
+                    },
+                    "price": {
+                      "example": 299.99,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "rating": {
+                      "example": 4.3,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "reviews": {
+                      "example": 127,
+                      "type": "integer"
+                    },
+                    "sku": {
+                      "example": "TC-AP-001",
+                      "type": "string"
+                    },
+                    "stock": {
+                      "example": 45,
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

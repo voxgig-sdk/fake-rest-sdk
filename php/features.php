@@ -4,7 +4,10 @@ declare(strict_types=1);
 // FakeRest SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class FakeRestFeatures
@@ -14,8 +17,14 @@ class FakeRestFeatures
         switch ($name) {
             case "base":
                 return new FakeRestBaseFeature();
+            case "ratelimit":
+                return new FakeRestRatelimitFeature();
+            case "retry":
+                return new FakeRestRetryFeature();
             case "test":
                 return new FakeRestTestFeature();
+            case "timeout":
+                return new FakeRestTimeoutFeature();
             default:
                 return new FakeRestBaseFeature();
         }
@@ -31,7 +40,10 @@ class FakeRestFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

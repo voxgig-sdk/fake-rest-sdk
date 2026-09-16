@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "category": {
           "active": true,
@@ -64,6 +128,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/products/categories",
+                    "json": "{\"operationId\":\"getProductCategories\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"count\":{\"example\":15,\"type\":\"integer\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Electronics\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/products/categories",
@@ -193,6 +263,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "POST /api/comments",
+                    "json": "{\"operationId\":\"createComment\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"body\":{\"type\":\"string\"},\"deviceInfo\":{\"properties\":{\"device\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"version\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"isVerified\":{\"type\":\"boolean\"},\"location\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"parentCommentId\":{\"nullable\":true,\"type\":\"integer\"},\"postId\":{\"type\":\"integer\"},\"website\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"body\":{\"example\":\"laudantium enim quasi est quidem magnam...\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"example\":\"Eliseo@gardner.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":23,\"type\":\"integer\"},\"name\":{\"example\":\"id labore ex et quam laborum\",\"type\":\"string\"},\"postId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"deviceInfo\":{\"properties\":{\"device\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"version\":{\"type\":\"string\"}},\"type\":\"object\"},\"isVerified\":{\"type\":\"boolean\"},\"location\":{\"type\":\"string\"},\"parentCommentId\":{\"nullable\":true,\"type\":\"integer\"},\"replies\":{\"type\":\"integer\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"website\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"Comment created successfully\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/comments",
@@ -230,6 +306,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/posts/{postId}/comments",
+                    "json": "{\"operationId\":\"getPostComments\",\"parameters\":[{\"description\":\"Post ID\",\"in\":\"path\",\"name\":\"postId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"laudantium enim quasi est quidem magnam...\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"example\":\"Eliseo@gardner.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":23,\"type\":\"integer\"},\"name\":{\"example\":\"id labore ex et quam laborum\",\"type\":\"string\"},\"postId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/posts/{postId}/comments",
@@ -265,6 +347,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/comments",
+                    "json": "{\"operationId\":\"getAllComments\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"laudantium enim quasi est quidem magnam...\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"example\":\"Eliseo@gardner.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":23,\"type\":\"integer\"},\"name\":{\"example\":\"id labore ex et quam laborum\",\"type\":\"string\"},\"postId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/comments",
@@ -399,6 +487,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "POST /api/posts",
+                    "json": "{\"operationId\":\"createPost\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"body\":{\"type\":\"string\"},\"category\":{\"type\":\"string\"},\"coverImage\":{\"format\":\"uri\",\"type\":\"string\"},\"featured\":{\"type\":\"boolean\"},\"metaDescription\":{\"type\":\"string\"},\"published\":{\"type\":\"boolean\"},\"readTime\":{\"type\":\"integer\"},\"tags\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"},\"userId\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"coverImage\":{\"format\":\"uri\",\"type\":\"string\"},\"featured\":{\"type\":\"boolean\"},\"metaDescription\":{\"type\":\"string\"},\"readTime\":{\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"Post created successfully\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/posts",
@@ -425,6 +519,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/posts",
+                    "json": "{\"operationId\":\"getAllPosts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/posts",
@@ -461,6 +561,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/posts/{id}",
+                    "json": "{\"operationId\":\"getPostById\",\"parameters\":[{\"description\":\"Post ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -575,6 +681,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/products",
+                    "json": "{\"operationId\":\"getAllProducts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"brand\":{\"example\":\"TechCorp\",\"type\":\"string\"},\"category\":{\"example\":\"electronics\",\"type\":\"string\"},\"description\":{\"example\":\"High-quality product...\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Awesome Product\",\"type\":\"string\"},\"price\":{\"example\":299.99,\"format\":\"float\",\"type\":\"number\"},\"rating\":{\"example\":4.3,\"format\":\"float\",\"type\":\"number\"},\"reviews\":{\"example\":127,\"type\":\"integer\"},\"sku\":{\"example\":\"TC-AP-001\",\"type\":\"string\"},\"stock\":{\"example\":45,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/products",
@@ -611,6 +723,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/products/{id}",
+                    "json": "{\"operationId\":\"getProductById\",\"parameters\":[{\"description\":\"Product ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"brand\":{\"example\":\"TechCorp\",\"type\":\"string\"},\"category\":{\"example\":\"electronics\",\"type\":\"string\"},\"description\":{\"example\":\"High-quality product...\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Awesome Product\",\"type\":\"string\"},\"price\":{\"example\":299.99,\"format\":\"float\",\"type\":\"number\"},\"rating\":{\"example\":4.3,\"format\":\"float\",\"type\":\"number\"},\"reviews\":{\"example\":127,\"type\":\"integer\"},\"sku\":{\"example\":\"TC-AP-001\",\"type\":\"string\"},\"stock\":{\"example\":45,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -742,6 +860,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /api/todos",
+                    "json": "{\"operationId\":\"getAllTodos\",\"parameters\":[{\"description\":\"Filter todos by user ID (range 1-100)\",\"in\":\"query\",\"name\":\"userId\",\"schema\":{\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Filter todos by completion status\",\"in\":\"query\",\"name\":\"completed\",\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"_page\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"_limit\",\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"completed\":{\"example\":false,\"type\":\"boolean\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"dueDate\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"priority\":{\"enum\":[\"low\",\"medium\",\"high\"],\"example\":\"high\",\"type\":\"string\"},\"title\":{\"example\":\"Complete project documentation\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/todos",
@@ -842,6 +966,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "POST /api/users",
+                    "json": "{\"operationId\":\"createUser\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"username\":{\"type\":\"string\"},\"website\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"User created successfully\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "POST",
                   "orig": "/api/users",
@@ -868,6 +998,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /api/users",
+                    "json": "{\"operationId\":\"getAllUsers\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/users",
@@ -904,6 +1040,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /api/users/{id}",
+                    "json": "{\"operationId\":\"getUserById\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -949,6 +1091,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "DELETE /api/users/{id}",
+                    "json": "{\"operationId\":\"deleteUser\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"User deleted successfully\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "DELETE",
                   "orig": "/api/users/{id}",
@@ -993,6 +1141,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "PUT /api/users/{id}",
+                    "json": "{\"operationId\":\"updateUser\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"username\":{\"type\":\"string\"},\"website\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"User updated successfully\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "PUT",
                   "orig": "/api/users/{id}",
@@ -1026,13 +1180,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1122,6 +1486,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1456,6 +1916,48 @@
         "website": "https://fake-rest-api-mobile-apps.vercel.app"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -2010,6 +2512,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2051,7 +2554,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

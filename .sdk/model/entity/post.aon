@@ -90,6 +90,12 @@ main: kit: entity: post: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /api/posts"
+            json: "{\"operationId\":\"createPost\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"body\":{\"type\":\"string\"},\"category\":{\"type\":\"string\"},\"coverImage\":{\"format\":\"uri\",\"type\":\"string\"},\"featured\":{\"type\":\"boolean\"},\"metaDescription\":{\"type\":\"string\"},\"published\":{\"type\":\"boolean\"},\"readTime\":{\"type\":\"integer\"},\"tags\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"},\"userId\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"coverImage\":{\"format\":\"uri\",\"type\":\"string\"},\"featured\":{\"type\":\"boolean\"},\"metaDescription\":{\"type\":\"string\"},\"readTime\":{\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"Post created successfully\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/api/posts"
           segments: [
@@ -111,6 +117,12 @@ main: kit: entity: post: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/posts"
+            json: "{\"operationId\":\"getAllPosts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/posts"
           segments: [
@@ -142,6 +154,12 @@ main: kit: entity: post: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/posts/{id}"
+            json: "{\"operationId\":\"getPostById\",\"parameters\":[{\"description\":\"Post ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/posts/{id}"

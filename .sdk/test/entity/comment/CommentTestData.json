@@ -9,11 +9,11 @@
         "email": "s86",
         "id": "COMMENT00",
         "isVerified": true,
-        "likes": "s89",
+        "likes": 137,
         "location": "s8a",
         "name": "s8b",
-        "parentCommentId": "s8c",
-        "postId": "s8d",
+        "parentCommentId": 140,
+        "postId": 141,
         "website": "s8e",
         "post_id": "POST01"
       },
@@ -25,11 +25,11 @@
         "email": "s108",
         "id": "COMMENT01",
         "isVerified": true,
-        "likes": "s10b",
+        "likes": 267,
         "location": "s10c",
         "name": "s10d",
-        "parentCommentId": "s10e",
-        "postId": "s10f",
+        "parentCommentId": 270,
+        "postId": 271,
         "website": "s110",
         "post_id": "POST01"
       },
@@ -41,11 +41,11 @@
         "email": "s18a",
         "id": "COMMENT02",
         "isVerified": true,
-        "likes": "s18d",
+        "likes": 397,
         "location": "s18e",
         "name": "s18f",
-        "parentCommentId": "s190",
-        "postId": "s191",
+        "parentCommentId": 400,
+        "postId": 401,
         "website": "s192",
         "post_id": "POST01"
       }
@@ -60,12 +60,291 @@
         "deviceInfo": {},
         "email": "s20c",
         "isVerified": true,
-        "likes": "s20f",
+        "likes": 527,
         "location": "s210",
         "name": "s211",
-        "parentCommentId": "s212",
-        "postId": "s213",
+        "parentCommentId": 530,
+        "postId": 531,
         "website": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/comments": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createComment",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "avatar": {
+                    "format": "uri",
+                    "type": "string"
+                  },
+                  "body": {
+                    "type": "string"
+                  },
+                  "deviceInfo": {
+                    "properties": {
+                      "device": {
+                        "type": "string"
+                      },
+                      "platform": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string"
+                  },
+                  "isVerified": {
+                    "type": "boolean"
+                  },
+                  "location": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "parentCommentId": {
+                    "nullable": true,
+                    "type": "integer"
+                  },
+                  "postId": {
+                    "type": "integer"
+                  },
+                  "website": {
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "properties": {
+                        "body": {
+                          "example": "laudantium enim quasi est quidem magnam...",
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "email": {
+                          "example": "Eliseo@gardner.biz",
+                          "format": "email",
+                          "type": "string"
+                        },
+                        "id": {
+                          "example": 1,
+                          "type": "integer"
+                        },
+                        "likes": {
+                          "example": 23,
+                          "type": "integer"
+                        },
+                        "name": {
+                          "example": "id labore ex et quam laborum",
+                          "type": "string"
+                        },
+                        "postId": {
+                          "example": 1,
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "avatar": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "deviceInfo": {
+                          "properties": {
+                            "device": {
+                              "type": "string"
+                            },
+                            "platform": {
+                              "type": "string"
+                            },
+                            "version": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "isVerified": {
+                          "type": "boolean"
+                        },
+                        "location": {
+                          "type": "string"
+                        },
+                        "parentCommentId": {
+                          "nullable": true,
+                          "type": "integer"
+                        },
+                        "replies": {
+                          "type": "integer"
+                        },
+                        "updatedAt": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "website": {
+                          "format": "uri",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Comment created successfully"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/posts/{postId}/comments": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPostComments",
+        "parameters": [
+          {
+            "description": "Post ID",
+            "in": "path",
+            "name": "postId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "body": {
+                        "example": "laudantium enim quasi est quidem magnam...",
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "email": {
+                        "example": "Eliseo@gardner.biz",
+                        "format": "email",
+                        "type": "string"
+                      },
+                      "id": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "likes": {
+                        "example": 23,
+                        "type": "integer"
+                      },
+                      "name": {
+                        "example": "id labore ex et quam laborum",
+                        "type": "string"
+                      },
+                      "postId": {
+                        "example": 1,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /api/comments": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllComments",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "body": {
+                        "example": "laudantium enim quasi est quidem magnam...",
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "email": {
+                        "example": "Eliseo@gardner.biz",
+                        "format": "email",
+                        "type": "string"
+                      },
+                      "id": {
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "likes": {
+                        "example": 23,
+                        "type": "integer"
+                      },
+                      "name": {
+                        "example": "id labore ex et quam laborum",
+                        "type": "string"
+                      },
+                      "postId": {
+                        "example": 1,
+                        "type": "integer"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

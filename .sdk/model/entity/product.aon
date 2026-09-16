@@ -70,6 +70,12 @@ main: kit: entity: product: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /api/products"
+            json: "{\"operationId\":\"getAllProducts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"brand\":{\"example\":\"TechCorp\",\"type\":\"string\"},\"category\":{\"example\":\"electronics\",\"type\":\"string\"},\"description\":{\"example\":\"High-quality product...\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Awesome Product\",\"type\":\"string\"},\"price\":{\"example\":299.99,\"format\":\"float\",\"type\":\"number\"},\"rating\":{\"example\":4.3,\"format\":\"float\",\"type\":\"number\"},\"reviews\":{\"example\":127,\"type\":\"integer\"},\"sku\":{\"example\":\"TC-AP-001\",\"type\":\"string\"},\"stock\":{\"example\":45,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/api/products"
           segments: [
@@ -101,6 +107,12 @@ main: kit: entity: product: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/products/{id}"
+            json: "{\"operationId\":\"getProductById\",\"parameters\":[{\"description\":\"Product ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"brand\":{\"example\":\"TechCorp\",\"type\":\"string\"},\"category\":{\"example\":\"electronics\",\"type\":\"string\"},\"description\":{\"example\":\"High-quality product...\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Awesome Product\",\"type\":\"string\"},\"price\":{\"example\":299.99,\"format\":\"float\",\"type\":\"number\"},\"rating\":{\"example\":4.3,\"format\":\"float\",\"type\":\"number\"},\"reviews\":{\"example\":127,\"type\":\"integer\"},\"sku\":{\"example\":\"TC-AP-001\",\"type\":\"string\"},\"stock\":{\"example\":45,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/api/products/{id}"
