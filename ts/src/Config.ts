@@ -127,24 +127,24 @@ class Config {
 
     entity: {
       
-      category: {
-      },
-
-      comment: {
-      },
-
-      post: {
-      },
-
-      product: {
-      },
-
-      todo: {
-      },
-
-      user: {
-      },
-
+        category: {
+        },
+  
+        comment: {
+        },
+  
+        post: {
+        },
+  
+        product: {
+        },
+  
+        todo: {
+        },
+  
+        user: {
+        },
+  
     }
   }
 

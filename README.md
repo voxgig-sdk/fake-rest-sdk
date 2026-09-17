@@ -105,12 +105,12 @@ local results, err = client:Product():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/fake-rest-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
-| Python | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
-| PHP | `voxgig-sdk/fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
+| TypeScript | `@voxgig-sdk/fake-rest-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/tags) |
+| Python | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/tags) |
+| PHP | `voxgig-sdk/fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/fake-rest-sdk/go` | `go get github.com/voxgig-sdk/fake-rest-sdk/go@latest` |
-| Ruby | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
-| Lua | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/releases) |
+| Ruby | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/tags) |
+| Lua | `voxgig-sdk-fake-rest` | publish pending — [install from git tag](https://github.com/voxgig-sdk/fake-rest-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/fake-rest-sdk/go-cli` | `go install github.com/voxgig-sdk/fake-rest-sdk/go-cli/cmd/fake-rest@latest` |
 | Go MCP server | `github.com/voxgig-sdk/fake-rest-sdk/go-mcp` | `go get github.com/voxgig-sdk/fake-rest-sdk/go-mcp@latest` |
 
