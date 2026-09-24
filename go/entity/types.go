@@ -1,7 +1,7 @@
 // Typed models for the FakeRest SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,9 +14,6 @@ import (
 
 // Category is the typed data model for the category entity.
 type Category struct {
-	Count *int `json:"count,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
 }
 
 // CategoryListMatch is the typed request payload for Category.ListTyped.
@@ -28,19 +25,6 @@ type CategoryListMatch struct {
 
 // Comment is the typed data model for the comment entity.
 type Comment struct {
-	Avatar *string `json:"avatar,omitempty"`
-	Body *string `json:"body,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	DeviceInfo *map[string]any `json:"deviceInfo,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Id *int `json:"id,omitempty"`
-	IsVerified *bool `json:"isVerified,omitempty"`
-	Likes *int `json:"likes,omitempty"`
-	Location *string `json:"location,omitempty"`
-	Name *string `json:"name,omitempty"`
-	ParentCommentId *int `json:"parentCommentId,omitempty"`
-	PostId *int `json:"postId,omitempty"`
-	Website *string `json:"website,omitempty"`
 }
 
 // CommentListMatch is the typed request payload for Comment.ListTyped.
@@ -79,20 +63,6 @@ type CommentCreateData struct {
 
 // Post is the typed data model for the post entity.
 type Post struct {
-	Body *string `json:"body,omitempty"`
-	Category *string `json:"category,omitempty"`
-	CoverImage *string `json:"coverImage,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	Featured *bool `json:"featured,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Likes *int `json:"likes,omitempty"`
-	MetaDescription *string `json:"metaDescription,omitempty"`
-	Published *bool `json:"published,omitempty"`
-	ReadTime *int `json:"readTime,omitempty"`
-	Tags *[]any `json:"tags,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UserId *int `json:"userId,omitempty"`
-	Views *int `json:"views,omitempty"`
 }
 
 // PostLoadMatch is the typed request payload for Post.LoadTyped.
@@ -138,16 +108,6 @@ type PostCreateData struct {
 
 // Product is the typed data model for the product entity.
 type Product struct {
-	Brand *string `json:"brand,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	Rating *float64 `json:"rating,omitempty"`
-	Reviews *int `json:"reviews,omitempty"`
-	Sku *string `json:"sku,omitempty"`
-	Stock *int `json:"stock,omitempty"`
 }
 
 // ProductLoadMatch is the typed request payload for Product.LoadTyped.
@@ -171,13 +131,6 @@ type ProductListMatch struct {
 
 // Todo is the typed data model for the todo entity.
 type Todo struct {
-	Completed *bool `json:"completed,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	DueDate *string `json:"dueDate,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Priority *string `json:"priority,omitempty"`
-	Title *string `json:"title,omitempty"`
-	UserId *int `json:"userId,omitempty"`
 }
 
 // TodoListMatch is the typed request payload for Todo.ListTyped.
@@ -190,14 +143,6 @@ type TodoListMatch struct {
 
 // User is the typed data model for the user entity.
 type User struct {
-	Address *map[string]any `json:"address,omitempty"`
-	Company *map[string]any `json:"company,omitempty"`
-	Email *string `json:"email,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	Username *string `json:"username,omitempty"`
-	Website *string `json:"website,omitempty"`
 }
 
 // UserLoadMatch is the typed request payload for User.LoadTyped.

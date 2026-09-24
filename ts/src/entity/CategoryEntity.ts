@@ -19,7 +19,6 @@ import type {
   CategoryListMatch,
 } from '../FakeRestTypes'
 
-// TODO: needs Entity superclass
 class CategoryEntity extends FakeRestEntityBase<Category> {
 
   constructor(client: FakeRestSDK, entopts: any) {

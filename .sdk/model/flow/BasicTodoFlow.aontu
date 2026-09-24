@@ -1,0 +1,22 @@
+# BasicTodoFlow
+
+main: kit: flow: BasicTodoFlow:
+{
+  entity: "todo",
+  kind: "basic",
+  name: "BasicTodoFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "todo_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTodoFlow"
+}

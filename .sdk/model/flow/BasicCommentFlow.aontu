@@ -1,0 +1,34 @@
+# BasicCommentFlow
+
+main: kit: flow: BasicCommentFlow:
+{
+  entity: "comment",
+  kind: "basic",
+  name: "BasicCommentFlow",
+  step: [
+    {
+      i: {
+        ref: "comment_ref01"
+      }
+
+      m: {
+        post_id: "post01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "comment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCommentFlow"
+}

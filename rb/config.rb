@@ -104,14 +104,17 @@ module FakeRestConfig
           "fields" => [
             {
               "name" => "count",
+              "title" => "Count",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
           ],
@@ -126,7 +129,6 @@ module FakeRestConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/products/categories",
@@ -141,16 +143,18 @@ module FakeRestConfig
                       "lit" => "categories",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "products",
                     "categories",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -162,60 +166,73 @@ module FakeRestConfig
         "comment" => {
           "fields" => [
             {
-              "format" => "uri",
               "name" => "avatar",
+              "title" => "Avatar",
               "type" => "`$STRING`",
+              "format" => "uri",
             },
             {
               "name" => "body",
+              "title" => "Body",
               "type" => "`$STRING`",
             },
             {
-              "format" => "date-time",
               "name" => "createdAt",
+              "title" => "Created At",
               "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
               "name" => "deviceInfo",
+              "title" => "Device Info",
               "type" => "`$OBJECT`",
             },
             {
-              "format" => "email",
               "name" => "email",
+              "title" => "Email",
               "type" => "`$STRING`",
+              "format" => "email",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "isVerified",
+              "title" => "Is Verified",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "likes",
+              "title" => "Likes",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "location",
+              "title" => "Location",
               "type" => "`$STRING`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "parentCommentId",
+              "title" => "Parent Comment Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "postId",
+              "title" => "Post Id",
               "type" => "`$INTEGER`",
             },
             {
-              "format" => "uri",
               "name" => "website",
+              "title" => "Website",
               "type" => "`$STRING`",
+              "format" => "uri",
             },
           ],
           "id" => {
@@ -229,7 +246,6 @@ module FakeRestConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/comments",
@@ -241,15 +257,17 @@ module FakeRestConfig
                       "lit" => "comments",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "comments",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -258,25 +276,9 @@ module FakeRestConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "post_id",
-                        "orig" => "post_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/posts/{postId}/comments",
-                  "rename" => {
-                    "param" => {
-                      "postId" => "post_id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "api",
@@ -291,24 +293,39 @@ module FakeRestConfig
                       "lit" => "comments",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "post_id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "posts",
                     "{post_id}",
                     "comments",
                   ],
+                  "rename" => {
+                    "param" => {
+                      "postId" => "post_id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "post_id",
+                        "orig" => "post_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "post_id",
+                    ],
+                  },
                 },
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/comments",
@@ -320,15 +337,17 @@ module FakeRestConfig
                       "lit" => "comments",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "comments",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -336,7 +355,7 @@ module FakeRestConfig
           "relations" => {
             "ancestors" => [
               [
-                "post",
+                "$.main.kit.entity.post",
               ],
             ],
           },
@@ -345,60 +364,74 @@ module FakeRestConfig
           "fields" => [
             {
               "name" => "body",
+              "title" => "Body",
               "type" => "`$STRING`",
             },
             {
               "name" => "category",
+              "title" => "Category",
               "type" => "`$STRING`",
             },
             {
-              "format" => "uri",
               "name" => "coverImage",
+              "title" => "Cover Image",
               "type" => "`$STRING`",
+              "format" => "uri",
             },
             {
-              "format" => "date-time",
               "name" => "createdAt",
+              "title" => "Created At",
               "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
               "name" => "featured",
+              "title" => "Featured",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "likes",
+              "title" => "Likes",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "metaDescription",
+              "title" => "Meta Description",
               "type" => "`$STRING`",
             },
             {
               "name" => "published",
+              "title" => "Published",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "readTime",
+              "title" => "Read Time",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "tags",
+              "title" => "Tags",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "title",
+              "title" => "Title",
               "type" => "`$STRING`",
             },
             {
               "name" => "userId",
+              "title" => "User Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "views",
+              "title" => "Views",
               "type" => "`$INTEGER`",
             },
           ],
@@ -413,7 +446,6 @@ module FakeRestConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/posts",
@@ -425,15 +457,17 @@ module FakeRestConfig
                       "lit" => "posts",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "posts",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -442,7 +476,6 @@ module FakeRestConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/posts",
@@ -454,15 +487,17 @@ module FakeRestConfig
                       "lit" => "posts",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "posts",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -471,17 +506,6 @@ module FakeRestConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/posts/{id}",
@@ -496,20 +520,32 @@ module FakeRestConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "posts",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -522,44 +558,54 @@ module FakeRestConfig
           "fields" => [
             {
               "name" => "brand",
+              "title" => "Brand",
               "type" => "`$STRING`",
             },
             {
               "name" => "category",
+              "title" => "Category",
               "type" => "`$STRING`",
             },
             {
               "name" => "description",
+              "title" => "Description",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
-              "format" => "float",
               "name" => "price",
+              "title" => "Price",
               "type" => "`$NUMBER`",
+              "format" => "float",
             },
             {
-              "format" => "float",
               "name" => "rating",
+              "title" => "Rating",
               "type" => "`$NUMBER`",
+              "format" => "float",
             },
             {
               "name" => "reviews",
+              "title" => "Reviews",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "sku",
+              "title" => "Sku",
               "type" => "`$STRING`",
             },
             {
               "name" => "stock",
+              "title" => "Stock",
               "type" => "`$INTEGER`",
             },
           ],
@@ -574,7 +620,6 @@ module FakeRestConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/products",
@@ -586,15 +631,17 @@ module FakeRestConfig
                       "lit" => "products",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "products",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -603,17 +650,6 @@ module FakeRestConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/products/{id}",
@@ -628,20 +664,32 @@ module FakeRestConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "products",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -654,32 +702,39 @@ module FakeRestConfig
           "fields" => [
             {
               "name" => "completed",
+              "title" => "Completed",
               "type" => "`$BOOLEAN`",
             },
             {
-              "format" => "date-time",
               "name" => "createdAt",
+              "title" => "Created At",
               "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
-              "format" => "date-time",
               "name" => "dueDate",
+              "title" => "Due Date",
               "type" => "`$STRING`",
+              "format" => "date-time",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "priority",
+              "title" => "Priority",
               "type" => "`$STRING`",
             },
             {
               "name" => "title",
+              "title" => "Title",
               "type" => "`$STRING`",
             },
             {
               "name" => "userId",
+              "title" => "User Id",
               "type" => "`$INTEGER`",
             },
           ],
@@ -694,34 +749,6 @@ module FakeRestConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "completed",
-                        "orig" => "completed",
-                        "type" => "`$BOOLEAN`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "limit",
-                        "orig" => "limit",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "user_id",
-                        "orig" => "user_id",
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/todos",
@@ -733,6 +760,43 @@ module FakeRestConfig
                       "lit" => "todos",
                     },
                   ],
+                  "parts" => [
+                    "api",
+                    "todos",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "completed",
+                        "orig" => "completed",
+                        "type" => "`$BOOLEAN`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "limit",
+                        "orig" => "limit",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                      {
+                        "name" => "user_id",
+                        "orig" => "user_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "completed",
@@ -741,14 +805,6 @@ module FakeRestConfig
                       "user_id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "api",
-                    "todos",
-                  ],
                 },
               ],
             },
@@ -761,35 +817,43 @@ module FakeRestConfig
           "fields" => [
             {
               "name" => "address",
+              "title" => "Address",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "company",
+              "title" => "Company",
               "type" => "`$OBJECT`",
             },
             {
-              "format" => "email",
               "name" => "email",
+              "title" => "Email",
               "type" => "`$STRING`",
+              "format" => "email",
             },
             {
               "name" => "id",
+              "title" => "Id",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "name",
+              "title" => "Name",
               "type" => "`$STRING`",
             },
             {
               "name" => "phone",
+              "title" => "Phone",
               "type" => "`$STRING`",
             },
             {
               "name" => "username",
+              "title" => "Username",
               "type" => "`$STRING`",
             },
             {
               "name" => "website",
+              "title" => "Website",
               "type" => "`$STRING`",
             },
           ],
@@ -804,7 +868,6 @@ module FakeRestConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/api/users",
@@ -816,15 +879,17 @@ module FakeRestConfig
                       "lit" => "users",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "users",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -833,7 +898,6 @@ module FakeRestConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/users",
@@ -845,15 +909,17 @@ module FakeRestConfig
                       "lit" => "users",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "users",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -862,17 +928,6 @@ module FakeRestConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/users/{id}",
@@ -887,20 +942,32 @@ module FakeRestConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "users",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -909,17 +976,6 @@ module FakeRestConfig
               "name" => "remove",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/api/users/{id}",
@@ -934,20 +990,32 @@ module FakeRestConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "users",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -956,17 +1024,6 @@ module FakeRestConfig
               "name" => "update",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/api/users/{id}",
@@ -981,20 +1038,32 @@ module FakeRestConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "api",
                     "users",
                     "{id}",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },

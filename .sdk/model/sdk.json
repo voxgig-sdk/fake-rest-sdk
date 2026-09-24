@@ -24,32 +24,101 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "category": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "count",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "count": {
+              "a": true,
+              "h": "Count",
+              "n": "count",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -61,18 +130,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/products/categories",
-                    "json": "{\"operationId\":\"getProductCategories\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"count\":{\"example\":15,\"type\":\"integer\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Electronics\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/products/categories",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/products/categories",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -83,8 +153,7 @@
                       "lit": "categories"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -101,90 +170,103 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "format": "uri",
-              "name": "avatar",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "avatar": {
+              "a": true,
+              "fo": "uri",
+              "h": "Avatar",
+              "n": "avatar",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "body",
-              "req": false,
-              "type": "`$STRING`"
+            "body": {
+              "a": true,
+              "h": "Body",
+              "n": "body",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "createdAt",
-              "req": false,
-              "type": "`$STRING`"
+            "createdAt": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "createdAt",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "deviceInfo",
-              "req": false,
-              "type": "`$OBJECT`"
+            "deviceInfo": {
+              "a": true,
+              "h": "Device Info",
+              "n": "deviceInfo",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "format": "email",
-              "name": "email",
-              "req": false,
-              "type": "`$STRING`"
+            "email": {
+              "a": true,
+              "fo": "email",
+              "h": "Email",
+              "n": "email",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "isVerified",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "isVerified": {
+              "a": true,
+              "h": "Is Verified",
+              "n": "isVerified",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "likes",
-              "req": false,
-              "type": "`$INTEGER`"
+            "likes": {
+              "a": true,
+              "h": "Likes",
+              "n": "likes",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "location",
-              "req": false,
-              "type": "`$STRING`"
+            "location": {
+              "a": true,
+              "h": "Location",
+              "n": "location",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "parentCommentId",
-              "req": false,
-              "type": "`$INTEGER`"
+            "parentCommentId": {
+              "a": true,
+              "h": "Parent Comment Id",
+              "n": "parentCommentId",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "postId",
-              "req": false,
-              "type": "`$INTEGER`"
+            "postId": {
+              "a": true,
+              "h": "Post Id",
+              "n": "postId",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "website",
-              "req": false,
-              "type": "`$STRING`"
+            "website": {
+              "a": true,
+              "fo": "uri",
+              "h": "Website",
+              "n": "website",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -196,18 +278,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/comments",
-                    "json": "{\"operationId\":\"createComment\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"body\":{\"type\":\"string\"},\"deviceInfo\":{\"properties\":{\"device\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"version\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"isVerified\":{\"type\":\"boolean\"},\"location\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"parentCommentId\":{\"nullable\":true,\"type\":\"integer\"},\"postId\":{\"type\":\"integer\"},\"website\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"body\":{\"example\":\"laudantium enim quasi est quidem magnam...\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"example\":\"Eliseo@gardner.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":23,\"type\":\"integer\"},\"name\":{\"example\":\"id labore ex et quam laborum\",\"type\":\"string\"},\"postId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"deviceInfo\":{\"properties\":{\"device\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"version\":{\"type\":\"string\"}},\"type\":\"object\"},\"isVerified\":{\"type\":\"boolean\"},\"location\":{\"type\":\"string\"},\"parentCommentId\":{\"nullable\":true,\"type\":\"integer\"},\"replies\":{\"type\":\"integer\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"website\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"Comment created successfully\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/comments",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/comments",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -215,8 +298,7 @@
                       "lit": "comments"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -228,34 +310,38 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/posts/{postId}/comments",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "post_id",
-                        "orig": "post_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "post_id",
+                        "or": "post_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/posts/{postId}/comments",
-                    "json": "{\"operationId\":\"getPostComments\",\"parameters\":[{\"description\":\"Post ID\",\"in\":\"path\",\"name\":\"postId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"laudantium enim quasi est quidem magnam...\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"example\":\"Eliseo@gardner.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":23,\"type\":\"integer\"},\"name\":{\"example\":\"id labore ex et quam laborum\",\"type\":\"string\"},\"postId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/posts/{postId}/comments",
+                  "q": {
+                    "exist": [
+                      "post_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/posts/{postId}/comments",
-                  "rename": {
+                  "r": {
                     "param": {
                       "postId": "post_id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -269,29 +355,25 @@
                       "lit": "comments"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "post_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/comments",
-                    "json": "{\"operationId\":\"getAllComments\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"laudantium enim quasi est quidem magnam...\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"email\":{\"example\":\"Eliseo@gardner.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":23,\"type\":\"integer\"},\"name\":{\"example\":\"id labore ex et quam laborum\",\"type\":\"string\"},\"postId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/comments",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/comments",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -299,8 +381,7 @@
                       "lit": "comments"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -311,7 +392,7 @@
           "relations": {
             "ancestors": [
               [
-                "post"
+                "$.main.kit.entity.post"
               ]
             ]
           }
@@ -321,94 +402,108 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "body",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "body": {
+              "a": true,
+              "h": "Body",
+              "n": "body",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "type": "`$STRING`"
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "coverImage",
-              "req": false,
-              "type": "`$STRING`"
+            "coverImage": {
+              "a": true,
+              "fo": "uri",
+              "h": "Cover Image",
+              "n": "coverImage",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "createdAt",
-              "req": false,
-              "type": "`$STRING`"
+            "createdAt": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "createdAt",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "featured",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "featured": {
+              "a": true,
+              "h": "Featured",
+              "n": "featured",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "likes",
-              "req": false,
-              "type": "`$INTEGER`"
+            "likes": {
+              "a": true,
+              "h": "Likes",
+              "n": "likes",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "metaDescription",
-              "req": false,
-              "type": "`$STRING`"
+            "metaDescription": {
+              "a": true,
+              "h": "Meta Description",
+              "n": "metaDescription",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "published",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "published": {
+              "a": true,
+              "h": "Published",
+              "n": "published",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "readTime",
-              "req": false,
-              "type": "`$INTEGER`"
+            "readTime": {
+              "a": true,
+              "h": "Read Time",
+              "n": "readTime",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "tags",
-              "req": false,
-              "type": "`$ARRAY`"
+            "tags": {
+              "a": true,
+              "h": "Tags",
+              "n": "tags",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "userId",
-              "req": false,
-              "type": "`$INTEGER`"
+            "userId": {
+              "a": true,
+              "h": "User Id",
+              "n": "userId",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "views",
-              "req": false,
-              "type": "`$INTEGER`"
+            "views": {
+              "a": true,
+              "h": "Views",
+              "n": "views",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -420,18 +515,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/posts",
-                    "json": "{\"operationId\":\"createPost\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"body\":{\"type\":\"string\"},\"category\":{\"type\":\"string\"},\"coverImage\":{\"format\":\"uri\",\"type\":\"string\"},\"featured\":{\"type\":\"boolean\"},\"metaDescription\":{\"type\":\"string\"},\"published\":{\"type\":\"boolean\"},\"readTime\":{\"type\":\"integer\"},\"tags\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"type\":\"string\"},\"userId\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"},{\"properties\":{\"coverImage\":{\"format\":\"uri\",\"type\":\"string\"},\"featured\":{\"type\":\"boolean\"},\"metaDescription\":{\"type\":\"string\"},\"readTime\":{\"type\":\"integer\"},\"slug\":{\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"Post created successfully\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/posts",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/posts",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -439,8 +535,7 @@
                       "lit": "posts"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -452,18 +547,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/posts",
-                    "json": "{\"operationId\":\"getAllPosts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/posts",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/posts",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -471,8 +567,7 @@
                       "lit": "posts"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -484,29 +579,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/posts/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/posts/{id}",
-                    "json": "{\"operationId\":\"getPostById\",\"parameters\":[{\"description\":\"Post ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"body\":{\"example\":\"quia et suscipit suscipit recusandae...\",\"type\":\"string\"},\"category\":{\"example\":\"technology\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"likes\":{\"example\":89,\"type\":\"integer\"},\"published\":{\"example\":true,\"type\":\"boolean\"},\"tags\":{\"example\":[\"sample\",\"test\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"title\":{\"example\":\"sunt aut facere repellat\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"},\"views\":{\"example\":1247,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/posts/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/posts/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -517,12 +617,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -539,70 +634,80 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "brand",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "brand": {
+              "a": true,
+              "h": "Brand",
+              "n": "brand",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "type": "`$STRING`"
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "float",
-              "name": "price",
-              "req": false,
-              "type": "`$NUMBER`"
+            "price": {
+              "a": true,
+              "fo": "float",
+              "h": "Price",
+              "n": "price",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "format": "float",
-              "name": "rating",
-              "req": false,
-              "type": "`$NUMBER`"
+            "rating": {
+              "a": true,
+              "fo": "float",
+              "h": "Rating",
+              "n": "rating",
+              "r": false,
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "reviews",
-              "req": false,
-              "type": "`$INTEGER`"
+            "reviews": {
+              "a": true,
+              "h": "Reviews",
+              "n": "reviews",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "sku",
-              "req": false,
-              "type": "`$STRING`"
+            "sku": {
+              "a": true,
+              "h": "Sku",
+              "n": "sku",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "stock",
-              "req": false,
-              "type": "`$INTEGER`"
+            "stock": {
+              "a": true,
+              "h": "Stock",
+              "n": "stock",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -614,18 +719,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/products",
-                    "json": "{\"operationId\":\"getAllProducts\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"brand\":{\"example\":\"TechCorp\",\"type\":\"string\"},\"category\":{\"example\":\"electronics\",\"type\":\"string\"},\"description\":{\"example\":\"High-quality product...\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Awesome Product\",\"type\":\"string\"},\"price\":{\"example\":299.99,\"format\":\"float\",\"type\":\"number\"},\"rating\":{\"example\":4.3,\"format\":\"float\",\"type\":\"number\"},\"reviews\":{\"example\":127,\"type\":\"integer\"},\"sku\":{\"example\":\"TC-AP-001\",\"type\":\"string\"},\"stock\":{\"example\":45,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/products",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/products",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -633,8 +739,7 @@
                       "lit": "products"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -646,29 +751,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/products/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/products/{id}",
-                    "json": "{\"operationId\":\"getProductById\",\"parameters\":[{\"description\":\"Product ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"brand\":{\"example\":\"TechCorp\",\"type\":\"string\"},\"category\":{\"example\":\"electronics\",\"type\":\"string\"},\"description\":{\"example\":\"High-quality product...\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Awesome Product\",\"type\":\"string\"},\"price\":{\"example\":299.99,\"format\":\"float\",\"type\":\"number\"},\"rating\":{\"example\":4.3,\"format\":\"float\",\"type\":\"number\"},\"reviews\":{\"example\":127,\"type\":\"integer\"},\"sku\":{\"example\":\"TC-AP-001\",\"type\":\"string\"},\"stock\":{\"example\":45,\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/products/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/products/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -679,12 +789,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -701,52 +806,59 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "completed",
-              "req": false,
-              "type": "`$BOOLEAN`"
+          "fields": {
+            "completed": {
+              "a": true,
+              "h": "Completed",
+              "n": "completed",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "createdAt",
-              "req": false,
-              "type": "`$STRING`"
+            "createdAt": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "createdAt",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "dueDate",
-              "req": false,
-              "type": "`$STRING`"
+            "dueDate": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Due Date",
+              "n": "dueDate",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "priority",
-              "req": false,
-              "type": "`$STRING`"
+            "priority": {
+              "a": true,
+              "h": "Priority",
+              "n": "priority",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "userId",
-              "req": false,
-              "type": "`$INTEGER`"
+            "userId": {
+              "a": true,
+              "h": "User Id",
+              "n": "userId",
+              "r": false,
+              "t": "`$INTEGER`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -758,61 +870,52 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/todos",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "completed",
-                        "orig": "completed",
-                        "reqd": false,
-                        "type": "`$BOOLEAN`"
+                        "a": true,
+                        "k": "query",
+                        "n": "completed",
+                        "or": "completed",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "limit",
-                        "orig": "limit",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "limit",
+                        "or": "limit",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "user_id",
-                        "orig": "user_id",
-                        "reqd": false,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "user_id",
+                        "or": "user_id",
+                        "r": false,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/todos",
-                    "json": "{\"operationId\":\"getAllTodos\",\"parameters\":[{\"description\":\"Filter todos by user ID (range 1-100)\",\"in\":\"query\",\"name\":\"userId\",\"schema\":{\"maximum\":100,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Filter todos by completion status\",\"in\":\"query\",\"name\":\"completed\",\"schema\":{\"type\":\"boolean\"}},{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"_page\",\"schema\":{\"type\":\"integer\"}},{\"description\":\"Number of items per page\",\"in\":\"query\",\"name\":\"_limit\",\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"completed\":{\"example\":false,\"type\":\"boolean\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"dueDate\":{\"format\":\"date-time\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"priority\":{\"enum\":[\"low\",\"medium\",\"high\"],\"example\":\"high\",\"type\":\"string\"},\"title\":{\"example\":\"Complete project documentation\",\"type\":\"string\"},\"userId\":{\"example\":1,\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/todos",
-                  "segments": [
-                    {
-                      "lit": "api"
-                    },
-                    {
-                      "lit": "todos"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/todos",
+                  "q": {
                     "exist": [
                       "completed",
                       "limit",
@@ -820,7 +923,16 @@
                       "user_id"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "todos"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -837,57 +949,65 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "address",
-              "req": false,
-              "type": "`$OBJECT`"
+          "fields": {
+            "address": {
+              "a": true,
+              "h": "Address",
+              "n": "address",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "company",
-              "req": false,
-              "type": "`$OBJECT`"
+            "company": {
+              "a": true,
+              "h": "Company",
+              "n": "company",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "format": "email",
-              "name": "email",
-              "req": false,
-              "type": "`$STRING`"
+            "email": {
+              "a": true,
+              "fo": "email",
+              "h": "Email",
+              "n": "email",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "phone",
-              "req": false,
-              "type": "`$STRING`"
+            "phone": {
+              "a": true,
+              "h": "Phone",
+              "n": "phone",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "username",
-              "req": false,
-              "type": "`$STRING`"
+            "username": {
+              "a": true,
+              "h": "Username",
+              "n": "username",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "website",
-              "req": false,
-              "type": "`$STRING`"
+            "website": {
+              "a": true,
+              "h": "Website",
+              "n": "website",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -899,18 +1019,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /api/users",
-                    "json": "{\"operationId\":\"createUser\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"username\":{\"type\":\"string\"},\"website\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"User created successfully\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/api/users",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/api/users",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -918,8 +1039,7 @@
                       "lit": "users"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -931,18 +1051,19 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /api/users",
-                    "json": "{\"operationId\":\"getAllUsers\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/users",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/users",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -950,8 +1071,7 @@
                       "lit": "users"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -963,29 +1083,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /api/users/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /api/users/{id}",
-                    "json": "{\"operationId\":\"getUserById\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/api/users/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/api/users/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -996,12 +1121,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1013,29 +1133,34 @@
               "name": "remove",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /api/users/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "DELETE /api/users/{id}",
-                    "json": "{\"operationId\":\"deleteUser\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"User deleted successfully\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/api/users/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "DELETE",
-                  "orig": "/api/users/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1046,12 +1171,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1063,29 +1183,34 @@
               "name": "update",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "PUT /api/users/{id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "PUT /api/users/{id}",
-                    "json": "{\"operationId\":\"updateUser\",\"parameters\":[{\"description\":\"User ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"address\":{\"properties\":{\"city\":{\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"format\":\"email\",\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"phone\":{\"type\":\"string\"},\"username\":{\"type\":\"string\"},\"website\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"allOf\":[{\"properties\":{\"address\":{\"properties\":{\"city\":{\"example\":\"Gwenborough\",\"type\":\"string\"},\"geo\":{\"properties\":{\"lat\":{\"type\":\"string\"},\"lng\":{\"type\":\"string\"}},\"type\":\"object\"},\"street\":{\"example\":\"Kulas Light\",\"type\":\"string\"},\"suite\":{\"type\":\"string\"},\"zipcode\":{\"example\":\"92998-3874\",\"type\":\"string\"}},\"type\":\"object\"},\"company\":{\"properties\":{\"bs\":{\"type\":\"string\"},\"catchPhrase\":{\"example\":\"Multi-layered client-server neural-net\",\"type\":\"string\"},\"name\":{\"example\":\"Romaguera-Crona\",\"type\":\"string\"}},\"type\":\"object\"},\"email\":{\"example\":\"Sincere@april.biz\",\"format\":\"email\",\"type\":\"string\"},\"id\":{\"example\":1,\"type\":\"integer\"},\"name\":{\"example\":\"Leanne Graham\",\"type\":\"string\"},\"phone\":{\"example\":\"1-770-736-8031\",\"type\":\"string\"},\"username\":{\"example\":\"Bret\",\"type\":\"string\"},\"website\":{\"example\":\"hildegard.org\",\"type\":\"string\"}},\"type\":\"object\"},{\"properties\":{\"avatar\":{\"format\":\"uri\",\"type\":\"string\"},\"createdAt\":{\"format\":\"date-time\",\"type\":\"string\"},\"updatedAt\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}]}}},\"description\":\"User updated successfully\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/api/users/{id}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "PUT",
-                  "orig": "/api/users/{id}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "api"
                     },
@@ -1096,12 +1221,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1530,13 +1650,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1556,26 +1676,26 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "comment_ref01"
               },
-              "match": {
+              "m": {
                 "post_id": "post01"
               },
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1595,24 +1715,24 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "post_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1622,19 +1742,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "post_ref01",
                 "srcdatavar": "post_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "post01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1654,13 +1774,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1670,19 +1790,19 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "product_ref01",
                 "srcdatavar": "product_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "product01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1702,13 +1822,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1728,24 +1848,24 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "user_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1755,17 +1875,17 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "user_ref01",
                 "srcdatavar": "user_ref01_data",
                 "suffix": "_up0",
                 "textfield": "email"
               },
-              "match": {},
-              "op": "update",
-              "spec": [
+              "m": {},
+              "o": "update",
+              "s": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1773,22 +1893,22 @@
                   }
                 }
               ],
-              "valid": []
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "user_ref01",
                 "srcdatavar": "user_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "user01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1798,29 +1918,29 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "user_ref01",
                 "suffix": "_rm0"
               },
-              "match": {
+              "m": {
                 "id": "user01"
               },
-              "op": "remove",
-              "spec": [],
-              "valid": []
+              "o": "remove",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "suffix": "_rt0"
               },
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemNotExists",
                   "def": {

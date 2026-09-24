@@ -19,7 +19,6 @@ import type {
   TodoListMatch,
 } from '../FakeRestTypes'
 
-// TODO: needs Entity superclass
 class TodoEntity extends FakeRestEntityBase<Todo> {
 
   constructor(client: FakeRestSDK, entopts: any) {

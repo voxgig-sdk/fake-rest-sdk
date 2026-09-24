@@ -1,0 +1,204 @@
+# Entity: post
+
+main: kit: entity: post: {
+
+  alias: field: {}
+
+  fields: {
+    body: {
+      h: "Body"
+      n: "body"
+      r: false
+      t: "`$STRING`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    coverImage: {
+      fo: "uri"
+      h: "Cover Image"
+      n: "coverImage"
+      r: false
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      t: "`$STRING`"
+    }
+    featured: {
+      h: "Featured"
+      n: "featured"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    likes: {
+      h: "Likes"
+      n: "likes"
+      r: false
+      t: "`$INTEGER`"
+    }
+    metaDescription: {
+      h: "Meta Description"
+      n: "metaDescription"
+      r: false
+      t: "`$STRING`"
+    }
+    published: {
+      h: "Published"
+      n: "published"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    readTime: {
+      h: "Read Time"
+      n: "readTime"
+      r: false
+      t: "`$INTEGER`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    userId: {
+      h: "User Id"
+      n: "userId"
+      r: false
+      t: "`$INTEGER`"
+    }
+    views: {
+      h: "Views"
+      n: "views"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "post"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/posts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/posts"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/posts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/posts"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/posts/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/posts/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

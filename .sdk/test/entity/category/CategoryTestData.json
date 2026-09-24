@@ -29,41 +29,8 @@
   "requests": {
     "GET /api/products/categories": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "getProductCategories",
-        "parameters": [],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "items": {
-                    "properties": {
-                      "count": {
-                        "example": 15,
-                        "type": "integer"
-                      },
-                      "id": {
-                        "example": 1,
-                        "type": "integer"
-                      },
-                      "name": {
-                        "example": "Electronics",
-                        "type": "string"
-                      }
-                    },
-                    "type": "object"
-                  },
-                  "type": "array"
-                }
-              }
-            },
-            "description": "Successful response"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

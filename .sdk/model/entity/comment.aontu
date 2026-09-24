@@ -1,0 +1,206 @@
+# Entity: comment
+
+main: kit: entity: comment: {
+
+  alias: field: {}
+
+  fields: {
+    avatar: {
+      fo: "uri"
+      h: "Avatar"
+      n: "avatar"
+      r: false
+      t: "`$STRING`"
+    }
+    body: {
+      h: "Body"
+      n: "body"
+      r: false
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      t: "`$STRING`"
+    }
+    deviceInfo: {
+      h: "Device Info"
+      n: "deviceInfo"
+      r: false
+      t: "`$OBJECT`"
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    isVerified: {
+      h: "Is Verified"
+      n: "isVerified"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    likes: {
+      h: "Likes"
+      n: "likes"
+      r: false
+      t: "`$INTEGER`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    parentCommentId: {
+      h: "Parent Comment Id"
+      n: "parentCommentId"
+      r: false
+      t: "`$INTEGER`"
+    }
+    postId: {
+      h: "Post Id"
+      n: "postId"
+      r: false
+      t: "`$INTEGER`"
+    }
+    website: {
+      fo: "uri"
+      h: "Website"
+      n: "website"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "comment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/comments"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/comments"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/posts/{postId}/comments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "post_id"
+                or: "post_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/posts/{postId}/comments"
+          q: {
+            exist: [
+              "post_id"
+            ]
+          }
+          r: {
+            param: {
+              postId: "post_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "posts"
+            }
+            {
+              var: "post_id"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/comments"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/comments"
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.post")]
+  ]
+
+}

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoryEntity = void 0;
 const FakeRestEntityBase_1 = require("../FakeRestEntityBase");
-// TODO: needs Entity superclass
 class CategoryEntity extends FakeRestEntityBase_1.FakeRestEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
