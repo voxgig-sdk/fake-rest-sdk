@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 FakeRestUtility::setRegistrar(function (FakeRestUtility $u): void {
     $u->clean = [FakeRestClean::class, 'call'];
+    $u->clean_add = [FakeRestClean::class, 'add'];
+    $u->clean_explain = [FakeRestDone::class, 'clean_explain'];
     $u->done = [FakeRestDone::class, 'call'];
     $u->make_error = [FakeRestMakeError::class, 'call'];
     $u->feature_add = [FakeRestFeatureAdd::class, 'call'];

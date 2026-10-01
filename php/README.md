@@ -12,9 +12,14 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`):
+GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/fake-rest-sdk/releases)), or
+from a clone as a Composer path repository:
 
-- Releases: [https://github.com/voxgig-sdk/fake-rest-sdk/releases](https://github.com/voxgig-sdk/fake-rest-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/fake-rest-sdk
+composer config repositories.fake-rest-sdk path ./fake-rest-sdk/php
+composer require voxgig-sdk/fake-rest-sdk:@dev
+```
 
 
 ## Tutorial: your first API call

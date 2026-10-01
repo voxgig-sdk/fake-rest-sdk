@@ -136,7 +136,7 @@ main: kit: entity: comment: {
               {
                 k: "param"
                 n: "post_id"
-                or: "post_id"
+                or: "postId"
                 r: true
                 t: "`$INTEGER`"
               }

@@ -79,21 +79,21 @@ main: kit: entity: todo: {
               {
                 k: "query"
                 n: "limit"
-                or: "limit"
+                or: "_limit"
                 r: false
                 t: "`$INTEGER`"
               }
               {
                 k: "query"
                 n: "page"
-                or: "page"
+                or: "_page"
                 r: false
                 t: "`$INTEGER`"
               }
               {
                 k: "query"
                 n: "user_id"
-                or: "user_id"
+                or: "userId"
                 r: false
                 t: "`$INTEGER`"
               }

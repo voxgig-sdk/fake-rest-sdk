@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 FakeRestUtility.registrar = ->(u) {
   u.clean = FakeRestUtilities::Clean
+  u.clean_add = FakeRestUtilities::CleanAdd
+  u.clean_explain = FakeRestUtilities::CleanExplain
   u.done = FakeRestUtilities::Done
   u.make_error = FakeRestUtilities::MakeError
   u.feature_add = FakeRestUtilities::FeatureAdd

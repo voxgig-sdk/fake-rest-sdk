@@ -1,6 +1,7 @@
 package core
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -82,6 +83,22 @@ func NewFakeRestSDK(options map[string]any) *FakeRestSDK {
 	sdk.utility.FeatureHook(sdk.rootctx, "PostConstruct")
 
 	return sdk
+}
+
+// The client holds the credential in its options, so a print or a JSON dump
+// carries the name alone. Value receivers: a dereferenced client prints the
+// same way.
+func (sdk FakeRestSDK) String() string {
+	return "FakeRest " + vs.Jsonify(map[string]any{"name": "FakeRest"},
+		map[string]any{"indent": 0})
+}
+
+func (sdk FakeRestSDK) GoString() string {
+	return sdk.String()
+}
+
+func (sdk FakeRestSDK) MarshalJSON() ([]byte, error) {
+	return json.Marshal(map[string]any{"name": "FakeRest"})
 }
 
 func (sdk *FakeRestSDK) OptionsMap() map[string]any {
@@ -210,7 +227,7 @@ func (sdk *FakeRestSDK) rawRequest(fetchargs map[string]any) (map[string]any, er
 
 	fetchdef, err := sdk.Prepare(fetchargs)
 	if err != nil {
-		return map[string]any{"ok": false, "err": err}, nil
+		return map[string]any{"ok": false, "err": sdk.cleanErr(sdk.rootctx, err)}, nil
 	}
 
 	if fetchargs == nil {
@@ -236,7 +253,7 @@ func (sdk *FakeRestSDK) rawRequest(fetchargs map[string]any) (map[string]any, er
 	fetched, fetchErr := utility.Fetcher(ctx, url, fetchdef)
 
 	if fetchErr != nil {
-		return map[string]any{"ok": false, "err": fetchErr}, nil
+		return map[string]any{"ok": false, "err": sdk.cleanErr(ctx, fetchErr)}, nil
 	}
 
 	if fetched == nil {
@@ -278,6 +295,14 @@ func (sdk *FakeRestSDK) rawRequest(fetchargs map[string]any) (map[string]any, er
 	}
 
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
+}
+
+// A raw request returns its error rather than passing it through MakeError.
+func (sdk *FakeRestSDK) cleanErr(ctx *Context, err error) error {
+	if cleaned, ok := sdk.utility.Clean(ctx, err).(error); ok {
+		return cleaned
+	}
+	return err
 }
 
 func (sdk *FakeRestSDK) Graphql(

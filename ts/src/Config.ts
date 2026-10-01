@@ -355,7 +355,7 @@ class Config {
                 "params": [
                   {
                     "name": "post_id",
-                    "orig": "post_id",
+                    "orig": "postId",
                     "type": "`$INTEGER`",
                     "kind": "param",
                     "reqd": true
@@ -822,19 +822,19 @@ class Config {
                   },
                   {
                     "name": "limit",
-                    "orig": "limit",
+                    "orig": "_limit",
                     "type": "`$INTEGER`",
                     "kind": "query"
                   },
                   {
                     "name": "page",
-                    "orig": "page",
+                    "orig": "_page",
                     "type": "`$INTEGER`",
                     "kind": "query"
                   },
                   {
                     "name": "user_id",
-                    "orig": "user_id",
+                    "orig": "userId",
                     "type": "`$INTEGER`",
                     "kind": "query"
                   }

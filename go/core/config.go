@@ -304,7 +304,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "post_id",
-											"orig": "post_id",
+											"orig": "postId",
 											"type": "`$INTEGER`",
 											"kind": "param",
 											"reqd": true,
@@ -771,19 +771,19 @@ func MakeConfig() map[string]any {
 										},
 										map[string]any{
 											"name": "limit",
-											"orig": "limit",
+											"orig": "_limit",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "page",
-											"orig": "page",
+											"orig": "_page",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},
 										map[string]any{
 											"name": "user_id",
-											"orig": "user_id",
+											"orig": "userId",
 											"type": "`$INTEGER`",
 											"kind": "query",
 										},
