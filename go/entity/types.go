@@ -48,12 +48,9 @@ type CommentListMatch struct {
 type CommentCreateData struct {
 	Avatar *string `json:"avatar,omitempty"`
 	Body *string `json:"body,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
 	DeviceInfo *map[string]any `json:"deviceInfo,omitempty"`
 	Email *string `json:"email,omitempty"`
-	Id *int `json:"id,omitempty"`
 	IsVerified *bool `json:"isVerified,omitempty"`
-	Likes *int `json:"likes,omitempty"`
 	Location *string `json:"location,omitempty"`
 	Name *string `json:"name,omitempty"`
 	ParentCommentId *int `json:"parentCommentId,omitempty"`
@@ -93,17 +90,13 @@ type PostCreateData struct {
 	Body *string `json:"body,omitempty"`
 	Category *string `json:"category,omitempty"`
 	CoverImage *string `json:"coverImage,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
 	Featured *bool `json:"featured,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Likes *int `json:"likes,omitempty"`
 	MetaDescription *string `json:"metaDescription,omitempty"`
 	Published *bool `json:"published,omitempty"`
 	ReadTime *int `json:"readTime,omitempty"`
 	Tags *[]any `json:"tags,omitempty"`
 	Title *string `json:"title,omitempty"`
 	UserId *int `json:"userId,omitempty"`
-	Views *int `json:"views,omitempty"`
 }
 
 // Product is the typed data model for the product entity.
@@ -153,11 +146,14 @@ type UserLoadMatch struct {
 // UserListMatch is the typed request payload for User.ListTyped.
 type UserListMatch struct {
 	Address *map[string]any `json:"address,omitempty"`
+	Avatar *string `json:"avatar,omitempty"`
 	Company *map[string]any `json:"company,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	Email *string `json:"email,omitempty"`
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Phone *string `json:"phone,omitempty"`
+	UpdatedAt *string `json:"updatedAt,omitempty"`
 	Username *string `json:"username,omitempty"`
 	Website *string `json:"website,omitempty"`
 }
@@ -167,7 +163,6 @@ type UserCreateData struct {
 	Address *map[string]any `json:"address,omitempty"`
 	Company *map[string]any `json:"company,omitempty"`
 	Email *string `json:"email,omitempty"`
-	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Phone *string `json:"phone,omitempty"`
 	Username *string `json:"username,omitempty"`

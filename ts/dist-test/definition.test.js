@@ -17,7 +17,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": [
@@ -38,7 +43,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 201,
         "sample": {
@@ -79,7 +89,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": [
@@ -104,7 +119,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": [
@@ -129,7 +149,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 201,
         "sample": {
@@ -164,7 +189,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": [
@@ -201,7 +231,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -230,7 +265,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": [
@@ -264,7 +304,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -295,11 +340,33 @@ const PLAN = [
             "user_id": "v1"
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "userId",
             "completed",
             "_page",
             "_limit"
+        ],
+        "queryArgs": [
+            {
+                "name": "completed",
+                "wire": "completed"
+            },
+            {
+                "name": "limit",
+                "wire": "_limit"
+            },
+            {
+                "name": "page",
+                "wire": "_page"
+            },
+            {
+                "name": "user_id",
+                "wire": "userId"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -325,7 +392,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 201,
         "sample": {
@@ -365,7 +437,12 @@ const PLAN = [
         "args": [],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": [
@@ -410,7 +487,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {
@@ -453,7 +535,9 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 204,
         "sample": null,
@@ -474,7 +558,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {

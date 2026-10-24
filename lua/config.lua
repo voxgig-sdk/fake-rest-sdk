@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -143,6 +144,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -256,6 +261,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -312,6 +321,10 @@ local function make_config()
                     "post_id",
                   },
                 },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
               {
                 ["kind"] = "http",
@@ -336,6 +349,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -456,6 +473,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -486,6 +507,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -533,6 +558,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -630,6 +659,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -677,6 +710,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -764,6 +801,7 @@ local function make_config()
                       ["orig"] = "completed",
                       ["type"] = "`$BOOLEAN`",
                       ["kind"] = "query",
+                      ["field"] = true,
                     },
                     {
                       ["name"] = "limit",
@@ -785,13 +823,10 @@ local function make_config()
                     },
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "completed",
-                    "limit",
-                    "page",
-                    "user_id",
-                  },
+                ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -809,9 +844,21 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["name"] = "avatar",
+            ["title"] = "Avatar",
+            ["type"] = "`$STRING`",
+            ["format"] = "uri",
+          },
+          {
             ["name"] = "company",
             ["title"] = "Company",
             ["type"] = "`$OBJECT`",
+          },
+          {
+            ["name"] = "createdAt",
+            ["title"] = "Created At",
+            ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "email",
@@ -833,6 +880,12 @@ local function make_config()
             ["name"] = "phone",
             ["title"] = "Phone",
             ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "updatedAt",
+            ["title"] = "Updated At",
+            ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "username",
@@ -878,6 +931,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -908,6 +965,10 @@ local function make_config()
                 },
                 ["args"] = {},
                 ["select"] = {},
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
+                },
               },
             },
           },
@@ -955,6 +1016,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -1051,6 +1116,10 @@ local function make_config()
                   ["exist"] = {
                     "id",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },

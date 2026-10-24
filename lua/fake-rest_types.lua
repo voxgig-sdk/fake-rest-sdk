@@ -49,12 +49,9 @@
 ---@class CommentCreateData
 ---@field avatar? string
 ---@field body? string
----@field createdAt? string
 ---@field deviceInfo? table
 ---@field email? string
----@field id? number
 ---@field isVerified? boolean
----@field likes? number
 ---@field location? string
 ---@field name? string
 ---@field parentCommentId? number
@@ -100,17 +97,13 @@
 ---@field body? string
 ---@field category? string
 ---@field coverImage? string
----@field createdAt? string
 ---@field featured? boolean
----@field id? number
----@field likes? number
 ---@field metaDescription? string
 ---@field published? boolean
 ---@field readTime? number
 ---@field tags? table
 ---@field title? string
 ---@field userId? number
----@field views? number
 
 ---@class Product
 ---@field brand? string
@@ -156,11 +149,14 @@
 
 ---@class User
 ---@field address? table
+---@field avatar? string
 ---@field company? table
+---@field createdAt? string
 ---@field email? string
 ---@field id? number
 ---@field name? string
 ---@field phone? string
+---@field updatedAt? string
 ---@field username? string
 ---@field website? string
 
@@ -169,11 +165,14 @@
 
 ---@class UserListMatch
 ---@field address? table
+---@field avatar? string
 ---@field company? table
+---@field createdAt? string
 ---@field email? string
 ---@field id? number
 ---@field name? string
 ---@field phone? string
+---@field updatedAt? string
 ---@field username? string
 ---@field website? string
 
@@ -181,7 +180,6 @@
 ---@field address? table
 ---@field company? table
 ---@field email? string
----@field id? number
 ---@field name? string
 ---@field phone? string
 ---@field username? string

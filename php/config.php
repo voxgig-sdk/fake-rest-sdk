@@ -93,6 +93,7 @@ class FakeRestConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -169,6 +170,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -282,6 +287,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -338,6 +347,10 @@ class FakeRestConfig
                       'post_id',
                     ],
                   ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
                 [
                   'kind' => 'http',
@@ -362,6 +375,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -482,6 +499,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -512,6 +533,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -559,6 +584,10 @@ class FakeRestConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -656,6 +685,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -703,6 +736,10 @@ class FakeRestConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -790,6 +827,7 @@ class FakeRestConfig
                         'orig' => 'completed',
                         'type' => '`$BOOLEAN`',
                         'kind' => 'query',
+                        'field' => true,
                       ],
                       [
                         'name' => 'limit',
@@ -811,13 +849,10 @@ class FakeRestConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'completed',
-                      'limit',
-                      'page',
-                      'user_id',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -835,9 +870,21 @@ class FakeRestConfig
               'type' => '`$OBJECT`',
             ],
             [
+              'name' => 'avatar',
+              'title' => 'Avatar',
+              'type' => '`$STRING`',
+              'format' => 'uri',
+            ],
+            [
               'name' => 'company',
               'title' => 'Company',
               'type' => '`$OBJECT`',
+            ],
+            [
+              'name' => 'createdAt',
+              'title' => 'Created At',
+              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'email',
@@ -859,6 +906,12 @@ class FakeRestConfig
               'name' => 'phone',
               'title' => 'Phone',
               'type' => '`$STRING`',
+            ],
+            [
+              'name' => 'updatedAt',
+              'title' => 'Updated At',
+              'type' => '`$STRING`',
+              'format' => 'date-time',
             ],
             [
               'name' => 'username',
@@ -904,6 +957,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -934,6 +991,10 @@ class FakeRestConfig
                   ],
                   'args' => [],
                   'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
+                  ],
                 ],
               ],
             ],
@@ -981,6 +1042,10 @@ class FakeRestConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -1077,6 +1142,10 @@ class FakeRestConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

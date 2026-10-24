@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/fake-rest-sdk/releases)), or
+GitHub release tag (`rb/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/fake-rest-sdk/tags)), or
 from a clone:
 
 ```bash
@@ -43,10 +43,11 @@ client = FakeRestSDK.new
 
 ```ruby
 begin
-  # list returns an Array of Category records — iterate directly.
+  # list returns an Array of Category entities, one per record; data_get reads the record.
   categorys = client.Category.list
   categorys.each do |item|
-    puts "#{item["id"]} #{item["count"]}"
+    record = item.data_get
+    puts "#{record["id"]} #{record["count"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -131,10 +132,10 @@ client = FakeRestSDK.test({
   "entity" => { "product" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the ENTITY (raises on error);
-# call data_get for the mock record.
-product = client.Product.list()
-puts product
+# list returns an Array of Product entities, one per mock record (raises on
+# error); data_get reads each record.
+products = client.Product.list()
+products.each { |item| puts item.data_get }
 ```
 
 ### Use a custom fetch function
@@ -223,11 +224,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria, and return it. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all), one per record. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity, and return it. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity, and return it. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity, and return it marked as deleted. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -237,9 +238,10 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the result data directly. On failure they
-raise a `FakeRestError` (a `StandardError` subclass), so wrap
-calls in `begin`/`rescue` where you need to handle errors.
+Entity operations return the entity, and `list` an `Array` of entities, one
+per record; an entity's `data_get` reads its record. On failure they raise a
+`FakeRestError` (a `StandardError` subclass), so wrap calls in
+`begin`/`rescue` where you need to handle errors.
 
 The `direct` escape hatch is the exception: it never raises and instead
 returns a result `Hash` with these keys:
@@ -351,11 +353,14 @@ API path: `/api/todos`
 | Field | Description |
 | --- | --- |
 | `address` |  |
+| `avatar` |  |
 | `company` |  |
+| `createdAt` |  |
 | `email` |  |
 | `id` |  |
 | `name` |  |
 | `phone` |  |
+| `updatedAt` |  |
 | `username` |  |
 | `website` |  |
 
@@ -389,8 +394,9 @@ Create an instance: `category = client.Category`
 #### Example: List
 
 ```ruby
-# list returns an Array of Category records (raises on error).
+# list returns an Array of Category entities, one per record (raises on error).
 categorys = client.Category.list
+categorys.each { |item| puts item.data_get }
 ```
 
 
@@ -426,8 +432,9 @@ Create an instance: `comment = client.Comment`
 #### Example: List
 
 ```ruby
-# list returns an Array of Comment records (raises on error).
+# list returns an Array of Comment entities, one per record (raises on error).
 comments = client.Comment.list
+comments.each { |item| puts item.data_get }
 ```
 
 #### Example: Create
@@ -479,8 +486,9 @@ post = client.Post.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Post records (raises on error).
+# list returns an Array of Post entities, one per record (raises on error).
 posts = client.Post.list
+posts.each { |item| puts item.data_get }
 ```
 
 #### Example: Create
@@ -527,8 +535,9 @@ product = client.Product.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of Product records (raises on error).
+# list returns an Array of Product entities, one per record (raises on error).
 products = client.Product.list
+products.each { |item| puts item.data_get }
 ```
 
 
@@ -557,8 +566,9 @@ Create an instance: `todo = client.Todo`
 #### Example: List
 
 ```ruby
-# list returns an Array of Todo records (raises on error).
+# list returns an Array of Todo entities, one per record (raises on error).
 todos = client.Todo.list
+todos.each { |item| puts item.data_get }
 ```
 
 
@@ -581,11 +591,14 @@ Create an instance: `user = client.User`
 | Field | Type | Description |
 | --- | --- | --- |
 | `address` | `Hash` |  |
+| `avatar` | `String` |  |
 | `company` | `Hash` |  |
+| `createdAt` | `String` |  |
 | `email` | `String` |  |
 | `id` | `Integer` |  |
 | `name` | `String` |  |
 | `phone` | `String` |  |
+| `updatedAt` | `String` |  |
 | `username` | `String` |  |
 | `website` | `String` |  |
 
@@ -599,8 +612,9 @@ user = client.User.load({ "id" => 1 })
 #### Example: List
 
 ```ruby
-# list returns an Array of User records (raises on error).
+# list returns an Array of User entities, one per record (raises on error).
 users = client.User.list
+users.each { |item| puts item.data_get }
 ```
 
 #### Example: Create

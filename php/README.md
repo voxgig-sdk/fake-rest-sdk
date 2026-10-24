@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/fake-rest-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/fake-rest-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -229,11 +229,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
-| `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
+| `create` | `($reqdata, $ctrl): mixed` | Create a new entity, and return it. |
+| `update` | `($reqdata, $ctrl): mixed` | Update an existing entity, and return it. |
+| `remove` | `($reqmatch, $ctrl): mixed` | Remove an entity, and return it marked as deleted. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -243,9 +243,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -358,11 +358,14 @@ API path: `/api/todos`
 | Field | Description |
 | --- | --- |
 | `address` |  |
+| `avatar` |  |
 | `company` |  |
+| `createdAt` |  |
 | `email` |  |
 | `id` |  |
 | `name` |  |
 | `phone` |  |
+| `updatedAt` |  |
 | `username` |  |
 | `website` |  |
 
@@ -396,7 +399,7 @@ Create an instance: `$category = $client->Category();`
 #### Example: List
 
 ```php
-// list() returns an array of Category records (throws on error).
+// list() returns an array of Category entities, one per record (throws on error).
 $categorys = $client->Category()->list();
 ```
 
@@ -433,7 +436,7 @@ Create an instance: `$comment = $client->Comment();`
 #### Example: List
 
 ```php
-// list() returns an array of Comment records (throws on error).
+// list() returns an array of Comment entities, one per record (throws on error).
 $comments = $client->Comment()->list();
 ```
 
@@ -486,7 +489,7 @@ $post = $client->Post()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Post records (throws on error).
+// list() returns an array of Post entities, one per record (throws on error).
 $posts = $client->Post()->list();
 ```
 
@@ -534,7 +537,7 @@ $product = $client->Product()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of Product records (throws on error).
+// list() returns an array of Product entities, one per record (throws on error).
 $products = $client->Product()->list();
 ```
 
@@ -564,7 +567,7 @@ Create an instance: `$todo = $client->Todo();`
 #### Example: List
 
 ```php
-// list() returns an array of Todo records (throws on error).
+// list() returns an array of Todo entities, one per record (throws on error).
 $todos = $client->Todo()->list();
 ```
 
@@ -588,11 +591,14 @@ Create an instance: `$user = $client->User();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `address` | `array` |  |
+| `avatar` | `string` |  |
 | `company` | `array` |  |
+| `createdAt` | `string` |  |
 | `email` | `string` |  |
 | `id` | `int` |  |
 | `name` | `string` |  |
 | `phone` | `string` |  |
+| `updatedAt` | `string` |  |
 | `username` | `string` |  |
 | `website` | `string` |  |
 
@@ -606,7 +612,7 @@ $user = $client->User()->load(["id" => 1]);
 #### Example: List
 
 ```php
-// list() returns an array of User records (throws on error).
+// list() returns an array of User entities, one per record (throws on error).
 $users = $client->User()->list();
 ```
 

@@ -11,11 +11,25 @@ main: kit: entity: user: {
       r: false
       t: "`$OBJECT`"
     }
+    avatar: {
+      fo: "uri"
+      h: "Avatar"
+      n: "avatar"
+      r: false
+      t: "`$STRING`"
+    }
     company: {
       h: "Company"
       n: "company"
       r: false
       t: "`$OBJECT`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      t: "`$STRING`"
     }
     email: {
       fo: "email"
@@ -39,6 +53,13 @@ main: kit: entity: user: {
     phone: {
       h: "Phone"
       n: "phone"
+      r: false
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
       r: false
       t: "`$STRING`"
     }
@@ -67,6 +88,15 @@ main: kit: entity: user: {
       name: "create"
       points: [
         {
+          bf: [
+            "address"
+            "company"
+            "email"
+            "name"
+            "phone"
+            "username"
+            "website"
+          ]
           co: {
             id: "POST /api/users"
             source: "openapi3"
@@ -74,6 +104,10 @@ main: kit: entity: user: {
           }
           m: "POST"
           o: "/api/users"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -100,6 +134,10 @@ main: kit: entity: user: {
           }
           m: "GET"
           o: "/api/users"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -141,6 +179,10 @@ main: kit: entity: user: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -209,6 +251,15 @@ main: kit: entity: user: {
       name: "update"
       points: [
         {
+          bf: [
+            "address"
+            "company"
+            "email"
+            "name"
+            "phone"
+            "username"
+            "website"
+          ]
           co: {
             id: "PUT /api/users/{id}"
             source: "openapi3"
@@ -231,6 +282,10 @@ main: kit: entity: user: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

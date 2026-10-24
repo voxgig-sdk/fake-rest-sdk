@@ -63,12 +63,9 @@ class CommentListMatch(TypedDict, total=False):
 class CommentCreateData(TypedDict, total=False):
     avatar: str
     body: str
-    createdAt: str
     deviceInfo: dict
     email: str
-    id: int
     isVerified: bool
-    likes: int
     location: str
     name: str
     parentCommentId: int
@@ -118,17 +115,13 @@ class PostCreateData(TypedDict, total=False):
     body: str
     category: str
     coverImage: str
-    createdAt: str
     featured: bool
-    id: int
-    likes: int
     metaDescription: str
     published: bool
     readTime: int
     tags: list
     title: str
     userId: int
-    views: int
 
 
 class Product(TypedDict, total=False):
@@ -180,11 +173,14 @@ class TodoListMatch(TypedDict, total=False):
 
 class User(TypedDict, total=False):
     address: dict
+    avatar: str
     company: dict
+    createdAt: str
     email: str
     id: int
     name: str
     phone: str
+    updatedAt: str
     username: str
     website: str
 
@@ -195,11 +191,14 @@ class UserLoadMatch(TypedDict):
 
 class UserListMatch(TypedDict, total=False):
     address: dict
+    avatar: str
     company: dict
+    createdAt: str
     email: str
     id: int
     name: str
     phone: str
+    updatedAt: str
     username: str
     website: str
 
@@ -208,7 +207,6 @@ class UserCreateData(TypedDict, total=False):
     address: dict
     company: dict
     email: str
-    id: int
     name: str
     phone: str
     username: str

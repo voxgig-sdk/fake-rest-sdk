@@ -101,13 +101,9 @@ main: kit: entity: todo: {
           }
           m: "GET"
           o: "/api/todos"
-          q: {
-            exist: [
-              "completed"
-              "limit"
-              "page"
-              "user_id"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

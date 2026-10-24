@@ -69,12 +69,9 @@ class CommentCreateData
 {
     public ?string $avatar = null;
     public ?string $body = null;
-    public ?string $createdAt = null;
     public ?array $deviceInfo = null;
     public ?string $email = null;
-    public ?int $id = null;
     public ?bool $isVerified = null;
-    public ?int $likes = null;
     public ?string $location = null;
     public ?string $name = null;
     public ?int $parentCommentId = null;
@@ -132,17 +129,13 @@ class PostCreateData
     public ?string $body = null;
     public ?string $category = null;
     public ?string $coverImage = null;
-    public ?string $createdAt = null;
     public ?bool $featured = null;
-    public ?int $id = null;
-    public ?int $likes = null;
     public ?string $metaDescription = null;
     public ?bool $published = null;
     public ?int $readTime = null;
     public ?array $tags = null;
     public ?string $title = null;
     public ?int $userId = null;
-    public ?int $views = null;
 }
 
 /** Product entity data model. */
@@ -206,11 +199,14 @@ class TodoListMatch
 class User
 {
     public ?array $address = null;
+    public ?string $avatar = null;
     public ?array $company = null;
+    public ?string $createdAt = null;
     public ?string $email = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?string $phone = null;
+    public ?string $updatedAt = null;
     public ?string $username = null;
     public ?string $website = null;
 }
@@ -225,11 +221,14 @@ class UserLoadMatch
 class UserListMatch
 {
     public ?array $address = null;
+    public ?string $avatar = null;
     public ?array $company = null;
+    public ?string $createdAt = null;
     public ?string $email = null;
     public ?int $id = null;
     public ?string $name = null;
     public ?string $phone = null;
+    public ?string $updatedAt = null;
     public ?string $username = null;
     public ?string $website = null;
 }
@@ -240,7 +239,6 @@ class UserCreateData
     public ?array $address = null;
     public ?array $company = null;
     public ?string $email = null;
-    public ?int $id = null;
     public ?string $name = null;
     public ?string $phone = null;
     public ?string $username = null;

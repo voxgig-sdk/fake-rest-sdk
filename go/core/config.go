@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -147,6 +148,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -260,6 +265,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -316,6 +325,10 @@ func MakeConfig() map[string]any {
 										"post_id",
 									},
 								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 							map[string]any{
 								"kind": "http",
@@ -340,6 +353,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -460,6 +477,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -490,6 +511,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -537,6 +562,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -634,6 +663,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -681,6 +714,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -768,6 +805,7 @@ func MakeConfig() map[string]any {
 											"orig": "completed",
 											"type": "`$BOOLEAN`",
 											"kind": "query",
+											"field": true,
 										},
 										map[string]any{
 											"name": "limit",
@@ -789,13 +827,10 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"completed",
-										"limit",
-										"page",
-										"user_id",
-									},
+								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -813,9 +848,21 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"name": "avatar",
+						"title": "Avatar",
+						"type": "`$STRING`",
+						"format": "uri",
+					},
+					map[string]any{
 						"name": "company",
 						"title": "Company",
 						"type": "`$OBJECT`",
+					},
+					map[string]any{
+						"name": "createdAt",
+						"title": "Created At",
+						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "email",
@@ -837,6 +884,12 @@ func MakeConfig() map[string]any {
 						"name": "phone",
 						"title": "Phone",
 						"type": "`$STRING`",
+					},
+					map[string]any{
+						"name": "updatedAt",
+						"title": "Updated At",
+						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "username",
@@ -882,6 +935,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -912,6 +969,10 @@ func MakeConfig() map[string]any {
 								},
 								"args": map[string]any{},
 								"select": map[string]any{},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
+								},
 							},
 						},
 					},
@@ -959,6 +1020,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -1055,6 +1120,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"id",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

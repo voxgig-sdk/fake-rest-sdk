@@ -164,23 +164,14 @@ CommentListMatch = Struct.new(
 # @!attribute [rw] body
 #   @return [String, nil]
 #
-# @!attribute [rw] createdAt
-#   @return [String, nil]
-#
 # @!attribute [rw] deviceInfo
 #   @return [Hash, nil]
 #
 # @!attribute [rw] email
 #   @return [String, nil]
 #
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
 # @!attribute [rw] isVerified
 #   @return [Boolean, nil]
-#
-# @!attribute [rw] likes
-#   @return [Integer, nil]
 #
 # @!attribute [rw] location
 #   @return [String, nil]
@@ -199,12 +190,9 @@ CommentListMatch = Struct.new(
 CommentCreateData = Struct.new(
   :avatar,
   :body,
-  :createdAt,
   :deviceInfo,
   :email,
-  :id,
   :isVerified,
-  :likes,
   :location,
   :name,
   :parentCommentId,
@@ -355,17 +343,8 @@ PostListMatch = Struct.new(
 # @!attribute [rw] coverImage
 #   @return [String, nil]
 #
-# @!attribute [rw] createdAt
-#   @return [String, nil]
-#
 # @!attribute [rw] featured
 #   @return [Boolean, nil]
-#
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] likes
-#   @return [Integer, nil]
 #
 # @!attribute [rw] metaDescription
 #   @return [String, nil]
@@ -384,24 +363,17 @@ PostListMatch = Struct.new(
 #
 # @!attribute [rw] userId
 #   @return [Integer, nil]
-#
-# @!attribute [rw] views
-#   @return [Integer, nil]
 PostCreateData = Struct.new(
   :body,
   :category,
   :coverImage,
-  :createdAt,
   :featured,
-  :id,
-  :likes,
   :metaDescription,
   :published,
   :readTime,
   :tags,
   :title,
   :userId,
-  :views,
   keyword_init: true
 )
 
@@ -563,8 +535,14 @@ TodoListMatch = Struct.new(
 # @!attribute [rw] address
 #   @return [Hash, nil]
 #
+# @!attribute [rw] avatar
+#   @return [String, nil]
+#
 # @!attribute [rw] company
 #   @return [Hash, nil]
+#
+# @!attribute [rw] createdAt
+#   @return [String, nil]
 #
 # @!attribute [rw] email
 #   @return [String, nil]
@@ -578,6 +556,9 @@ TodoListMatch = Struct.new(
 # @!attribute [rw] phone
 #   @return [String, nil]
 #
+# @!attribute [rw] updatedAt
+#   @return [String, nil]
+#
 # @!attribute [rw] username
 #   @return [String, nil]
 #
@@ -585,11 +566,14 @@ TodoListMatch = Struct.new(
 #   @return [String, nil]
 User = Struct.new(
   :address,
+  :avatar,
   :company,
+  :createdAt,
   :email,
   :id,
   :name,
   :phone,
+  :updatedAt,
   :username,
   :website,
   keyword_init: true
@@ -609,8 +593,14 @@ UserLoadMatch = Struct.new(
 # @!attribute [rw] address
 #   @return [Hash, nil]
 #
+# @!attribute [rw] avatar
+#   @return [String, nil]
+#
 # @!attribute [rw] company
 #   @return [Hash, nil]
+#
+# @!attribute [rw] createdAt
+#   @return [String, nil]
 #
 # @!attribute [rw] email
 #   @return [String, nil]
@@ -624,6 +614,9 @@ UserLoadMatch = Struct.new(
 # @!attribute [rw] phone
 #   @return [String, nil]
 #
+# @!attribute [rw] updatedAt
+#   @return [String, nil]
+#
 # @!attribute [rw] username
 #   @return [String, nil]
 #
@@ -631,11 +624,14 @@ UserLoadMatch = Struct.new(
 #   @return [String, nil]
 UserListMatch = Struct.new(
   :address,
+  :avatar,
   :company,
+  :createdAt,
   :email,
   :id,
   :name,
   :phone,
+  :updatedAt,
   :username,
   :website,
   keyword_init: true
@@ -652,9 +648,6 @@ UserListMatch = Struct.new(
 # @!attribute [rw] email
 #   @return [String, nil]
 #
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
 # @!attribute [rw] name
 #   @return [String, nil]
 #
@@ -670,7 +663,6 @@ UserCreateData = Struct.new(
   :address,
   :company,
   :email,
-  :id,
   :name,
   :phone,
   :username,

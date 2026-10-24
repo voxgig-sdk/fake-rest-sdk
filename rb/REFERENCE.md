@@ -121,10 +121,11 @@ category = client.Category
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Category.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -185,7 +186,7 @@ comment = client.Comment
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.Comment.create({
@@ -194,10 +195,11 @@ result = client.Comment.create({
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Comment.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -259,7 +261,7 @@ post = client.Post
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.Post.create({
@@ -268,15 +270,16 @@ result = client.Post.create({
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Post.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Post.load({ "id" => 1 })
@@ -337,15 +340,16 @@ product = client.Product
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Product.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Product.load({ "id" => 1 })
@@ -403,10 +407,11 @@ todo = client.Todo
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.Todo.list
+results.each { |item| puts item.data_get }
 ```
 
 ### Common Methods
@@ -450,11 +455,14 @@ user = client.User
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `address` | `Hash` | No |  |
+| `avatar` | `String` | No |  |
 | `company` | `Hash` | No |  |
+| `createdAt` | `String` | No |  |
 | `email` | `String` | No |  |
 | `id` | `Integer` | No |  |
 | `name` | `String` | No |  |
 | `phone` | `String` | No |  |
+| `updatedAt` | `String` | No |  |
 | `username` | `String` | No |  |
 | `website` | `String` | No |  |
 
@@ -462,7 +470,7 @@ user = client.User
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.User.create({
@@ -471,15 +479,16 @@ result = client.User.create({
 
 #### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
 
 ```ruby
 results = client.User.list
+results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.User.load({ "id" => 1 })
@@ -487,7 +496,7 @@ result = client.User.load({ "id" => 1 })
 
 #### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
 result = client.User.remove({ "id" => 1 })
@@ -495,7 +504,7 @@ result = client.User.remove({ "id" => 1 })
 
 #### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`. Raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```ruby
 result = client.User.update({
@@ -691,6 +700,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

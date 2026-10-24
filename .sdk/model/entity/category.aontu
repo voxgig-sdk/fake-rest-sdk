@@ -43,6 +43,10 @@ main: kit: entity: category: {
           }
           m: "GET"
           o: "/api/products/categories"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

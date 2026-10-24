@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { FakeRestSDK, BaseFeature, stdutil } from '../../..'
+import { FakeRestSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('TodoEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('todo hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of FakeRestSDK.test(offline).Todo().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of FakeRestSDK.test(offline).Todo()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = FakeRestSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Todo().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of FakeRestSDK.test().Todo().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new FakeRestSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Todo().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Todo().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = FakeRestSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Todo().list({"completed":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.FAKE_REST_TEST_LIVE
@@ -51,7 +109,7 @@ describe('TodoEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"completed":{"a":true,"h":"Completed","n":"completed","r":false,"t":"`$BOOLEAN`","key$":"completed","index$":0},"createdAt":{"a":true,"fo":"date-time","h":"Created At","n":"createdAt","r":false,"t":"`$STRING`","key$":"createdAt","index$":1},"dueDate":{"a":true,"fo":"date-time","h":"Due Date","n":"dueDate","r":false,"t":"`$STRING`","key$":"dueDate","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$INTEGER`","key$":"id","index$":3},"priority":{"a":true,"h":"Priority","n":"priority","r":false,"t":"`$STRING`","key$":"priority","index$":4},"title":{"a":true,"h":"Title","n":"title","r":false,"t":"`$STRING`","key$":"title","index$":5},"userId":{"a":true,"h":"User Id","n":"userId","r":false,"t":"`$INTEGER`","key$":"userId","index$":6}},"id":{"field":"id","name":"id"},"name":"todo","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/todos","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"completed","or":"completed","r":false,"t":"`$BOOLEAN`","index$":0},{"a":true,"k":"query","n":"limit","or":"_limit","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"k":"query","n":"page","or":"_page","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"k":"query","n":"user_id","or":"userId","r":false,"t":"`$INTEGER`","index$":3}]},"k":"http","m":"GET","o":"/api/todos","q":{"exist":["completed","limit","page","user_id"]},"r":{},"s":[{"lit":"api"},{"lit":"todos"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"todo","name__orig":"todo","Name":"Todo","name_":"todo","name-":"todo","NAME":"TODO","index$":4}, {"active":true,"entity":"todo","key$":"BasicTodoFlow","kind":"basic","name":"BasicTodoFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"todo_ref01"}}],"index$":0}]}, 'Todo', {"GET /api/todos":{"protocol":"http","parameters":[{"name":"userId","in":"query","description":"Filter todos by user ID (range 1-100)","schema":{"type":"integer","minimum":1,"maximum":100},"index$":0},{"name":"completed","in":"query","description":"Filter todos by completion status","schema":{"type":"boolean"},"index$":1},{"name":"_page","in":"query","description":"Page number for pagination","schema":{"type":"integer"},"index$":2},{"name":"_limit","in":"query","description":"Number of items per page","schema":{"type":"integer"},"index$":3}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"completed":{"a":true,"h":"Completed","n":"completed","r":false,"t":"`$BOOLEAN`","key$":"completed","index$":0},"createdAt":{"a":true,"fo":"date-time","h":"Created At","n":"createdAt","r":false,"t":"`$STRING`","key$":"createdAt","index$":1},"dueDate":{"a":true,"fo":"date-time","h":"Due Date","n":"dueDate","r":false,"t":"`$STRING`","key$":"dueDate","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$INTEGER`","key$":"id","index$":3},"priority":{"a":true,"h":"Priority","n":"priority","r":false,"t":"`$STRING`","key$":"priority","index$":4},"title":{"a":true,"h":"Title","n":"title","r":false,"t":"`$STRING`","key$":"title","index$":5},"userId":{"a":true,"h":"User Id","n":"userId","r":false,"t":"`$INTEGER`","key$":"userId","index$":6}},"id":{"field":"id","name":"id"},"name":"todo","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/todos","source":"openapi3","version":2},"g":{"query":[{"a":true,"k":"query","n":"completed","or":"completed","r":false,"t":"`$BOOLEAN`","index$":0},{"a":true,"k":"query","n":"limit","or":"_limit","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"k":"query","n":"page","or":"_page","r":false,"t":"`$INTEGER`","index$":2},{"a":true,"k":"query","n":"user_id","or":"userId","r":false,"t":"`$INTEGER`","index$":3}]},"k":"http","m":"GET","o":"/api/todos","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"todos"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"todo","name__orig":"todo","Name":"Todo","name_":"todo","name-":"todo","NAME":"TODO","index$":4}, {"active":true,"entity":"todo","key$":"BasicTodoFlow","kind":"basic","name":"BasicTodoFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"todo_ref01"}}],"index$":0}]}, 'Todo', {"GET /api/todos":{"protocol":"http","parameters":[{"name":"userId","in":"query","description":"Filter todos by user ID (range 1-100)","schema":{"type":"integer","minimum":1,"maximum":100},"index$":0},{"name":"completed","in":"query","description":"Filter todos by completion status","schema":{"type":"boolean"},"index$":1},{"name":"_page","in":"query","description":"Page number for pagination","schema":{"type":"integer"},"index$":2},{"name":"_limit","in":"query","description":"Number of items per page","schema":{"type":"integer"},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('TodoEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

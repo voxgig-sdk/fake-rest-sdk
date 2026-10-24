@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { FakeRestSDK, BaseFeature, stdutil } from '../../..'
+import { FakeRestSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('UserEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('user hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of FakeRestSDK.test(offline).User().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of FakeRestSDK.test(offline).User()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = FakeRestSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.User().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of FakeRestSDK.test().User().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new FakeRestSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.User().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.User().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = FakeRestSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.User().list({"avatar":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.FAKE_REST_TEST_LIVE
@@ -51,7 +109,7 @@ describe('UserEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"address":{"a":true,"h":"Address","n":"address","r":false,"t":"`$OBJECT`","key$":"address","index$":0},"company":{"a":true,"h":"Company","n":"company","r":false,"t":"`$OBJECT`","key$":"company","index$":1},"email":{"a":true,"fo":"email","h":"Email","n":"email","r":false,"t":"`$STRING`","key$":"email","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$INTEGER`","key$":"id","index$":3},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":4},"phone":{"a":true,"h":"Phone","n":"phone","r":false,"t":"`$STRING`","key$":"phone","index$":5},"username":{"a":true,"h":"Username","n":"username","r":false,"t":"`$STRING`","key$":"username","index$":6},"website":{"a":true,"h":"Website","n":"website","r":false,"t":"`$STRING`","key$":"website","index$":7}},"id":{"field":"id","name":"id"},"name":"user","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /api/users","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/users","q":{},"r":{},"s":[{"lit":"api"},{"lit":"users"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/users","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/users","q":{},"r":{},"s":[{"lit":"api"},{"lit":"users"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/users/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/api/users/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"api"},{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/users/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"DELETE","o":"/api/users/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"api"},{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"co":{"id":"PUT /api/users/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"PUT","o":"/api/users/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"api"},{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"user","name__orig":"user","Name":"User","name_":"user","name-":"user","NAME":"USER","index$":5}, {"active":true,"entity":"user","key$":"BasicUserFlow","kind":"basic","name":"BasicUserFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"user_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"user_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"user_ref01","srcdatavar":"user_ref01_data","suffix":"_up0","textfield":"email"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-user_ref01"}}],"v":[],"index$":2},{"a":true,"d":{},"i":{"ref":"user_ref01","srcdatavar":"user_ref01_data","suffix":"_dt0"},"m":{"id":"user01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-user_ref01"}}],"index$":3},{"a":true,"d":{},"i":{"ref":"user_ref01","suffix":"_rm0"},"m":{"id":"user01"},"o":"remove","s":[],"v":[],"index$":4},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"user_ref01"}}],"index$":5}]}, 'User', {"POST /api/users":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","key$":"name"},"username":{"type":"string","key$":"username"},"email":{"type":"string","format":"email","key$":"email"},"phone":{"type":"string","key$":"phone"},"website":{"type":"string","key$":"website"},"address":{"type":"object","properties":{"street":{"type":"string"},"suite":{"type":"string"},"city":{"type":"string"},"zipcode":{"type":"string"},"geo":{"type":"object","properties":{"lat":{},"lng":{}},"x-ref":"#/components/schemas/Geo"}},"x-ref":"#/components/schemas/AddressInput","key$":"address"},"company":{"type":"object","properties":{"name":{"type":"string"},"catchPhrase":{"type":"string"},"bs":{"type":"string"}},"x-ref":"#/components/schemas/CompanyInput","key$":"company"}},"x-ref":"#/components/schemas/UserInput","index$":1}}}},"parameters":[]},"GET /api/users":{"protocol":"http","parameters":[]},"GET /api/users/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"User ID","schema":{"type":"integer"},"index$":0}]},"DELETE /api/users/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"User ID","schema":{"type":"integer"},"index$":0}]},"PUT /api/users/{id}":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","key$":"name"},"username":{"type":"string","key$":"username"},"email":{"type":"string","format":"email","key$":"email"},"phone":{"type":"string","key$":"phone"},"website":{"type":"string","key$":"website"},"address":{"type":"object","properties":{"street":{"type":"string"},"suite":{"type":"string"},"city":{"type":"string"},"zipcode":{"type":"string"},"geo":{"type":"object","properties":{"lat":{},"lng":{}},"x-ref":"#/components/schemas/Geo"}},"x-ref":"#/components/schemas/AddressInput","key$":"address"},"company":{"type":"object","properties":{"name":{"type":"string"},"catchPhrase":{"type":"string"},"bs":{"type":"string"}},"x-ref":"#/components/schemas/CompanyInput","key$":"company"}},"x-ref":"#/components/schemas/UserInput","index$":1}}}},"parameters":[{"name":"id","in":"path","required":true,"description":"User ID","schema":{"type":"integer"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"address":{"a":true,"h":"Address","n":"address","r":false,"t":"`$OBJECT`","key$":"address","index$":0},"avatar":{"a":true,"fo":"uri","h":"Avatar","n":"avatar","r":false,"t":"`$STRING`","key$":"avatar","index$":1},"company":{"a":true,"h":"Company","n":"company","r":false,"t":"`$OBJECT`","key$":"company","index$":2},"createdAt":{"a":true,"fo":"date-time","h":"Created At","n":"createdAt","r":false,"t":"`$STRING`","key$":"createdAt","index$":3},"email":{"a":true,"fo":"email","h":"Email","n":"email","r":false,"t":"`$STRING`","key$":"email","index$":4},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$INTEGER`","key$":"id","index$":5},"name":{"a":true,"h":"Name","n":"name","r":false,"t":"`$STRING`","key$":"name","index$":6},"phone":{"a":true,"h":"Phone","n":"phone","r":false,"t":"`$STRING`","key$":"phone","index$":7},"updatedAt":{"a":true,"fo":"date-time","h":"Updated At","n":"updatedAt","r":false,"t":"`$STRING`","key$":"updatedAt","index$":8},"username":{"a":true,"h":"Username","n":"username","r":false,"t":"`$STRING`","key$":"username","index$":9},"website":{"a":true,"h":"Website","n":"website","r":false,"t":"`$STRING`","key$":"website","index$":10}},"id":{"field":"id","name":"id"},"name":"user","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["address","company","email","name","phone","username","website"],"co":{"id":"POST /api/users","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/users","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"users"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/users","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/users","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"users"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/users/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"GET","o":"/api/users/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/users/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"DELETE","o":"/api/users/{id}","q":{"exist":["id"]},"r":{},"s":[{"lit":"api"},{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"bf":["address","company","email","name","phone","username","website"],"co":{"id":"PUT /api/users/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"PUT","o":"/api/users/{id}","q":{"exist":["id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"user","name__orig":"user","Name":"User","name_":"user","name-":"user","NAME":"USER","index$":5}, {"active":true,"entity":"user","key$":"BasicUserFlow","kind":"basic","name":"BasicUserFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"user_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"user_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"user_ref01","srcdatavar":"user_ref01_data","suffix":"_up0","textfield":"avatar"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-user_ref01"}}],"v":[],"index$":2},{"a":true,"d":{},"i":{"ref":"user_ref01","srcdatavar":"user_ref01_data","suffix":"_dt0"},"m":{"id":"user01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-user_ref01"}}],"index$":3},{"a":true,"d":{},"i":{"ref":"user_ref01","suffix":"_rm0"},"m":{"id":"user01"},"o":"remove","s":[],"v":[],"index$":4},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"user_ref01"}}],"index$":5}]}, 'User', {"POST /api/users":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","key$":"name"},"username":{"type":"string","key$":"username"},"email":{"type":"string","format":"email","key$":"email"},"phone":{"type":"string","key$":"phone"},"website":{"type":"string","key$":"website"},"address":{"type":"object","properties":{"street":{"type":"string"},"suite":{"type":"string"},"city":{"type":"string"},"zipcode":{"type":"string"},"geo":{"type":"object","properties":{"lat":{},"lng":{}},"x-ref":"#/components/schemas/Geo"}},"x-ref":"#/components/schemas/AddressInput","key$":"address"},"company":{"type":"object","properties":{"name":{"type":"string"},"catchPhrase":{"type":"string"},"bs":{"type":"string"}},"x-ref":"#/components/schemas/CompanyInput","key$":"company"}},"x-ref":"#/components/schemas/UserInput","index$":1}}}},"parameters":[]},"GET /api/users":{"protocol":"http","parameters":[]},"GET /api/users/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"User ID","schema":{"type":"integer"},"index$":0}]},"DELETE /api/users/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"description":"User ID","schema":{"type":"integer"},"index$":0}]},"PUT /api/users/{id}":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string","key$":"name"},"username":{"type":"string","key$":"username"},"email":{"type":"string","format":"email","key$":"email"},"phone":{"type":"string","key$":"phone"},"website":{"type":"string","key$":"website"},"address":{"type":"object","properties":{"street":{"type":"string"},"suite":{"type":"string"},"city":{"type":"string"},"zipcode":{"type":"string"},"geo":{"type":"object","properties":{"lat":{},"lng":{}},"x-ref":"#/components/schemas/Geo"}},"x-ref":"#/components/schemas/AddressInput","key$":"address"},"company":{"type":"object","properties":{"name":{"type":"string"},"catchPhrase":{"type":"string"},"bs":{"type":"string"}},"x-ref":"#/components/schemas/CompanyInput","key$":"company"}},"x-ref":"#/components/schemas/UserInput","index$":1}}}},"parameters":[{"name":"id","in":"path","required":true,"description":"User ID","schema":{"type":"integer"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -80,7 +138,7 @@ describe('UserEntity', async () => {
     const user_ref01_data_up0: any = {}
     user_ref01_data_up0.id = user_ref01_data.id
 
-    const user_ref01_markdef_up0 = { name: 'email', value: 'Mark01-user_ref01_' + setup.now }
+    const user_ref01_markdef_up0 = { name: 'avatar', value: 'Mark01-user_ref01_' + setup.now }
     ;(user_ref01_data_up0 as any)[user_ref01_markdef_up0.name] = user_ref01_markdef_up0.value
 
     const user_ref01_resdata_up0 = (await user_ref01_ent.update(user_ref01_data_up0)).data()
@@ -113,6 +171,12 @@ describe('UserEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

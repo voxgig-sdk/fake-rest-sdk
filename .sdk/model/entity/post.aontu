@@ -104,6 +104,18 @@ main: kit: entity: post: {
       name: "create"
       points: [
         {
+          bf: [
+            "body"
+            "category"
+            "coverImage"
+            "featured"
+            "metaDescription"
+            "published"
+            "readTime"
+            "tags"
+            "title"
+            "userId"
+          ]
           co: {
             id: "POST /api/posts"
             source: "openapi3"
@@ -111,6 +123,10 @@ main: kit: entity: post: {
           }
           m: "POST"
           o: "/api/posts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -137,6 +153,10 @@ main: kit: entity: post: {
           }
           m: "GET"
           o: "/api/posts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -178,6 +198,10 @@ main: kit: entity: post: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

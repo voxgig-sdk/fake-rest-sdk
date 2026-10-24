@@ -41,12 +41,9 @@ export interface CommentListMatch {
 export interface CommentCreateData {
     avatar?: string;
     body?: string;
-    createdAt?: string;
     deviceInfo?: Record<string, any>;
     email?: string;
-    id?: number;
     isVerified?: boolean;
-    likes?: number;
     location?: string;
     name?: string;
     parentCommentId?: number;
@@ -92,17 +89,13 @@ export interface PostCreateData {
     body?: string;
     category?: string;
     coverImage?: string;
-    createdAt?: string;
     featured?: boolean;
-    id?: number;
-    likes?: number;
     metaDescription?: string;
     published?: boolean;
     readTime?: number;
     tags?: any[];
     title?: string;
     userId?: number;
-    views?: number;
 }
 export interface Product {
     brand?: string;
@@ -148,11 +141,14 @@ export interface TodoListMatch {
 }
 export interface User {
     address?: Record<string, any>;
+    avatar?: string;
     company?: Record<string, any>;
+    createdAt?: string;
     email?: string;
     id?: number;
     name?: string;
     phone?: string;
+    updatedAt?: string;
     username?: string;
     website?: string;
 }
@@ -161,11 +157,14 @@ export interface UserLoadMatch {
 }
 export interface UserListMatch {
     address?: Record<string, any>;
+    avatar?: string;
     company?: Record<string, any>;
+    createdAt?: string;
     email?: string;
     id?: number;
     name?: string;
     phone?: string;
+    updatedAt?: string;
     username?: string;
     website?: string;
 }
@@ -173,7 +172,6 @@ export interface UserCreateData {
     address?: Record<string, any>;
     company?: Record<string, any>;
     email?: string;
-    id?: number;
     name?: string;
     phone?: string;
     username?: string;

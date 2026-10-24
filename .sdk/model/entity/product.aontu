@@ -87,6 +87,10 @@ main: kit: entity: product: {
           }
           m: "GET"
           o: "/api/products"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -128,6 +132,10 @@ main: kit: entity: product: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

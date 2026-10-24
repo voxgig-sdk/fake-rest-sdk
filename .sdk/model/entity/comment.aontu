@@ -100,6 +100,18 @@ main: kit: entity: comment: {
       name: "create"
       points: [
         {
+          bf: [
+            "avatar"
+            "body"
+            "deviceInfo"
+            "email"
+            "isVerified"
+            "location"
+            "name"
+            "parentCommentId"
+            "postId"
+            "website"
+          ]
           co: {
             id: "POST /api/comments"
             source: "openapi3"
@@ -107,6 +119,10 @@ main: kit: entity: comment: {
           }
           m: "POST"
           o: "/api/comments"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -154,6 +170,10 @@ main: kit: entity: comment: {
               postId: "post_id"
             }
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"
@@ -181,6 +201,10 @@ main: kit: entity: comment: {
           }
           m: "GET"
           o: "/api/comments"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "api"

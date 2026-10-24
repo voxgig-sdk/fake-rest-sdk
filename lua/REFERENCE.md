@@ -118,7 +118,7 @@ local category = client:Category(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Category():list()
@@ -182,7 +182,7 @@ local comment = client:Comment(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Comment():create({
@@ -191,7 +191,7 @@ local result, err = client:Comment():create({
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Comment():list()
@@ -256,7 +256,7 @@ local post = client:Post(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Post():create({
@@ -265,7 +265,7 @@ local result, err = client:Post():create({
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Post():list()
@@ -273,7 +273,7 @@ local results, err = client:Post():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Post():load({ id = 1 })
@@ -334,7 +334,7 @@ local product = client:Product(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Product():list()
@@ -342,7 +342,7 @@ local results, err = client:Product():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Product():load({ id = 1 })
@@ -400,7 +400,7 @@ local todo = client:Todo(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:Todo():list()
@@ -447,11 +447,14 @@ local user = client:User(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `address` | `table` | No |  |
+| `avatar` | `string` | No |  |
 | `company` | `table` | No |  |
+| `createdAt` | `string` | No |  |
 | `email` | `string` | No |  |
 | `id` | `number` | No |  |
 | `name` | `string` | No |  |
 | `phone` | `string` | No |  |
+| `updatedAt` | `string` | No |  |
 | `username` | `string` | No |  |
 | `website` | `string` | No |  |
 
@@ -459,7 +462,7 @@ local user = client:User(nil)
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:User():create({
@@ -468,7 +471,7 @@ local result, err = client:User():create({
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
 local results, err = client:User():list()
@@ -476,7 +479,7 @@ local results, err = client:User():list()
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:User():load({ id = 1 })
@@ -484,7 +487,7 @@ local result, err = client:User():load({ id = 1 })
 
 #### `remove(reqmatch, ctrl) -> any, err`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:User():remove({ id = 1 })
@@ -492,7 +495,7 @@ local result, err = client:User():remove({ id = 1 })
 
 #### `update(reqdata, ctrl) -> any, err`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:User():update({
@@ -688,6 +691,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

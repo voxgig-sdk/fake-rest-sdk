@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -162,7 +163,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 }
@@ -275,7 +280,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -331,6 +340,10 @@ class Config {
                                 "exist": [
                                     "post_id"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         },
                         {
@@ -355,7 +368,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 }
@@ -475,7 +492,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -505,7 +526,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -553,6 +578,10 @@ class Config {
                                 "exist": [
                                     "id"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -649,7 +678,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -697,6 +730,10 @@ class Config {
                                 "exist": [
                                     "id"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -783,7 +820,8 @@ class Config {
                                         "name": "completed",
                                         "orig": "completed",
                                         "type": "`$BOOLEAN`",
-                                        "kind": "query"
+                                        "kind": "query",
+                                        "field": true
                                     },
                                     {
                                         "name": "limit",
@@ -805,13 +843,10 @@ class Config {
                                     }
                                 ]
                             },
-                            "select": {
-                                "exist": [
-                                    "completed",
-                                    "limit",
-                                    "page",
-                                    "user_id"
-                                ]
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -829,9 +864,21 @@ class Config {
                     "type": "`$OBJECT`"
                 },
                 {
+                    "name": "avatar",
+                    "title": "Avatar",
+                    "type": "`$STRING`",
+                    "format": "uri"
+                },
+                {
                     "name": "company",
                     "title": "Company",
                     "type": "`$OBJECT`"
+                },
+                {
+                    "name": "createdAt",
+                    "title": "Created At",
+                    "type": "`$STRING`",
+                    "format": "date-time"
                 },
                 {
                     "name": "email",
@@ -853,6 +900,12 @@ class Config {
                     "name": "phone",
                     "title": "Phone",
                     "type": "`$STRING`"
+                },
+                {
+                    "name": "updatedAt",
+                    "title": "Updated At",
+                    "type": "`$STRING`",
+                    "format": "date-time"
                 },
                 {
                     "name": "username",
@@ -897,7 +950,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -927,7 +984,11 @@ class Config {
                                 "res": "`body`"
                             },
                             "args": {},
-                            "select": {}
+                            "select": {},
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
+                            }
                         }
                     ]
                 },
@@ -975,6 +1036,10 @@ class Config {
                                 "exist": [
                                     "id"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -1071,6 +1136,10 @@ class Config {
                                 "exist": [
                                     "id"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]

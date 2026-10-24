@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Comment created successfully",
+      "Post created successfully",
+      "Production server",
+      "Successful response",
+      "This API provides a simple and free platform to generate realistic JSON data for testing mobile apps and web applications. No authentication or signup is required, making it ideal for developers needing quick access to mock data.",
+      "User created successfully",
+      "User deleted successfully",
+      "User updated successfully"
+    ]
+  }
 }
